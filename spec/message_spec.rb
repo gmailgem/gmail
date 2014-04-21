@@ -87,6 +87,8 @@ describe Gmail::Message do
       end
     end
 
+    ## TODO FIXME: This test passes but should be reviewed in next patch of lib/gmail/message.rb
+    ## that reviews the `#move_to` method
     describe "#archive!" do
       it "should move itself to '[Gmail]/All Mail'" do
         expect(subject).to receive(:move_to).with('[Gmail]/All Mail').once

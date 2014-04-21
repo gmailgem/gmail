@@ -103,18 +103,19 @@ module Gmail
     # Move to trash / bin.
     def delete!
       flag(:deleted)
-
       # For some, it's called "Trash", for others, it's called "Bin". Support both.
       trash =  @gmail.labels.exist?('[Gmail]/Bin') ? '[Gmail]/Bin' : '[Gmail]/Trash'
       move_to(trash) unless %w[[Gmail]/Spam [Gmail]/Bin [Gmail]/Trash].include?(@mailbox.name)
     end
 
     # Archive this message.
+    # TODO: Should use the new <tt>Gmail::Message#remove_label</tt> method, passing `:Inbox` as argument
     def archive!
       move_to('[Gmail]/All Mail')
     end
 
     # Move to given box and delete from others.
+    # TODO: Should not delete! because messages are ending up in the trash
     def move_to(name, from = nil)
       label(name, from)
       delete! if !%w[[Gmail]/Bin [Gmail]/Trash].include?(name)
@@ -123,6 +124,7 @@ module Gmail
 
     # Move message to given and delete from others. When given mailbox doesn't
     # exist then it will be automaticaly created.
+    # TODO: Should not delete! because messages are ending up in the trash
     def move_to!(name, from = nil)
       label!(name, from) && delete!
     end
@@ -132,10 +134,9 @@ module Gmail
     # it will raise <tt>NoLabelError</tt>.
     #
     # See also <tt>Gmail::Message#label!</tt>.
+    # TODO: Should be made an alias of <tt>Gmail::Message#add_label</tt>
     def label(name, from = nil)
-      @gmail.mailbox(from || @mailbox.name) {
-        @gmail.conn.uid_copy(uid, Net::IMAP.encode_utf7(name))
-      }
+      @gmail.mailbox(Net::IMAP.encode_utf7(from || @mailbox.external_name)) { @gmail.conn.uid_copy(uid, Net::IMAP.encode_utf7(name)) }
     rescue Net::IMAP::NoResponseError
       raise NoLabelError, "Label '#{name}' doesn't exist!"
     end
@@ -144,14 +145,31 @@ module Gmail
     # it will be automaticaly created.
     #
     # See also <tt>Gmail::Message#label</tt>.
+    # TODO: Should be made an alias of <tt>Gmail::Message#add_label</tt>
     def label!(name, from = nil)
       label(name, from)
     rescue NoLabelError
       @gmail.labels.add(name)
       label(name, from)
     end
-    alias :add_label :label!
+    # alias :add_label :label!
     alias :add_label! :label!
+
+    # Use Gmail IMAP Extensions to add a Label to an email
+    # TODO: point alias of <tt>Gmail::Message#label</tt> and <tt>Gmail::Message#label!</tt> to this method
+    def add_label(name)
+      @gmail.mailbox(@mailbox.name) {
+        @gmail.conn.uid_store(uid, "+X-GM-LABELS", [name.to_s])
+      }
+    end
+
+    # Use Gmail IMAP Extensions to remove a Label from an email
+    # TODO: point alias of <tt>#remove_label!</tt> to this method
+    def remove_label(name)
+      @gmail.mailbox(@mailbox.name) {
+        @gmail.conn.uid_store(uid, "-X-GM-LABELS", [name.to_s])
+      }
+    end
 
     # Remove given label from this message.
     def remove_label!(name)
