@@ -18,7 +18,7 @@ You can install it easy using rubygems:
     
 Or install it manually:
 
-    git clone git://github.com/nu7hatch/gmail.git
+    git clone git://github.com/gmailgem/gmail.git
     cd gmail
     rake install
 
@@ -289,7 +289,7 @@ Extra thanks for specific feature contributions from:
 
 ## Copyright
 
-* Copyrignt (c) 2010 Kriss 'nu7hatch' Kowalik
+* Copyright (c) 2010-2015 Kriss 'nu7hatch' Kowalik
 * Copyright (c) 2009-2010 BehindLogic
 
 See LICENSE for details.
