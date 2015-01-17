@@ -24,10 +24,14 @@ Or install it manually:
 
 gmail gem has the following dependencies (with Bundler all will be installed automatically):
 
-* mail (Ruby 1.8.7 users should lock mail gem version at 2.5.3)
-* mime
+* mail
 * gmail_xoauth
-* smpt_tls (Ruby < 1.8.7)
+
+## Version Support
+
+* Ruby 2.0.0+ is supported
+* Ruby 1.9.3 is supported but deprecated and is planned to be dropped from gmail v0.6.0
+* Ruby 1.8.7 users should use gmail v0.4.1
 
 ## Features
 
@@ -289,4 +293,3 @@ Extra thanks for specific feature contributions from:
 * Copyright (c) 2009-2010 BehindLogic
 
 See LICENSE for details.
-
