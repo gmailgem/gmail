@@ -6,7 +6,7 @@ require 'yaml'
 require 'gmail'
 
 # require_support_files
-Dir[File.join(File.dirname(__FILE__), 'support', '*.rb')].each{ |f| require f }
+Dir[File.join(File.dirname(__FILE__), 'support', '*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
   Spec::ImapMock.configure_rspec!(config)
@@ -28,7 +28,7 @@ def mock_client(&block)
   client
 end
 
-def mock_mailbox(box="INBOX", &block)
+def mock_mailbox(box = "INBOX", &block)
   within_gmail do |gmail|
     mailbox = subject.new(gmail, box)
     yield(mailbox) if block_given?

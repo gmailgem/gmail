@@ -3,12 +3,12 @@ module Gmail
     class Plain < Base
       attr_reader :password
 
-      def initialize(username, password, options={})
+      def initialize(username, password, options = {})
         @password = password
         super(username, options)
       end
 
-      def login(raise_errors=false)
+      def login(raise_errors = false)
         @imap and @logged_in = (login = @imap.login(username, password)) && login.name == 'OK'
       rescue Net::IMAP::NoResponseError => e
         if raise_errors

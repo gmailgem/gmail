@@ -115,7 +115,7 @@ module Gmail
     end
 
     # Move to given box and delete from others.
-    def move_to(name, from=nil)
+    def move_to(name, from = nil)
       label(name, from)
       delete! if !%w[[Gmail]/Bin [Gmail]/Trash].include?(name)
     end
@@ -123,7 +123,7 @@ module Gmail
 
     # Move message to given and delete from others. When given mailbox doesn't
     # exist then it will be automaticaly created.
-    def move_to!(name, from=nil)
+    def move_to!(name, from = nil)
       label!(name, from) && delete!
     end
     alias :move! :move_to!
@@ -132,7 +132,7 @@ module Gmail
     # it will raise <tt>NoLabelError</tt>.
     #
     # See also <tt>Gmail::Message#label!</tt>.
-    def label(name, from=nil)
+    def label(name, from = nil)
       @gmail.mailbox(from || @mailbox.name) {
         @gmail.conn.uid_copy(uid, Net::IMAP.encode_utf7(name))
       }
@@ -144,7 +144,7 @@ module Gmail
     # it will be automaticaly created.
     #
     # See also <tt>Gmail::Message#label</tt>.
-    def label!(name, from=nil)
+    def label!(name, from = nil)
       label(name, from)
     rescue NoLabelError
       @gmail.labels.add(name)
@@ -160,7 +160,7 @@ module Gmail
     alias :delete_label! :remove_label!
 
     def inspect
-      "#<Gmail::Message#{'0x%04x' % (object_id << 1)} mailbox=#{@mailbox.name}#{' uid='+@uid.to_s if @uid}#{' message_id='+@message_id.to_s if @message_id}>"
+      "#<Gmail::Message#{'0x%04x' % (object_id << 1)} mailbox=#{@mailbox.name}#{' uid=' + @uid.to_s if @uid}#{' message_id=' + @message_id.to_s if @message_id}>"
     end
 
     def method_missing(meth, *args, &block)
@@ -195,6 +195,5 @@ module Gmail
 
       @_attrs.attr[value]
     end
-
   end # Message
 end # Gmail

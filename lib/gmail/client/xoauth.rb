@@ -8,7 +8,7 @@ module Gmail
       attr_reader :consumer_key
       attr_reader :consumer_secret
 
-      def initialize(username, options={})
+      def initialize(username, options = {})
         @token           = options.delete(:token)
         @secret          = options.delete(:secret)
         @consumer_key    = options.delete(:consumer_key)
@@ -17,7 +17,7 @@ module Gmail
         super(username, options)
       end
 
-      def login(raise_errors=false)
+      def login(raise_errors = false)
         @imap and @logged_in = (login = @imap.authenticate('XOAUTH', username,
           :consumer_key    => consumer_key,
           :consumer_secret => consumer_secret,

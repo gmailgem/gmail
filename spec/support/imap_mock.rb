@@ -69,7 +69,6 @@ end
 
 module Spec
   module ImapMock
-
     # Configures RSpec with an around(:each) block to use IMAP mocks
     def self.configure_rspec!(config)
       config.around(:each) do |example|
@@ -79,13 +78,12 @@ module Spec
 
     # Run an RSpec example using IMAP mocks
     def self.run_rspec_example(example)
-
       # The path is determined by the rspec `describe`s and `context`s
       mock_path = example.example_group.to_s
-                      .gsub(/RSpec::ExampleGroups::/, '')
-                      .gsub(/(\w)([A-Z])/, '\1_\2')
-                      .gsub(/::/, '/')
-                      .downcase
+        .gsub(/RSpec::ExampleGroups::/, '')
+        .gsub(/(\w)([A-Z])/, '\1_\2')
+        .gsub(/::/, '/')
+        .downcase
 
       # The name is determined by the description of the example.
       mock_name = example.description.gsub(/[^\w\-\/]+/, '_').downcase

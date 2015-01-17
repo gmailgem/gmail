@@ -10,17 +10,17 @@ describe "Gmail client (XOAuth2)" do
         :foo   => :bar
       })
       client.username.should == "test@gmail.com"
-      client.token.should == {:token=>"token", :foo=>:bar}
+      client.token.should == { :token => "token", :foo => :bar }
     end
 
     it "should convert simple name to gmail email" do
-      client = subject.new("test", {:token => "token"})
+      client = subject.new("test", { :token => "token" })
       client.username.should == "test@gmail.com"
     end
   end
 
   context "instance" do
-    def mock_client(&block) 
+    def mock_client(&block)
       client = Gmail::Client::XOAuth2.new(*TEST_ACCOUNT)
       if block_given?
         client.connect
@@ -30,8 +30,8 @@ describe "Gmail client (XOAuth2)" do
       client
     end
 
-    it "should connect to GMail IMAP service" do 
-      expect(->{
+    it "should connect to GMail IMAP service" do
+      expect(-> {
         client = mock_client
         client.connect!.should be_truthy
       }).to_not raise_error
@@ -47,16 +47,16 @@ describe "Gmail client (XOAuth2)" do
     end
 
     it "should raise error when given GMail account is invalid and errors enabled" do
-      expect(->{
-        client = Gmail::Client::XOAuth2.new("foo", {:token=>"bar"})
+      expect(-> {
+        client = Gmail::Client::XOAuth2.new("foo", { :token => "bar" })
         client.connect.should be_truthy
         client.login!.should_not be_truthy
       }).to raise_error(Gmail::Client::AuthorizationError)
     end
 
     it "shouldn't login when given GMail account is invalid" do
-      expect(->{
-        client = Gmail::Client::XOAuth2.new("foo", {:token=>"bar"})
+      expect(-> {
+        client = Gmail::Client::XOAuth2.new("foo", { :token => "bar" })
         client.connect.should be_truthy
         client.login.should_not be_truthy
       }).to_not raise_error
@@ -110,14 +110,14 @@ describe "Gmail client (XOAuth2)" do
     end
 
     it "should not raise error when mail can't be delivered and errors are disabled" do
-      expect(->{
+      expect(-> {
         client = mock_client
         client.deliver(Mail.new {}).should be_falsey
       }).to_not raise_error
     end
 
     it "should raise error when mail can't be delivered and errors are disabled" do
-      expect(->{
+      expect(-> {
         client = mock_client
         client.deliver!(Mail.new {})
       }).to raise_error(Gmail::Client::DeliveryError)
