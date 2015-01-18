@@ -1,0 +1,14 @@
+---
+Net::IMAP-authenticate-3034f36a0762e890775aa0490f495ced: !ruby/object:Camcorder::Recording
+  value: !ruby/exception:Net::IMAP::NoResponseError
+    message: " Invalid credentials (Failure)"
+    response: !ruby/struct:Net::IMAP::TaggedResponse
+      tag: RUBY0001
+      name: 'NO'
+      data: !ruby/struct:Net::IMAP::ResponseText
+        code: !ruby/struct:Net::IMAP::ResponseCode
+          name: ALERT
+          data: 
+        text: " Invalid credentials (Failure)"
+      raw_data: "RUBY0001 NO [ALERT] Invalid credentials (Failure)\r\n"
+  behavior: :raise

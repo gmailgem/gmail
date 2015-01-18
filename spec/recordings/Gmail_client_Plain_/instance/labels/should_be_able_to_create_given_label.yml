@@ -1,0 +1,125 @@
+---
+Net::IMAP-login-758fd0590883627b674b8a18ed2eaa88: !ruby/object:Camcorder::Recording
+  value: !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0001
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: 
+      text: ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com authenticated (Success)
+    raw_data: "RUBY0001 OK ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com authenticated
+      (Success)\r\n"
+  behavior: :return
+Net::IMAP-create-2a7b885114e728ab12ba38a69a04da7d: !ruby/object:Camcorder::Recording
+  value: !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0002
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: 
+      text: Success
+    raw_data: "RUBY0002 OK Success\r\n"
+  behavior: :return
+Net::IMAP-list-9a5c11cb8c9f855780f1c7ddd0cfc23c: !ruby/object:Camcorder::Recording
+  value:
+  - !ruby/struct:Net::IMAP::MailboxList
+    attr:
+    - :Hasnochildren
+    delim: "/"
+    name: Awesome
+  - !ruby/struct:Net::IMAP::MailboxList
+    attr:
+    - :Hasnochildren
+    delim: "/"
+    name: Great
+  - !ruby/struct:Net::IMAP::MailboxList
+    attr:
+    - :Hasnochildren
+    delim: "/"
+    name: INBOX
+  - !ruby/struct:Net::IMAP::MailboxList
+    attr:
+    - :Hasnochildren
+    delim: "/"
+    name: MYLABEL
+  - !ruby/struct:Net::IMAP::MailboxList
+    attr:
+    - :Noselect
+    - :Haschildren
+    delim: "/"
+    name: "[Gmail]"
+  behavior: :return
+Net::IMAP-list-c7a39834e54731a5dea661b9c5655619: !ruby/object:Camcorder::Recording
+  value:
+  - !ruby/struct:Net::IMAP::MailboxList
+    attr:
+    - :Hasnochildren
+    - :All
+    delim: "/"
+    name: "[Gmail]/All Mail"
+  - !ruby/struct:Net::IMAP::MailboxList
+    attr:
+    - :Hasnochildren
+    - :Drafts
+    delim: "/"
+    name: "[Gmail]/Drafts"
+  - !ruby/struct:Net::IMAP::MailboxList
+    attr:
+    - :Hasnochildren
+    - :Important
+    delim: "/"
+    name: "[Gmail]/Important"
+  - !ruby/struct:Net::IMAP::MailboxList
+    attr:
+    - :Hasnochildren
+    - :Sent
+    delim: "/"
+    name: "[Gmail]/Sent Mail"
+  - !ruby/struct:Net::IMAP::MailboxList
+    attr:
+    - :Hasnochildren
+    - :Junk
+    delim: "/"
+    name: "[Gmail]/Spam"
+  - !ruby/struct:Net::IMAP::MailboxList
+    attr:
+    - :Hasnochildren
+    - :Flagged
+    delim: "/"
+    name: "[Gmail]/Starred"
+  - !ruby/struct:Net::IMAP::MailboxList
+    attr:
+    - :Hasnochildren
+    - :Trash
+    delim: "/"
+    name: "[Gmail]/Trash"
+  behavior: :return
+Net::IMAP-create-a8b1225c26127012be49bf4e233137b2: !ruby/object:Camcorder::Recording
+  value: !ruby/exception:Net::IMAP::NoResponseError
+    message: " Duplicate folder name MYLABEL (Failure)"
+    response: !ruby/struct:Net::IMAP::TaggedResponse
+      tag: RUBY0005
+      name: 'NO'
+      data: !ruby/struct:Net::IMAP::ResponseText
+        code: !ruby/struct:Net::IMAP::ResponseCode
+          name: ALREADYEXISTS
+          data: 
+        text: " Duplicate folder name MYLABEL (Failure)"
+      raw_data: "RUBY0005 NO [ALREADYEXISTS] Duplicate folder name MYLABEL (Failure)\r\n"
+  behavior: :raise
+Net::IMAP-delete-f3a45ee2553b8a0187a7e9b284e128f5: !ruby/object:Camcorder::Recording
+  value: !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0006
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: 
+      text: Success
+    raw_data: "RUBY0006 OK Success\r\n"
+  behavior: :return
+Net::IMAP-logout-338cbb8d4cb1ebc18b2246ccd5be67cd: !ruby/object:Camcorder::Recording
+  value: !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0007
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: 
+      text: 73 good day (Success)
+    raw_data: "RUBY0007 OK 73 good day (Success)\r\n"
+  behavior: :return

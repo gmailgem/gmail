@@ -5,8 +5,19 @@ require 'rubygems'
 require 'rspec'
 require 'yaml'
 require 'gmail'
+require 'camcorder'
+require 'camcorder/rspec'
+
+Camcorder.config.recordings_dir = 'spec/recordings'
 
 RSpec.configure do |config|
+  config.before(:suite) do
+    Camcorder.intercept_constructor(Net::IMAP) do
+      methods_with_side_effects :login, :logout, :list, :examine, :select, :create, :delete
+    end
+
+    Camcorder.intercept_constructor(Net::SMTP)
+  end
 end
 
 def within_gmail(&block)
@@ -15,7 +26,7 @@ def within_gmail(&block)
   gmail.logout if gmail
 end
 
-def mock_client(&block) 
+def mock_client(&block)
   client = Gmail::Client::Plain.new(*TEST_ACCOUNT)
   if block_given?
     client.connect
