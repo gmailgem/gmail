@@ -1,0 +1,86 @@
+---
+Net::IMAP-login-758fd0590883627b674b8a18ed2eaa88: !ruby/object:Camcorder::Recording
+  value: !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0001
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: 
+      text: ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com authenticated (Success)
+    raw_data: "RUBY0001 OK ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com authenticated
+      (Success)\r\n"
+  behavior: :return
+Net::IMAP-list-49ca2c937b3d5d1f57028f9e845b6642: !ruby/object:Camcorder::Recording
+  value:
+  - !ruby/struct:Net::IMAP::MailboxList
+    attr:
+    - :Hasnochildren
+    delim: "/"
+    name: Awesome
+  - !ruby/struct:Net::IMAP::MailboxList
+    attr:
+    - :Hasnochildren
+    delim: "/"
+    name: Great
+  - !ruby/struct:Net::IMAP::MailboxList
+    attr:
+    - :Hasnochildren
+    delim: "/"
+    name: INBOX
+  - !ruby/struct:Net::IMAP::MailboxList
+    attr:
+    - :Noselect
+    - :Haschildren
+    delim: "/"
+    name: "[Gmail]"
+  - !ruby/struct:Net::IMAP::MailboxList
+    attr:
+    - :Hasnochildren
+    - :All
+    delim: "/"
+    name: "[Gmail]/All Mail"
+  - !ruby/struct:Net::IMAP::MailboxList
+    attr:
+    - :Hasnochildren
+    - :Drafts
+    delim: "/"
+    name: "[Gmail]/Drafts"
+  - !ruby/struct:Net::IMAP::MailboxList
+    attr:
+    - :Hasnochildren
+    - :Important
+    delim: "/"
+    name: "[Gmail]/Important"
+  - !ruby/struct:Net::IMAP::MailboxList
+    attr:
+    - :Hasnochildren
+    - :Sent
+    delim: "/"
+    name: "[Gmail]/Sent Mail"
+  - !ruby/struct:Net::IMAP::MailboxList
+    attr:
+    - :Hasnochildren
+    - :Junk
+    delim: "/"
+    name: "[Gmail]/Spam"
+  - !ruby/struct:Net::IMAP::MailboxList
+    attr:
+    - :Hasnochildren
+    - :Flagged
+    delim: "/"
+    name: "[Gmail]/Starred"
+  - !ruby/struct:Net::IMAP::MailboxList
+    attr:
+    - :Hasnochildren
+    - :Trash
+    delim: "/"
+    name: "[Gmail]/Trash"
+  behavior: :return
+Net::IMAP-logout-77aee31bb774480555c8a08e70c423c4: !ruby/object:Camcorder::Recording
+  value: !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0003
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: 
+      text: 73 good day (Success)
+    raw_data: "RUBY0003 OK 73 good day (Success)\r\n"
+  behavior: :return

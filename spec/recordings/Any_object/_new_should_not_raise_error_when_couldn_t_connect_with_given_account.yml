@@ -1,0 +1,12 @@
+---
+Net::IMAP-login-bd531aecab77f9532e65b71cbc0b53b6: !ruby/object:Camcorder::Recording
+  value: !ruby/exception:Net::IMAP::NoResponseError
+    message: Invalid credentials c77mb12013672oih
+    response: !ruby/struct:Net::IMAP::TaggedResponse
+      tag: RUBY0001
+      name: 'NO'
+      data: !ruby/struct:Net::IMAP::ResponseText
+        code: 
+        text: Invalid credentials c77mb12013672oih
+      raw_data: "RUBY0001 NO Invalid credentials c77mb12013672oih\r\n"
+  behavior: :raise

@@ -1,0 +1,93 @@
+---
+Net::SMTP-enable_starttls_auto-edc274ea8a5cb035ede2a3b59ee5e4bf: !ruby/object:Camcorder::Recording
+  value: !ruby/object:OpenSSL::SSL::SSLContext
+    cert: 
+    key: 
+    client_ca: 
+    ca_file: 
+    ca_path: 
+    timeout: 
+    verify_mode: 
+    verify_depth: 
+    renegotiation_cb: 
+    verify_callback: 
+    options: 
+    cert_store: 
+    extra_chain_cert: 
+    client_cert_cb: 
+    tmp_dh_callback: 
+    session_id_context: 
+    session_get_cb: 
+    session_new_cb: 
+    session_remove_cb: 
+    servername_cb: 
+    npn_protocols: 
+    npn_select_cb: 
+  behavior: :return
+Net::SMTP-start-6b0dd4eb515e9d5c99efe9e150e07ddd: !ruby/object:Camcorder::Recording
+  value: !ruby/object:Net::SMTP
+    address: smtp.gmail.com
+    port: 587
+    esmtp: true
+    capabilities:
+      SIZE:
+      - '35882577'
+      8BITMIME: []
+      AUTH:
+      - LOGIN
+      - PLAIN
+      - XOAUTH
+      - XOAUTH2
+      - PLAIN-CLIENTTOKEN
+      ENHANCEDSTATUSCODES: []
+      PIPELINING: []
+      CHUNKING: []
+      SMTPUTF8: []
+    socket: !ruby/object:Net::InternetMessageIO
+      io: !ruby/object:OpenSSL::SSL::SSLSocket
+        io: !ruby/object:TCPSocket {}
+        context: &1 !ruby/object:OpenSSL::SSL::SSLContext
+          cert: 
+          key: 
+          client_ca: 
+          ca_file: 
+          ca_path: 
+          timeout: 
+          verify_mode: 
+          verify_depth: 
+          renegotiation_cb: 
+          verify_callback: 
+          options: 
+          cert_store: 
+          extra_chain_cert: 
+          client_cert_cb: 
+          tmp_dh_callback: 
+          session_id_context: 
+          session_get_cb: 
+          session_new_cb: 
+          session_remove_cb: 
+          servername_cb: 
+          npn_protocols: 
+          npn_select_cb: 
+        sync_close: true
+        hostname: 
+        eof: false
+        rbuffer: ''
+        sync: true
+        callback_state: 
+        wbuffer: ''
+      read_timeout: 60
+      continue_timeout: 
+      debug_output: 
+      rbuf: ''
+      wbuf: 
+      written_bytes: 
+    started: true
+    open_timeout: 30
+    read_timeout: 60
+    error_occurred: false
+    debug_output: 
+    tls: false
+    starttls: :auto
+    ssl_context: *1
+  behavior: :return

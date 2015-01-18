@@ -1,0 +1,20 @@
+---
+Net::IMAP-login-758fd0590883627b674b8a18ed2eaa88: !ruby/object:Camcorder::Recording
+  value: !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0001
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: 
+      text: ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com authenticated (Success)
+    raw_data: "RUBY0001 OK ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com authenticated
+      (Success)\r\n"
+  behavior: :return
+Net::IMAP-logout-124c4cf9b43db611af2e6075d25b5b25: !ruby/object:Camcorder::Recording
+  value: !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0002
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: 
+      text: 73 good day (Success)
+    raw_data: "RUBY0002 OK 73 good day (Success)\r\n"
+  behavior: :return

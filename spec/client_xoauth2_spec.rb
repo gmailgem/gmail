@@ -20,7 +20,7 @@ describe "Gmail client (XOAuth2)" do
   end
 
   context "instance" do
-    def mock_client(&block) 
+    def mock_client(&block)
       client = Gmail::Client::XOAuth2.new(*TEST_ACCOUNT)
       if block_given?
         client.connect
@@ -30,7 +30,7 @@ describe "Gmail client (XOAuth2)" do
       client
     end
 
-    it "should connect to GMail IMAP service" do 
+    it "should connect to GMail IMAP service" do
       expect(->{
         client = mock_client
         client.connect!.should be_truthy
@@ -143,11 +143,15 @@ describe "Gmail client (XOAuth2)" do
     end
 
     context "labels" do
+      let(:client) { Gmail::Client::XOAuth2.new(*TEST_ACCOUNT) }
+
       subject {
-        client = Gmail::Client::XOAuth2.new(*TEST_ACCOUNT)
         client.connect
+        client.login
         client.labels
       }
+
+      after { client.logout if client.logged_in? }
 
       it "should get list of all available labels" do
         pending
