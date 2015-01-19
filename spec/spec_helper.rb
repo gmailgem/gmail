@@ -13,9 +13,9 @@ RSpec.configure do |config|
 end
 
 def within_gmail(&block)
-  gmail = Gmail.connect!(*TEST_ACCOUNT)
-  yield(gmail)
-  gmail.logout if gmail
+  Gmail.connect!(*TEST_ACCOUNT) do |gmail|
+    yield(gmail)
+  end
 end
 
 def mock_client(&block)

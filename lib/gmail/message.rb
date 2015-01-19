@@ -10,7 +10,7 @@ module Gmail
     def initialize(mailbox, uid, _attrs = nil)
       @uid     = uid
       @mailbox = mailbox
-      @gmail   = mailbox.instance_variable_get("@gmail") if mailbox
+      @gmail   = mailbox.instance_variable_get("@gmail") if mailbox  # UGLY
       @_attrs  = _attrs
     end
 
@@ -188,11 +188,10 @@ module Gmail
 
     def fetch(value)
       @_attrs ||= begin
-        @gmail.mailbox(@mailbox.name) {
+        @gmail.mailbox(@mailbox.name) do
           @gmail.conn.uid_fetch(uid, PREFETCH_ATTRS)[0]
-        }
+        end
       end
-
       @_attrs.attr[value]
     end
   end # Message
