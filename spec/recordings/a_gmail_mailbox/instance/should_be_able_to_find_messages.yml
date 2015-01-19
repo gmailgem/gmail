@@ -1,0 +1,472 @@
+---
+LOGIN-9a890af1c86854f5170d99be6e10b8f1:
+- - :return
+  - !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0001
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: 
+      text: ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com authenticated (Success)
+    raw_data: "RUBY0001 OK ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com authenticated
+      (Success)\r\n"
+  - CAPABILITY:
+    - - IMAP4REV1
+      - UNSELECT
+      - IDLE
+      - NAMESPACE
+      - QUOTA
+      - ID
+      - XLIST
+      - CHILDREN
+      - X-GM-EXT-1
+      - UIDPLUS
+      - COMPRESS=DEFLATE
+      - ENABLE
+      - MOVE
+      - CONDSTORE
+      - ESEARCH
+      - UTF8=ACCEPT
+SELECT-505f013d922af4caf157dc91d6b45a60:
+- - :return
+  - !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0002
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: READ-WRITE
+        data: 
+      text: " INBOX selected. (Success)"
+    raw_data: "RUBY0002 OK [READ-WRITE] INBOX selected. (Success)\r\n"
+  - FLAGS: &4
+    - - :Answered
+      - :Flagged
+      - :Draft
+      - :Deleted
+      - :Seen
+      - "$Phishing"
+      - "$NotPhishing"
+    OK: &5
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: PERMANENTFLAGS
+        data: &1
+        - :Answered
+        - :Flagged
+        - :Draft
+        - :Deleted
+        - :Seen
+        - "$Phishing"
+        - "$NotPhishing"
+        - :*
+      text: " Flags permitted."
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: UIDVALIDITY
+        data: 1
+      text: " UIDs valid."
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: UIDNEXT
+        data: 69
+      text: " Predicted next UID."
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: HIGHESTMODSEQ
+        data: '7631'
+      text: ''
+    PERMANENTFLAGS: &6
+    - *1
+    UIDVALIDITY: &7
+    - 1
+    EXISTS: &8
+    - 68
+    RECENT: &9
+    - 0
+    UIDNEXT: &10
+    - 69
+    HIGHESTMODSEQ: &11
+    - '7631'
+- - :return
+  - !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0004
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: READ-WRITE
+        data: 
+      text: " INBOX selected. (Success)"
+    raw_data: "RUBY0004 OK [READ-WRITE] INBOX selected. (Success)\r\n"
+  - FLAGS: &12
+    - - :Answered
+      - :Flagged
+      - :Draft
+      - :Deleted
+      - :Seen
+      - "$Phishing"
+      - "$NotPhishing"
+    OK: &13
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: PERMANENTFLAGS
+        data: &2
+        - :Answered
+        - :Flagged
+        - :Draft
+        - :Deleted
+        - :Seen
+        - "$Phishing"
+        - "$NotPhishing"
+        - :*
+      text: " Flags permitted."
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: UIDVALIDITY
+        data: 1
+      text: " UIDs valid."
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: UIDNEXT
+        data: 69
+      text: " Predicted next UID."
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: HIGHESTMODSEQ
+        data: '7631'
+      text: ''
+    PERMANENTFLAGS: &14
+    - *2
+    UIDVALIDITY: &15
+    - 1
+    EXISTS: &16
+    - 68
+    RECENT: &17
+    - 0
+    UIDNEXT: &18
+    - 69
+    HIGHESTMODSEQ: &19
+    - '7631'
+- - :return
+  - !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0006
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: READ-WRITE
+        data: 
+      text: " INBOX selected. (Success)"
+    raw_data: "RUBY0006 OK [READ-WRITE] INBOX selected. (Success)\r\n"
+  - FLAGS: &20
+    - - :Answered
+      - :Flagged
+      - :Draft
+      - :Deleted
+      - :Seen
+      - "$Phishing"
+      - "$NotPhishing"
+    OK: &21
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: PERMANENTFLAGS
+        data: &3
+        - :Answered
+        - :Flagged
+        - :Draft
+        - :Deleted
+        - :Seen
+        - "$Phishing"
+        - "$NotPhishing"
+        - :*
+      text: " Flags permitted."
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: UIDVALIDITY
+        data: 1
+      text: " UIDs valid."
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: UIDNEXT
+        data: 69
+      text: " Predicted next UID."
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: HIGHESTMODSEQ
+        data: '7631'
+      text: ''
+    PERMANENTFLAGS: &22
+    - *3
+    UIDVALIDITY: &23
+    - 1
+    EXISTS: &24
+    - 68
+    RECENT: &25
+    - 0
+    UIDNEXT: &26
+    - 69
+    HIGHESTMODSEQ: &27
+    - '7631'
+UID SEARCH-b19658413e2b63d2bac9c290a67c2cb3:
+- - :return
+  - !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0003
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: 
+      text: SEARCH completed (Success)
+    raw_data: "RUBY0003 OK SEARCH completed (Success)\r\n"
+  - FLAGS: *4
+    OK: *5
+    PERMANENTFLAGS: *6
+    UIDVALIDITY: *7
+    EXISTS: *8
+    RECENT: *9
+    UIDNEXT: *10
+    HIGHESTMODSEQ: *11
+    SEARCH:
+    - - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+      - 15
+      - 16
+      - 17
+      - 18
+      - 19
+      - 20
+      - 21
+      - 22
+      - 23
+      - 24
+      - 25
+      - 26
+      - 27
+      - 28
+      - 29
+      - 30
+      - 31
+      - 32
+      - 33
+      - 34
+      - 35
+      - 36
+      - 37
+      - 38
+      - 39
+      - 40
+      - 41
+      - 42
+      - 43
+      - 44
+      - 45
+      - 46
+      - 47
+      - 48
+      - 49
+      - 50
+      - 51
+      - 52
+      - 53
+      - 54
+      - 55
+      - 56
+      - 57
+      - 58
+      - 59
+      - 60
+      - 61
+      - 62
+      - 63
+      - 64
+      - 65
+      - 66
+      - 67
+      - 68
+UID FETCH-2acc41ab9b9f9af181ba9994387f13a9:
+- - :return
+  - !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0005
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: 
+      text: Success
+    raw_data: "RUBY0005 OK Success\r\n"
+  - FLAGS: *12
+    OK: *13
+    PERMANENTFLAGS: *14
+    UIDVALIDITY: *15
+    EXISTS: *16
+    RECENT: *17
+    UIDNEXT: *18
+    HIGHESTMODSEQ: *19
+    FETCH:
+    - !ruby/struct:Net::IMAP::FetchData
+      seqno: 1
+      attr:
+        X-GM-MSGID: 1490339162618061913
+        X-GM-LABELS: []
+        UID: 1
+        FLAGS:
+        - :Seen
+        ENVELOPE: !ruby/struct:Net::IMAP::Envelope
+          date: Wed, 14 Jan 2015 21:03:01 -0800
+          subject: Three tips to get the most out of Gmail
+          from:
+          - !ruby/struct:Net::IMAP::Address
+            name: Gmail Team
+            route: 
+            mailbox: mail-noreply
+            host: google.com
+          sender:
+          - !ruby/struct:Net::IMAP::Address
+            name: Gmail Team
+            route: 
+            mailbox: mail-noreply
+            host: google.com
+          reply_to:
+          - !ruby/struct:Net::IMAP::Address
+            name: Gmail Team
+            route: 
+            mailbox: mail-noreply
+            host: google.com
+          to:
+          - !ruby/struct:Net::IMAP::Address
+            name: John Doe
+            route: 
+            mailbox: ki0zvkyi1yzgy7xu4f4dh46nqrcecm
+            host: gmail.com
+          cc: 
+          bcc: 
+          in_reply_to: 
+          message_id: "<CACNRAYKakHOCaxin=3D-9QAC=GRQgDae66vLpwqPQC6rDAJK2w@mail.gmail.com>"
+        BODY[]: "MIME-Version: 1.0\r\nx-no-auto-attachment: 1\r\nReceived: by 10.70.87.10;
+          Wed, 14 Jan 2015 21:03:01 -0800 (PST)\r\nDate: Wed, 14 Jan 2015 21:03:01
+          -0800\r\nMessage-ID: <CACNRAYKakHOCaxin=3D-9QAC=GRQgDae66vLpwqPQC6rDAJK2w@mail.gmail.com>\r\nSubject:
+          Three tips to get the most out of Gmail\r\nFrom: Gmail Team <mail-noreply@google.com>\r\nTo:
+          John Doe <ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com>\r\nContent-Type: multipart/alternative;
+          boundary=bcaec51dcff73ca5e9050ca9c59a\r\n\r\n--bcaec51dcff73ca5e9050ca9c59a\r\nContent-Type:
+          text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: quoted-printable\r\n\r\n
+          Three tips to get the most out of Gmail\r\n[image: Google]\r\n\r\nHi John\r\n\r\nTips
+          to get the most out of Gmail\r\n\r\n[image: Contacts]\r\nBring your contacts
+          and mail into Gmail\r\n\r\nOn your computer, you can copy your contacts
+          and emails from your old email\r\naccount to make the transition to Gmail
+          even better. Learn how\r\n<https://support.google.com/mail/answer/164640?hl=3Den&ref_topic=3D1669014>=\r\n.\r\n[image:
+          Search]\r\nFind what you need fast\r\n\r\nWith the power of Google Search
+          right in your inbox, it's easy to sort your\r\nemail. Find what you're looking
+          for with predictions based on email\r\ncontent, past searches and contacts.\r\n[image:
+          Search]\r\nMuch more than email\r\n\r\nYou can send text messages and make
+          video calls with Hangouts\r\n<https://www.google.com/intl/en/hangouts/>
+          right from Gmail. To use this\r\nfeature on mobile, download the Hangouts
+          app for Android\r\n<https://play.google.com/store/apps/details?id=3Dcom.google.android.talk&hl=\r\n=3Den>\r\nand
+          Apple <https://itunes.apple.com/en/app/hangouts/id643496868?mt=3D8>\r\ndevices.\r\n\r\n\r\n[image:
+          Gmail icon]Happy emailing,\r\nThe Gmail Team\r\n =C2=A9 2015 Google Inc.
+          1600 Amphitheatre Parkway, Mountain View, CA 94043\r\n\r\n--bcaec51dcff73ca5e9050ca9c59a\r\nContent-Type:
+          text/html; charset=UTF-8\r\nContent-Transfer-Encoding: quoted-printable\r\n\r\n<!DOCTYPE
+          html>\r\n<html><head><meta http-equiv=3D\"content-type\" content=3D\"text/html;charset=\r\n=3DUTF-8\"
+          /><title>Three tips to get the most out of Gmail</title></head><b=\r\nody
+          style=3D\"background-color:#e5e5e5; margin:20px 0;\"><br /><div style=3D\"=\r\nmargin:2%;\"><div
+          style=3D\"direction:ltr; text-align:left; font-family:'Open=\r\n sans','Arial',sans-serif;
+          color:#444; background-color:white; padding:1.5e=\r\nm; border-radius:1em;
+          box-shadow:1px -5px 8px 2px #bbb; max-width:580px; ma=\r\nrgin:2% auto 0
+          auto;\"><table style=3D\"background:white;width:100%\"><tr><td>=\r\n<div
+          style=3D\"width:90px; height:54px; margin:10px auto;\"><img src=3D\"https=\r\n://services.google.com/fh/files/emails/google_logo_flat_90_color.png\"
+          alt=\r\n=3D\"Google\" width=3D\"90\" height=3D\"34\"/></div><div style=3D\"width:90%;
+          padd=\r\ning-bottom:10px; padding-left:15px\"><p><img alt=3D\"\" src=3D\"https://ssl.gst=\r\natic.com/accounts/services/mail/msa/gmail_icon_small.png\"
+          style=3D\"display:=\r\nblock; float:left; margin-top:4px; margin-right:5px;\"/><span
+          style=3D\"font-=\r\nfamily:'Open sans','Arial',sans-serif; font-weight:bold;
+          font-size:small; l=\r\nine-height:1.4em\">Hi John</span></p><p><span style=3D\"font-family:'Open
+          san=\r\ns','Arial',sans-serif; font-size:2.08em;\">Tips to get the most
+          out of Gmail=\r\n</span><br/></p></div><p></p><div style=3D\"float:left;
+          clear:both; padding:=\r\n0px 5px 10px 10px;\"><img src=3D\"https://services.google.com/fh/files/emails=\r\n/importcontacts.png\"
+          alt=3D\"Contacts\" style=3D\"display:block;\"width=3D\"129\"=\r\nheight=3D\"129\"/></div><div
+          style=3D\"float:left; vertical-align:middle; padd=\r\ning:10px; max-width:398px;
+          float:left;\"><table style=3D\"vertical-align:midd=\r\nle;\"><tr><td style=3D\"font-family:'Open
+          sans','Arial',sans-serif;\"><span st=\r\nyle=3D\"font-size:20px;\">Bring
+          your contacts and mail into Gmail</span><br/>=\r\n<br/><span style=3D\"font-size:small;
+          line-height:1.4em\">On your computer, y=\r\nou can copy your contacts and
+          emails from your old email account to make th=\r\ne transition to Gmail
+          even better. <a href=3D\"https://support.google.com/ma=\r\nil/answer/164640?hl=3Den&amp;ref_topic=3D1669014\"
+          style=3D\"text-decoration:=\r\nnone; color:#15C\">Learn how</a>.</span></td></tr></table></div><div
+          style=\r\n=3D\"float:left; clear:both; padding:0px 5px 10px 10px;\"><img
+          src=3D\"https:/=\r\n/ssl.gstatic.com/mail/welcome/localized/en/welcome_search.png\"
+          alt=3D\"Searc=\r\nh\" style=3D\"display:block;\"width=3D\"129\"height=3D\"129\"/></div><div
+          style=3D=\r\n\"float:left; vertical-align:middle; padding:10px; max-width:398px;
+          float:le=\r\nft;\"><table style=3D\"vertical-align:middle;\"><tr><td style=3D\"font-family:'=\r\nOpen
+          sans','Arial',sans-serif;\"><span style=3D\"font-size:20px;\">Find what
+          y=\r\nou need fast</span><br/><br/><span style=3D\"font-size:small; line-height:1.=\r\n4em\">With
+          the power of Google Search right in your inbox, it's easy to sort=\r\n your
+          email. Find what you're looking for with predictions based on email c=\r\nontent,
+          past searches and contacts.</span></td></tr></table></div><div styl=\r\ne=3D\"float:left;
+          clear:both; padding:0px 5px 10px 10px;\"><img src=3D\"https:=\r\n//ssl.gstatic.com/accounts/services/mail/msa/welcome_hangouts.png\"
+          alt=3D\"S=\r\nearch\" style=3D\"display:block;\"width=3D\"129\"height=3D\"129\"/></div><div
+          styl=\r\ne=3D\"float:left; vertical-align:middle; padding:10px; max-width:398px;
+          floa=\r\nt:left;\"><table style=3D\"vertical-align:middle;\"><tr><td style=3D\"font-fami=\r\nly:'Open
+          sans','Arial',sans-serif;\"><span style=3D\"font-size:20px;\">Much mo=\r\nre
+          than email</span><br/><br/><span style=3D\"font-size:small; line-height:1=\r\n.4em\">You
+          can send text messages and make video calls with <a href=3D\"https=\r\n://www.google.com/intl/en/hangouts/\"
+          style=3D\"text-decoration:none; color:#=\r\n15C\">Hangouts</a> right from
+          Gmail. To use this feature on mobile, download=\r\n the Hangouts app for
+          <a href=3D\"https://play.google.com/store/apps/details=\r\n?id=3Dcom.google.android.talk&amp;hl=3Den\"
+          style=3D\"text-decoration:none; c=\r\nolor:#15C\">Android</a> and <a href=3D\"https://itunes.apple.com/en/app/hango=\r\nuts/id643496868?mt=3D8\"
+          style=3D\"text-decoration:none; color:#15C\">Apple</a=\r\n> devices.</span></td></tr></table></div><br/><br/>\r\n<div
+          style=3D\"clear:both; padding-left:13px; height:6.8em;\"><table style=3D=\r\n\"width:100%;
+          border-collapse:collapse; border:0\"><tr><td style=3D\"width:68p=\r\nx\"><img
+          alt=3D'Gmail icon' width=3D\"49\" height=3D\"37\" src=3D\"https://ssl.gs=\r\ntatic.com/accounts/services/mail/msa/gmail_icon_large.png\"
+          style=3D\"display=\r\n:block;\"/></td><td style=3D\"align:left; font-family:'Open
+          sans','Arial',san=\r\ns-serif; vertical-align:bottom\"><span style=3D\"font-size:small\">Happy
+          email=\r\ning,<br/></span><span style=3D\"font-size:x-large; line-height:1\">The
+          Gmail =\r\nTeam</span></td></tr></table></div>\r\n</td></tr></table></div>\r\n<div
+          style=3D\"direction:ltr;color:#777; font-size:0.8em; border-radius:1em;=\r\n
+          padding:1em; margin:0 auto 4% auto; font-family:'Arial','Helvetica',sans-s=\r\nerif;
+          text-align:center;\">=C2=A9 2015 Google Inc. 1600 Amphitheatre Parkway=\r\n,
+          Mountain View, CA 94043<br/></div></div></body></html>\r\n\r\n--bcaec51dcff73ca5e9050ca9c59a--"
+UID SEARCH-543c4aa0876fcec438e0bdc20193d4bb:
+- - :return
+  - !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0007
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: 
+      text: SEARCH completed (Success)
+    raw_data: "RUBY0007 OK SEARCH completed (Success)\r\n"
+  - FLAGS: *20
+    OK: *21
+    PERMANENTFLAGS: *22
+    UIDVALIDITY: *23
+    EXISTS: *24
+    RECENT: *25
+    UIDNEXT: *26
+    HIGHESTMODSEQ: *27
+    SEARCH:
+    - - 1
+      - 2
+      - 3
+LOGOUT-e76a09b7766d60a37ff9e1af527a143e:
+- - :return
+  - !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0008
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: 
+      text: 73 good day (Success)
+    raw_data: "RUBY0008 OK 73 good day (Success)\r\n"
+  - FLAGS: *20
+    OK: *21
+    PERMANENTFLAGS: *22
+    UIDVALIDITY: *23
+    EXISTS: *24
+    RECENT: *25
+    UIDNEXT: *26
+    HIGHESTMODSEQ: *27
+    BYE:
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: 
+      text: LOGOUT Requested
