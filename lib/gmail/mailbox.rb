@@ -19,7 +19,7 @@ module Gmail
     attr_reader :name
     attr_reader :encoded_name
 
-    def initialize(gmail, name="INBOX")
+    def initialize(gmail, name = "INBOX")
       @name = Net::IMAP.decode_utf7(name)
       @encoded_name = Net::IMAP.encode_utf7(name)
       @gmail = gmail

@@ -10,3 +10,7 @@ matrix:
   allow_failures:
     - rvm: rbx
     - rvm: jruby
+
+# script:
+#   - bundle exec rspec
+#   - bundle exec rubocop

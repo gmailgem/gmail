@@ -8,9 +8,7 @@ require 'yaml'
 # store the credentials in clear text, but just taking an extra step to prevent trouble.
 
 module Spec
-
   module Obfuscation
-
     def encrypt(data)
       rot13(Base64.encode64(data))
     end

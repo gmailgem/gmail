@@ -11,7 +11,7 @@ module Gmail
         super(username, {})
       end
 
-      def login(raise_errors=false)
+      def login(raise_errors = false)
         @imap and @logged_in = (login = @imap.authenticate('XOAUTH2', username, token)) && login.name == 'OK'
       rescue Net::IMAP::NoResponseError => e
         if raise_errors

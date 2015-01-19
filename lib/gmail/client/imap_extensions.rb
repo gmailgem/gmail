@@ -1,8 +1,6 @@
 module GmailImapExtensions
-
   # Taken from https://github.com/oxos/gmail-oauth-thread-stats/blob/master/gmail_imap_extensions_compatibility.rb
   def self.patch_net_imap_response_parser(klass = Net::IMAP::ResponseParser)
-
     # https://github.com/ruby/ruby/blob/4d426fc2e03078d583d5d573d4863415c3e3eb8d/lib/net/imap.rb#L2258
     klass.class_eval do
       def msg_att(n = -1)
