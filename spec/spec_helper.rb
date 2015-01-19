@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 
@@ -79,20 +77,25 @@ end
 
 RSpec.configure do |config|
   config.around(:each) do |example|
+    # The path is determined by the rspec `describe`s and `context`s
     mock_path = example.example_group.to_s
       .gsub(/RSpec::ExampleGroups::/, '')
       .gsub(/(\w)([A-Z])/, '\1_\2')
       .gsub(/::/, '/')
       .downcase
 
+    # The name is determined by the description of the example.
     mock_name = example.description.gsub(/[^\w\-\/]+/, '_').downcase
 
     filename = File.join('spec/recordings/', mock_path, "#{mock_name}.yml")
 
+    # If we've already recorded this spec load the recordings
     Net::IMAP.recordings = File.exist?(filename) ? YAML.load_file(filename) : nil
 
     example.run
 
+    # If we haven't yet recorded the spec and there were some recordings,
+    # write them to a file.
     unless File.exist?(filename) or Net::IMAP.recordings.empty?
       FileUtils.mkdir_p(File.dirname(filename))
       File.open(filename, 'w') { |f| YAML.dump(Net::IMAP.recordings, f) }
