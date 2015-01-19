@@ -1,11 +1,9 @@
 module Gmail
   class Message
-    PREFETCH_ATTRS = ["UID", "ENVELOPE", "BODY.PEEK[]", "FLAGS", "X-GM-LABELS", "X-GM-MSGID"]
+    PREFETCH_ATTRS = ["UID", "ENVELOPE", "BODY.PEEK[]", "FLAGS", "X-GM-LABELS", "X-GM-MSGID", "X-GM-THRID"]
 
     # Raised when given label doesn't exists.
     class NoLabelError < Exception; end
-
-    attr_reader :uid, :envelope, :message, :flags, :labels
 
     def initialize(mailbox, uid, _attrs = nil)
       @uid     = uid
@@ -21,6 +19,12 @@ module Gmail
     def msg_id
       @msg_id ||= fetch("X-GM-MSGID")
     end
+    alias_method :message_id, :msg_id
+
+    def thr_id
+      @thr_id ||= fetch("X-GM-THRID")
+    end
+    alias_method :thread_id, :thr_id
 
     def envelope
       @envelope ||= fetch("ENVELOPE")
@@ -155,7 +159,7 @@ module Gmail
     alias_method :remove_label!, :remove_label
 
     def inspect
-      "#<Gmail::Message#{'0x%04x' % (object_id << 1)} mailbox=#{@mailbox.name}#{' uid=' + @uid.to_s if @uid}#{' message_id=' + @message_id.to_s if @message_id}>"
+      "#<Gmail::Message#{'0x%04x' % (object_id << 1)} mailbox=#{@mailbox.name}#{' uid=' + @uid.to_s if @uid}#{' message_id=' + @msg_id.to_s if @msg_id}>"
     end
 
     def method_missing(meth, *args, &block)
@@ -184,6 +188,7 @@ module Gmail
     def clear_cached_attributes
       @_attrs   = nil
       @msg_id   = nil
+      @thr_id   = nil
       @envelope = nil
       @message  = nil
       @flags    = nil

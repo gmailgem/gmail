@@ -15,6 +15,16 @@ describe Gmail::Message do
       subject.instance_variable_get(:@uid).should be_a Integer
       subject.labels
     end
+
+    it "should set PREFETCH_ATTRS" do
+      subject.uid.should be_a Integer
+      subject.msg_id.should be_a Integer
+      subject.thr_id.should be_a Integer
+      subject.envelope.should be_a Net::IMAP::Envelope
+      subject.message.should be_a Mail::Message
+      subject.flags.should be_a Array
+      subject.labels.should be_a Array
+    end
   end
 
   describe "mocks" do
