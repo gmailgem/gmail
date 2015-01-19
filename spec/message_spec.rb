@@ -2,21 +2,17 @@ require 'spec_helper'
 
 describe Gmail::Message do
   describe "initialize" do
-    let(:uid) { 123456 }
+    let(:client) { mock_client }
+    let(:mailbox) { client.mailbox(:all) }
 
     subject do
-      message = nil
-      mock_mailbox('[Gmail]/All Mail') do |mailbox|
-        message = Gmail::Message.new(mailbox, uid)
-      end
-      message
+      mailbox.emails.first
     end
 
     it "should set uid and mailbox" do
-      pending # can't figure this one out
       subject.instance_variable_get(:@mailbox).should be_a Gmail::Mailbox
       subject.instance_variable_get(:@gmail).should be_a Gmail::Client::Base
-      subject.instance_variable_get(:@uid).should eq uid
+      subject.instance_variable_get(:@uid).should be_a Integer
       subject.labels
     end
   end
@@ -68,109 +64,108 @@ describe Gmail::Message do
 
     describe "#star!" do
       it "should flag itself as '[Gmail]/Starred'" do
-        expect(subject).to receive(:flag).with('[Gmail]/Starred').once
+        expect(subject).to receive(:flag).with(:Flagged).once
         subject.star!
       end
     end
 
     describe "#unstar!" do
       it "should unflag '[Gmail]/Starred' from itself" do
-        expect(subject).to receive(:unflag).with('[Gmail]/Starred').once
+        expect(subject).to receive(:unflag).with(:Flagged).once
         subject.unstar!
       end
     end
 
     describe "#spam!" do
-      it "should move itself to '[Gmail]/Spam'" do
-        expect(subject).to receive(:move_to).with('[Gmail]/Spam').once
+      it "should move itself to the spam folder" do
+        expect(subject).to receive(:add_label).with("\\Spam").once
         subject.spam!
       end
     end
 
     describe "#archive!" do
-      it "should move itself to '[Gmail]/All Mail'" do
-        expect(subject).to receive(:move_to).with('[Gmail]/All Mail').once
+      it "should remove itself from the inbox" do
+        expect(subject).to receive(:remove_label).with("\\Inbox").once
         subject.archive!
       end
     end
   end
 
   describe "instance methods" do
+    let(:client) { mock_client }
+    let(:message) { client.mailbox(:all).emails(:unread, :from => TEST_ACCOUNT[0].to_s, :subject => "Hello world!").last }
+
+    after { client.logout if client.logged_in? }
+
     it "should be able to set given label" do
-      mock_mailbox('[Gmail]/All Mail') do |mailbox|
-        mailbox.emails(:unread, :from => TEST_ACCOUNT[0].to_s, :subject => "Hello world!").should_not be_empty
-        mailbox.emails(:unread, :from => TEST_ACCOUNT[0].to_s, :subject => "Hello world!").each do |em|
-          em.add_label 'Awesome'
-          em.add_label 'Great'
-          em.labels.should include("Awesome")
-          em.labels.should include("Great")
-          em.labels.should include(:Inbox)
-        end
-      end
+      message.add_label 'Awesome'
+      message.add_label 'Great'
+
+      message.labels.should include("Awesome")
+      message.labels.should include("Great")
+      message.labels.should include("\\Inbox")
     end
 
     it "should remove a given label" do
-      mock_mailbox('[Gmail]/All Mail') do |mailbox|
-        mailbox.emails(:unread, :from => TEST_ACCOUNT[0].to_s, :subject => "Hello world!").should_not be_empty
-        mailbox.emails(:unread, :from => TEST_ACCOUNT[0].to_s, :subject => "Hello world!").each do |em|
-          em.remove_label 'Awesome'
-          em.labels.should_not include("Awesome")
-          em.labels.should include("Great")
-          em.labels.should include(:Inbox)
-          em.flags.should_not include(:Seen)
-        end
-      end
+      message.add_label 'Awesome'
+      message.add_label 'Great'
+
+      message.remove_label 'Awesome'
+      message.labels.should_not include("Awesome")
+      message.labels.should include("Great")
+      message.labels.should include("\\Inbox")
+      message.flags.should_not include(:Seen)
     end
 
     it "should be able to set given label with old method" do
-      mock_mailbox('[Gmail]/All Mail') do |mailbox|
-        mailbox.emails(:unread, :from => TEST_ACCOUNT[0].to_s, :subject => "Hello world!").should_not be_empty
-        mailbox.emails(:unread, :from => TEST_ACCOUNT[0].to_s, :subject => "Hello world!").each do |em|
-          em.label! 'Awesome'
-          em.label! 'Great'
-          em.labels.should include("Great")
-          em.labels.should include("Awesome")
-          em.labels.should include(:Inbox)
-        end
-      end
+      message.label! 'Awesome'
+      message.label! 'Great'
+      message.labels.should include("Great")
+      message.labels.should include("Awesome")
+      message.labels.should include("\\Inbox")
     end
 
     it "should remove a given label with old method" do
-      mock_mailbox('[Gmail]/All Mail') do |mailbox|
-        mailbox.emails(:unread, :from => TEST_ACCOUNT[0].to_s, :subject => "Hello world!").should_not be_empty
-        mailbox.emails(:unread, :from => TEST_ACCOUNT[0].to_s, :subject => "Hello world!").each do |em|
-          em.remove_label! 'Awesome'
-          em.labels.should_not include("Awesome")
-          em.labels.should include("Great")
-          em.labels.should include(:Inbox)
-          em.flags.should_not include(:Seen)
-        end
-      end
+      message.add_label 'Awesome'
+      message.add_label 'Great'
+
+      message.remove_label! 'Awesome'
+      message.labels.should_not include("Awesome")
+      message.labels.should include("Great")
+      message.labels.should include("\\Inbox")
+      message.flags.should_not include(:Seen)
     end
 
-    it "should be able to mark itself with given flag" do
-      mock_mailbox('[Gmail]/All Mail') do |mailbox|
-        mailbox.emails(:unread, :from => TEST_ACCOUNT[0].to_s, :subject => "Hello world!").should_not be_empty
-        mailbox.emails(:unread, :from => TEST_ACCOUNT[0].to_s, :subject => "Hello world!").each do |em|
-          em.mark(:Seen)
-          em.flags.should include(:Seen)
-        end
-      end
+    it "should allow moving from one tag to other" do
+      message.add_label 'Awesome'
+      message.remove_label 'Great'
+
+      message.move_to('Great', 'Awesome')
+      message.labels.should include("Great")
+      message.labels.should_not include("Awesome")
+      message.labels.should include("\\Inbox")
     end
 
-    it "should be able to move itself to given box" do
-      mock_mailbox('[Gmail]/All Mail') do |mailbox|
-        mailbox.emails(:read, :from => TEST_ACCOUNT[0].to_s, :subject => "Hello world!").should_not be_empty
-        mailbox.emails(:read, :from => TEST_ACCOUNT[0].to_s, :subject => "Hello world!").each do |em|
-          em.mark(:unread)
-          em.move_to 'TEST'
-          em.labels.should include('TEST')
-        end
-      end
+    it "should be able to mark itself read" do
+      message.mark(:unread)
+
+      message.mark(:read)
+      message.flags.should include(:Seen)
+    end
+
+    it "should be able to mark itself unread" do
+      message.mark(:read)
+
+      message.mark(:unread)
+      message.flags.should_not include(:Seen)
     end
 
     it "should be able to delete itself" do
-      skip
+      trash_count = client.mailbox(:trash).emails.count
+
+      message.delete!
+
+      expect(client.mailbox(:trash).emails.count).to eq(trash_count + 1)
     end
   end
 end

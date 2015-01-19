@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Gmail client (XOAuth2)" do
+describe Gmail::Client::XOAuth2 do
   subject { Gmail::Client::XOAuth2 }
 
   context "on initialize" do

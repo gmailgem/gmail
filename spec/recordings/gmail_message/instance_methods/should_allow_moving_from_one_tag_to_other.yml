@@ -131,7 +131,7 @@ SELECT-868fce8856c91e50bebd43b4dbd8e071:
         data: 
       text: " [Gmail]/All Mail selected. (Success)"
     raw_data: "RUBY0003 OK [READ-WRITE] [Gmail]/All Mail selected. (Success)\r\n"
-  - FLAGS: &6
+  - FLAGS: &8
     - - :Answered
       - :Flagged
       - :Draft
@@ -139,7 +139,7 @@ SELECT-868fce8856c91e50bebd43b4dbd8e071:
       - :Seen
       - "$Phishing"
       - "$NotPhishing"
-    OK: &7
+    OK: &9
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: PERMANENTFLAGS
@@ -166,20 +166,20 @@ SELECT-868fce8856c91e50bebd43b4dbd8e071:
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: HIGHESTMODSEQ
-        data: '13203'
+        data: '13217'
       text: ''
-    PERMANENTFLAGS: &8
+    PERMANENTFLAGS: &10
     - *2
-    UIDVALIDITY: &9
+    UIDVALIDITY: &11
     - 11
-    EXISTS: &10
+    EXISTS: &12
     - 150
-    RECENT: &11
+    RECENT: &13
     - 0
-    UIDNEXT: &12
+    UIDNEXT: &14
     - 157
-    HIGHESTMODSEQ: &13
-    - '13203'
+    HIGHESTMODSEQ: &15
+    - '13217'
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0005
@@ -190,7 +190,7 @@ SELECT-868fce8856c91e50bebd43b4dbd8e071:
         data: 
       text: " [Gmail]/All Mail selected. (Success)"
     raw_data: "RUBY0005 OK [READ-WRITE] [Gmail]/All Mail selected. (Success)\r\n"
-  - FLAGS: &14
+  - FLAGS: &16
     - - :Answered
       - :Flagged
       - :Draft
@@ -198,7 +198,7 @@ SELECT-868fce8856c91e50bebd43b4dbd8e071:
       - :Seen
       - "$Phishing"
       - "$NotPhishing"
-    OK: &15
+    OK: &17
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: PERMANENTFLAGS
@@ -225,20 +225,20 @@ SELECT-868fce8856c91e50bebd43b4dbd8e071:
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: HIGHESTMODSEQ
-        data: '13203'
+        data: '13217'
       text: ''
-    PERMANENTFLAGS: &16
+    PERMANENTFLAGS: &18
     - *3
-    UIDVALIDITY: &17
+    UIDVALIDITY: &19
     - 11
-    EXISTS: &18
+    EXISTS: &20
     - 150
-    RECENT: &19
+    RECENT: &21
     - 0
-    UIDNEXT: &20
+    UIDNEXT: &22
     - 157
-    HIGHESTMODSEQ: &21
-    - '13203'
+    HIGHESTMODSEQ: &23
+    - '13217'
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0007
@@ -249,7 +249,7 @@ SELECT-868fce8856c91e50bebd43b4dbd8e071:
         data: 
       text: " [Gmail]/All Mail selected. (Success)"
     raw_data: "RUBY0007 OK [READ-WRITE] [Gmail]/All Mail selected. (Success)\r\n"
-  - FLAGS: &22
+  - FLAGS: &24
     - - :Answered
       - :Flagged
       - :Draft
@@ -257,7 +257,7 @@ SELECT-868fce8856c91e50bebd43b4dbd8e071:
       - :Seen
       - "$Phishing"
       - "$NotPhishing"
-    OK: &23
+    OK: &25
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: PERMANENTFLAGS
@@ -284,20 +284,20 @@ SELECT-868fce8856c91e50bebd43b4dbd8e071:
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: HIGHESTMODSEQ
-        data: '13210'
+        data: '13224'
       text: ''
-    PERMANENTFLAGS: &24
+    PERMANENTFLAGS: &26
     - *4
-    UIDVALIDITY: &25
+    UIDVALIDITY: &27
     - 11
-    EXISTS: &26
+    EXISTS: &28
     - 150
-    RECENT: &27
+    RECENT: &29
     - 0
-    UIDNEXT: &28
+    UIDNEXT: &30
     - 157
-    HIGHESTMODSEQ: &29
-    - '13210'
+    HIGHESTMODSEQ: &31
+    - '13224'
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0009
@@ -308,7 +308,7 @@ SELECT-868fce8856c91e50bebd43b4dbd8e071:
         data: 
       text: " [Gmail]/All Mail selected. (Success)"
     raw_data: "RUBY0009 OK [READ-WRITE] [Gmail]/All Mail selected. (Success)\r\n"
-  - FLAGS: &30
+  - FLAGS: &32
     - - :Answered
       - :Flagged
       - :Draft
@@ -316,7 +316,7 @@ SELECT-868fce8856c91e50bebd43b4dbd8e071:
       - :Seen
       - "$Phishing"
       - "$NotPhishing"
-    OK: &31
+    OK: &33
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: PERMANENTFLAGS
@@ -343,20 +343,138 @@ SELECT-868fce8856c91e50bebd43b4dbd8e071:
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: HIGHESTMODSEQ
-        data: '13210'
+        data: '13231'
       text: ''
-    PERMANENTFLAGS: &32
+    PERMANENTFLAGS: &34
     - *5
-    UIDVALIDITY: &33
+    UIDVALIDITY: &35
     - 11
-    EXISTS: &34
+    EXISTS: &36
     - 150
-    RECENT: &35
+    RECENT: &37
     - 0
-    UIDNEXT: &36
+    UIDNEXT: &38
     - 157
-    HIGHESTMODSEQ: &37
-    - '13210'
+    HIGHESTMODSEQ: &39
+    - '13231'
+- - :return
+  - !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0011
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: READ-WRITE
+        data: 
+      text: " [Gmail]/All Mail selected. (Success)"
+    raw_data: "RUBY0011 OK [READ-WRITE] [Gmail]/All Mail selected. (Success)\r\n"
+  - FLAGS: &40
+    - - :Answered
+      - :Flagged
+      - :Draft
+      - :Deleted
+      - :Seen
+      - "$Phishing"
+      - "$NotPhishing"
+    OK: &41
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: PERMANENTFLAGS
+        data: &6
+        - :Answered
+        - :Flagged
+        - :Draft
+        - :Deleted
+        - :Seen
+        - "$Phishing"
+        - "$NotPhishing"
+        - :*
+      text: " Flags permitted."
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: UIDVALIDITY
+        data: 11
+      text: " UIDs valid."
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: UIDNEXT
+        data: 157
+      text: " Predicted next UID."
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: HIGHESTMODSEQ
+        data: '13238'
+      text: ''
+    PERMANENTFLAGS: &42
+    - *6
+    UIDVALIDITY: &43
+    - 11
+    EXISTS: &44
+    - 150
+    RECENT: &45
+    - 0
+    UIDNEXT: &46
+    - 157
+    HIGHESTMODSEQ: &47
+    - '13238'
+- - :return
+  - !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0013
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: READ-WRITE
+        data: 
+      text: " [Gmail]/All Mail selected. (Success)"
+    raw_data: "RUBY0013 OK [READ-WRITE] [Gmail]/All Mail selected. (Success)\r\n"
+  - FLAGS: &48
+    - - :Answered
+      - :Flagged
+      - :Draft
+      - :Deleted
+      - :Seen
+      - "$Phishing"
+      - "$NotPhishing"
+    OK: &49
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: PERMANENTFLAGS
+        data: &7
+        - :Answered
+        - :Flagged
+        - :Draft
+        - :Deleted
+        - :Seen
+        - "$Phishing"
+        - "$NotPhishing"
+        - :*
+      text: " Flags permitted."
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: UIDVALIDITY
+        data: 11
+      text: " UIDs valid."
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: UIDNEXT
+        data: 157
+      text: " Predicted next UID."
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: HIGHESTMODSEQ
+        data: '13245'
+      text: ''
+    PERMANENTFLAGS: &50
+    - *7
+    UIDVALIDITY: &51
+    - 11
+    EXISTS: &52
+    - 150
+    RECENT: &53
+    - 0
+    UIDNEXT: &54
+    - 157
+    HIGHESTMODSEQ: &55
+    - '13245'
 UID SEARCH-0010f3078427015fc193bf14c1871582:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
@@ -366,14 +484,14 @@ UID SEARCH-0010f3078427015fc193bf14c1871582:
       code: 
       text: SEARCH completed (Success)
     raw_data: "RUBY0004 OK SEARCH completed (Success)\r\n"
-  - FLAGS: *6
-    OK: *7
-    PERMANENTFLAGS: *8
-    UIDVALIDITY: *9
-    EXISTS: *10
-    RECENT: *11
-    UIDNEXT: *12
-    HIGHESTMODSEQ: *13
+  - FLAGS: *8
+    OK: *9
+    PERMANENTFLAGS: *10
+    UIDVALIDITY: *11
+    EXISTS: *12
+    RECENT: *13
+    UIDNEXT: *14
+    HIGHESTMODSEQ: *15
     SEARCH:
     - - 4
       - 5
@@ -523,14 +641,14 @@ UID STORE-a01a114d5b75f4cd2821e42fdbe3edb0:
       code: 
       text: Success
     raw_data: "RUBY0006 OK Success\r\n"
-  - FLAGS: *14
-    OK: *15
-    PERMANENTFLAGS: *16
-    UIDVALIDITY: *17
-    EXISTS: *18
-    RECENT: *19
-    UIDNEXT: *20
-    HIGHESTMODSEQ: *21
+  - FLAGS: *16
+    OK: *17
+    PERMANENTFLAGS: *18
+    UIDVALIDITY: *19
+    EXISTS: *20
+    RECENT: *21
+    UIDNEXT: *22
+    HIGHESTMODSEQ: *23
     FETCH:
     - !ruby/struct:Net::IMAP::FetchData
       seqno: 150
@@ -542,7 +660,7 @@ UID STORE-a01a114d5b75f4cd2821e42fdbe3edb0:
         - Awesome
         - Great
         UID: 156
-UID STORE-643ffd7492792039322aa146f528ae70:
+UID STORE-3a1222c7da7c0bb8d03304910c31ca2d:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0008
@@ -551,14 +669,41 @@ UID STORE-643ffd7492792039322aa146f528ae70:
       code: 
       text: Success
     raw_data: "RUBY0008 OK Success\r\n"
-  - FLAGS: *22
-    OK: *23
-    PERMANENTFLAGS: *24
-    UIDVALIDITY: *25
-    EXISTS: *26
-    RECENT: *27
-    UIDNEXT: *28
-    HIGHESTMODSEQ: *29
+  - FLAGS: *24
+    OK: *25
+    PERMANENTFLAGS: *26
+    UIDVALIDITY: *27
+    EXISTS: *28
+    RECENT: *29
+    UIDNEXT: *30
+    HIGHESTMODSEQ: *31
+    FETCH:
+    - !ruby/struct:Net::IMAP::FetchData
+      seqno: 150
+      attr:
+        X-GM-LABELS:
+        - "\\Important"
+        - "\\Inbox"
+        - "\\Sent"
+        - Awesome
+        UID: 156
+UID STORE-643ffd7492792039322aa146f528ae70:
+- - :return
+  - !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0010
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: 
+      text: Success
+    raw_data: "RUBY0010 OK Success\r\n"
+  - FLAGS: *32
+    OK: *33
+    PERMANENTFLAGS: *34
+    UIDVALIDITY: *35
+    EXISTS: *36
+    RECENT: *37
+    UIDNEXT: *38
+    HIGHESTMODSEQ: *39
     FETCH:
     - !ruby/struct:Net::IMAP::FetchData
       seqno: 150
@@ -570,23 +715,50 @@ UID STORE-643ffd7492792039322aa146f528ae70:
         - Awesome
         - Great
         UID: 156
-UID FETCH-50dbeed7750666a0a9aed7097875b6b1:
+UID STORE-3183f490549e85f11879b2f1e2e7cdce:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
-    tag: RUBY0010
+    tag: RUBY0012
     name: OK
     data: !ruby/struct:Net::IMAP::ResponseText
       code: 
       text: Success
-    raw_data: "RUBY0010 OK Success\r\n"
-  - FLAGS: *30
-    OK: *31
-    PERMANENTFLAGS: *32
-    UIDVALIDITY: *33
-    EXISTS: *34
-    RECENT: *35
-    UIDNEXT: *36
-    HIGHESTMODSEQ: *37
+    raw_data: "RUBY0012 OK Success\r\n"
+  - FLAGS: *40
+    OK: *41
+    PERMANENTFLAGS: *42
+    UIDVALIDITY: *43
+    EXISTS: *44
+    RECENT: *45
+    UIDNEXT: *46
+    HIGHESTMODSEQ: *47
+    FETCH:
+    - !ruby/struct:Net::IMAP::FetchData
+      seqno: 150
+      attr:
+        X-GM-LABELS:
+        - "\\Important"
+        - "\\Inbox"
+        - "\\Sent"
+        - Great
+        UID: 156
+UID FETCH-50dbeed7750666a0a9aed7097875b6b1:
+- - :return
+  - !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0014
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: 
+      text: Success
+    raw_data: "RUBY0014 OK Success\r\n"
+  - FLAGS: *48
+    OK: *49
+    PERMANENTFLAGS: *50
+    UIDVALIDITY: *51
+    EXISTS: *52
+    RECENT: *53
+    UIDNEXT: *54
+    HIGHESTMODSEQ: *55
     FETCH:
     - !ruby/struct:Net::IMAP::FetchData
       seqno: 150
@@ -596,7 +768,6 @@ UID FETCH-50dbeed7750666a0a9aed7097875b6b1:
         - "\\Important"
         - "\\Inbox"
         - "\\Sent"
-        - Awesome
         - Great
         UID: 156
         FLAGS: []
@@ -644,20 +815,20 @@ UID FETCH-50dbeed7750666a0a9aed7097875b6b1:
 LOGOUT-e76a09b7766d60a37ff9e1af527a143e:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
-    tag: RUBY0011
+    tag: RUBY0015
     name: OK
     data: !ruby/struct:Net::IMAP::ResponseText
       code: 
       text: 73 good day (Success)
-    raw_data: "RUBY0011 OK 73 good day (Success)\r\n"
-  - FLAGS: *30
-    OK: *31
-    PERMANENTFLAGS: *32
-    UIDVALIDITY: *33
-    EXISTS: *34
-    RECENT: *35
-    UIDNEXT: *36
-    HIGHESTMODSEQ: *37
+    raw_data: "RUBY0015 OK 73 good day (Success)\r\n"
+  - FLAGS: *48
+    OK: *49
+    PERMANENTFLAGS: *50
+    UIDVALIDITY: *51
+    EXISTS: *52
+    RECENT: *53
+    UIDNEXT: *54
+    HIGHESTMODSEQ: *55
     BYE:
     - !ruby/struct:Net::IMAP::ResponseText
       code: 

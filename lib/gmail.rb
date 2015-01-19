@@ -45,23 +45,34 @@ module Gmail
     #   end
     #
 
-    ['', '!'].each do |kind|
-      define_method("new#{kind}") do |*args, &block|
-        args.unshift(:plain) unless args.first.is_a?(Symbol)
-        client = Gmail::Client.new(*args)
-        client.send("connect#{kind}")
-        client.send("login#{kind}")
+    def new(*args, &block)
+      args.unshift(:plain) unless args.first.is_a?(Symbol)
+      client = Gmail::Client.new(*args)
+      client.connect
+      client.login
 
-        if block_given?
-          yield client
-          client.logout
-        end
-
-        client
+      if block_given?
+        yield client
+        client.logout
       end
-    end
 
-    alias :connect :new
-    alias :connect! :new!
+      client
+    end
+    alias_method :connect, :new
+
+    def new!(*args, &block)
+      args.unshift(:plain) unless args.first.is_a?(Symbol)
+      client = Gmail::Client.new(*args)
+      client.connect!
+      client.login!
+
+      if block_given?
+        yield client
+        client.logout
+      end
+
+      client
+    end
+    alias_method :connect!, :new!
   end # << self
 end # Gmail

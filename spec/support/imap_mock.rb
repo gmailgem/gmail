@@ -19,20 +19,43 @@ module Net
 
     alias_method :_send_command, :send_command
 
+    def self.force_utf8(data)
+      case data.class.to_s
+      when /String/
+        data.force_encoding('utf-8')
+      when /Hash/
+        data.each { |k, v| data[k] = force_utf8(v) }
+      when /Array/
+        data.map { |s| force_utf8(s) }
+      end
+    end
+
     def send_command(cmd, *args, &block)
       # In Ruby 1.9.x, strings default to binary which causes the digest to be
       # different.
       clean_args = args.dup.each do |s|
-        s.is_a?(String) ? s.force_encoding('utf-8') : s
+        Net::IMAP.force_utf8(s)
       end
 
-      # From 1.9 to 2.0 to 2.1, the way YAML encodes special characters changed.
-      # Here's what each returns for: YAML.dump(["", "%"])
-      #   1.9.x: "---\n- ''\n- ! '%'\n"
-      #   2.0.x: "---\n- ''\n- '%'\n"
-      #   2.1.x: "---\n- ''\n- \"%\"\n"
-      # The `gsub` here converts the older format into the 2.1.x.
-      yaml_dump = YAML.dump([cmd] + clean_args).gsub(/(?:! )?'(.+)'/, '"\1"')
+      yaml_dump = YAML.dump([cmd] + clean_args)
+
+      if RUBY_VERSION =~ /^(1.9|2.0)/
+        # From 1.9 to 2.0 to 2.1, the way YAML encodes special characters changed.
+        # Here's what each returns for: YAML.dump(["", "%"])
+        #   1.9.x: "---\n- ''\n- ! '%'\n"
+        #   2.0.x: "---\n- ''\n- '%'\n"
+        #   2.1.x: "---\n- ''\n- \"%\"\n"
+        # The `gsub` here converts the older format into the 2.1.x.
+        yaml_dump.gsub!(/(?:! )?'(.+)'/, '"\1"')
+
+        # In 1.9 and 2.0 strings starting with `+` or `-` are not escaped in quotes, but
+        # they are in 2.1+. This addresses that.
+        yaml_dump.gsub!(/ ([+-](?:X-GM-\w+|FLAGS))/, ' "\1"')
+
+        # In 1.9 and 2.0 strings starting with `\` are not escaped in quotes, but
+        # they are in 2.1+. This addresses that. Yes we need all those backslashes :|
+        yaml_dump.gsub!(/ \\(\w+)/, ' "\\\\\\\\\1"')
+      end
 
       digest = "#{cmd}-#{Digest::MD5.hexdigest(yaml_dump)}"
 

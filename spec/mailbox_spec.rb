@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "A Gmail mailbox" do
+describe Gmail::Mailbox do
   subject { Gmail::Mailbox }
 
   context "on initialize" do

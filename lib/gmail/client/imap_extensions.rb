@@ -35,7 +35,7 @@ module GmailImapExtensions
             # Gmail extension
             # Cargo-cult code warning: no idea why the regexp works - just copying a pattern
             when /\A(?:X-GM-LABELS)\z/ni
-              name, val = flags_data
+              name, val = x_gm_labels_data
             when /\A(?:X-GM-MSGID)\z/ni
               name, val = uid_data
             when /\A(?:X-GM-THRID)\z/ni
@@ -67,7 +67,10 @@ module GmailImapExtensions
 
           # We need to manually update the position of the regexp to prevent trip-ups
           @pos += resp.length
-          return resp.scan(/"([^"\\]*(?:\\.[^"\\]*)*)"/ni).flatten.collect(&:unescape)
+
+          # `resp` will look something like this:
+          # ("\\Inbox" "\\Sent" "one's and two's" "some new label" Awesome Ni&APE-os)
+          return resp.gsub(/^\s*\(|\)\s*$/, '').scan(/"([^"]*)"|([^\s"]+)/ni).flatten.compact.collect(&:unescape)
         else
           parse_error("invalid label list")
         end
