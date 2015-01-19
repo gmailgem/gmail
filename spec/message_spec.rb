@@ -146,9 +146,18 @@ describe Gmail::Message do
       message.labels.should include("\\Inbox")
     end
 
-    it "should be able to mark itself with given flag" do
-      message.mark(:Seen)
+    it "should be able to mark itself read" do
+      message.mark(:unread)
+
+      message.mark(:read)
       message.flags.should include(:Seen)
+    end
+
+    it "should be able to mark itself unread" do
+      message.mark(:read)
+
+      message.mark(:unread)
+      message.flags.should_not include(:Seen)
     end
 
     it "should be able to delete itself" do
