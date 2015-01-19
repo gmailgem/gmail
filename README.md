@@ -272,16 +272,16 @@ If you are having trouble connecting to Gmail:
 
 This project follows on Open Governance model. The Core Team is responsible for technical guidance, reviewing/merging PRs, and releases.
 
-* Jeff Carbonella - [@jcarbo](https://github.com/@jcarbo)
-* Johnny Shields - [@johnnyshields](https://github.com/@johnnyshields)
-* Alexandre Loureiro Solleiro - [@webcracy](https://github.com/@webcracy)
-* Justin Grevitch - [@jgrevich](https://github.com/@jgrevich)
-* [@bootstraponline](https://github.com/@bootstraponline)
+* Jeff Carbonella - [@jcarbo](https://github.com/jcarbo)
+* Johnny Shields - [@johnnyshields](https://github.com/johnnyshields)
+* Alexandre Loureiro Solleiro - [@webcracy](https://github.com/webcracy)
+* Justin Grevitch - [@jgrevich](https://github.com/jgrevich)
+* [@bootstraponline](https://github.com/bootstraponline)
 
 #### Legacy Contributors
 
-* Kriss Kowalik - [@nu7hatch](https://github.com/@nu7hatch)
-* Daniel Parker - [@dcparker](https://github.com/@dcparker)
+* Kriss Kowalik - [@nu7hatch](https://github.com/nu7hatch)
+* Daniel Parker - [@dcparker](https://github.com/dcparker)
 * Refer to [CHANGELOG](https://github.com/gmailgem/gmail/blob/master/CHANGELOG.md) for individual contributions
 
 ## Copyright
