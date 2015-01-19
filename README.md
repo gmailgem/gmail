@@ -266,29 +266,29 @@ If you are having trouble connecting to Gmail:
   (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
-## Author(s)
+## Authors
 
-* Kriss 'nu7hatch' Kowalik
-* [Daniel Parker of BehindLogic.com](http://github.com/dcparker)
+#### Core Team
 
-Extra thanks for specific feature contributions from:
+This project follows on Open Governance model. The Core Team is responsible for technical guidance, reviewing/merging PRs, and releases.
 
-* [abhishiv](http://github.com/abhishiv)
-* [Michael Young](http://github.com/myoung8)
-* [Nicolas Fouché](http://github.com/nfo)
-* [Stefano Bernardi](http://github.com/stefanobernardi)
-* [Benjamin Bock](http://github.com/bb)
-* [Arthur Chiu](http://github.com/achiu)
-* [Justin Perkins](http://github.com/justinperkins)
-* [Mikkel Malmberg](http://github.com/mikker)
-* [Julien Blanchard](http://github.com/julienXX)
-* [Federico Galassi](http://github.com/fgalassi)
-* [Alex Genco](http://github.com/alexgenco)
-* [Justin Grevich](http://github.com/jgrevich)
-* [Johnny Shields](http://github.com/johnnyshields)
+The current Core Team is:
+
+* Jeff Carbonella - [@jcarbo](https://github.com/@jcarbo)
+* Johnny Shields - [@johnnyshields](https://github.com/@johnnyshields)
+* Alexandre Loureiro Solleiro - [@webcracy](https://github.com/@webcracy)
+* Justin Grevitch - [@jgrevich](https://github.com/@jgrevich)
+* [@bootstraponline](https://github.com/@bootstraponline)
+
+#### Legacy Contributors
+
+* Kriss Kowalik - [@nu7hatch](https://github.com/@nu7hatch)
+* Daniel Parker - [@dcparker](https://github.com/@dcparker)
+* Refer to [CHANGELOG](https://github.com/gmailgem/gmail/blob/master/CHANGELOG.md) for individual contributions
 
 ## Copyright
 
+* Copyright (c) 2015 GmailGem team
 * Copyright (c) 2010-2015 Kriss 'nu7hatch' Kowalik
 * Copyright (c) 2009-2010 BehindLogic
 
