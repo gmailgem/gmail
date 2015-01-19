@@ -41,33 +41,30 @@ module Gmail
 
     # Mark message with given flag.
     def flag(name)
-      !!@gmail.mailbox(@mailbox.name) {
+      !!@gmail.mailbox(@mailbox.name) do
         @gmail.conn.uid_store(uid, "+FLAGS", [name])
-      }
+        clear_cached_attributes
+      end
     end
 
     # Unmark message.
     def unflag(name)
-      !!@gmail.mailbox(@mailbox.name) {
+      !!@gmail.mailbox(@mailbox.name) do
         @gmail.conn.uid_store(uid, "-FLAGS", [name])
-      }
+        clear_cached_attributes
+      end
     end
 
     # Do commonly used operations on message.
     def mark(flag)
       case flag
-        when :read    then read!
-        when :unread  then unread!
-        when :deleted then delete!
-        when :spam    then spam!
+      when :read    then read!
+      when :unread  then unread!
+      when :deleted then delete!
+      when :spam    then spam!
       else
         flag(flag)
       end
-    end
-
-    # Mark this message as a spam.
-    def spam!
-      move_to('[Gmail]/Spam')
     end
 
     # Check whether message is read
@@ -92,90 +89,67 @@ module Gmail
 
     # Mark message with star.
     def star!
-      flag('[Gmail]/Starred')
+      flag(:Flagged)
     end
 
     # Remove message from list of starred.
     def unstar!
-      unflag('[Gmail]/Starred')
+      unflag(:Flagged)
     end
 
-    # Move to trash / bin.
+    # Marking as spam is done by adding the `\Spam` label. To undo this,
+    # you just re-apply the `\Inbox` label (see `#unspam!`)
+    def spam!
+      add_label("\\Spam")
+    end
+
+    # Deleting is done by adding the `\Trash` label. To undo this,
+    # you just re-apply the `\Inbox` label (see `#undelete!`)
     def delete!
-      flag(:deleted)
-      # For some, it's called "Trash", for others, it's called "Bin". Support both.
-      trash =  @gmail.labels.exist?('[Gmail]/Bin') ? '[Gmail]/Bin' : '[Gmail]/Trash'
-      move_to(trash) unless %w[[Gmail]/Spam [Gmail]/Bin [Gmail]/Trash].include?(@mailbox.name)
+      add_label("\\Trash")
     end
 
-    # Archive this message.
-    # TODO: Should use the new <tt>Gmail::Message#remove_label</tt> method, passing `:Inbox` as argument
+    # Archiving is done by adding the `\Trash` label. To undo this,
+    # you just re-apply the `\Inbox` label (see `#unarchive!`)
     def archive!
-      move_to('[Gmail]/All Mail')
+      remove_label("\\Inbox")
     end
+
+    def unarchive!
+      add_label("\\Inbox")
+    end
+    alias_method :unspam!, :unarchive!
+    alias_method :undelete!, :unarchive!
 
     # Move to given box and delete from others.
     # TODO: Should not delete! because messages are ending up in the trash
     def move_to(name, from = nil)
-      label(name, from)
-      delete! if !%w[[Gmail]/Bin [Gmail]/Trash].include?(name)
+      add_label(name)
+      remove_label(from) if from
     end
-    alias :move :move_to
-
-    # Move message to given and delete from others. When given mailbox doesn't
-    # exist then it will be automaticaly created.
-    # TODO: Should not delete! because messages are ending up in the trash
-    def move_to!(name, from = nil)
-      label!(name, from) && delete!
-    end
-    alias :move! :move_to!
-
-    # Mark this message with given label. When given label doesn't exist then
-    # it will raise <tt>NoLabelError</tt>.
-    #
-    # See also <tt>Gmail::Message#label!</tt>.
-    # TODO: Should be made an alias of <tt>Gmail::Message#add_label</tt>
-    def label(name, from = nil)
-      @gmail.mailbox(Net::IMAP.encode_utf7(from || @mailbox.external_name)) { @gmail.conn.uid_copy(uid, Net::IMAP.encode_utf7(name)) }
-    rescue Net::IMAP::NoResponseError
-      raise NoLabelError, "Label '#{name}' doesn't exist!"
-    end
-
-    # Mark this message with given label. When given label doesn't exist then
-    # it will be automaticaly created.
-    #
-    # See also <tt>Gmail::Message#label</tt>.
-    # TODO: Should be made an alias of <tt>Gmail::Message#add_label</tt>
-    def label!(name, from = nil)
-      label(name, from)
-    rescue NoLabelError
-      @gmail.labels.add(name)
-      label(name, from)
-    end
-    # alias :add_label :label!
-    alias :add_label! :label!
+    alias_method :move, :move_to
+    alias_method :move!, :move_to
+    alias_method :move_to!, :move_to
 
     # Use Gmail IMAP Extensions to add a Label to an email
-    # TODO: point alias of <tt>Gmail::Message#label</tt> and <tt>Gmail::Message#label!</tt> to this method
     def add_label(name)
-      @gmail.mailbox(@mailbox.name) {
-        @gmail.conn.uid_store(uid, "+X-GM-LABELS", [name.to_s])
-      }
+      @gmail.mailbox(@mailbox.name) do
+        @gmail.conn.uid_store(uid, "+X-GM-LABELS", [Net::IMAP.encode_utf7(name.to_s)])
+        clear_cached_attributes
+      end
     end
+    alias_method :label, :add_label
+    alias_method :label!, :add_label
+    alias_method :add_label!, :add_label
 
     # Use Gmail IMAP Extensions to remove a Label from an email
-    # TODO: point alias of <tt>#remove_label!</tt> to this method
     def remove_label(name)
-      @gmail.mailbox(@mailbox.name) {
-        @gmail.conn.uid_store(uid, "-X-GM-LABELS", [name.to_s])
-      }
+      @gmail.mailbox(@mailbox.name) do
+        @gmail.conn.uid_store(uid, "-X-GM-LABELS", [Net::IMAP.encode_utf7(name.to_s)])
+        clear_cached_attributes
+      end
     end
-
-    # Remove given label from this message.
-    def remove_label!(name)
-      move_to('[Gmail]/All Mail', name)
-    end
-    alias :delete_label! :remove_label!
+    alias_method :remove_label!, :remove_label
 
     def inspect
       "#<Gmail::Message#{'0x%04x' % (object_id << 1)} mailbox=#{@mailbox.name}#{' uid=' + @uid.to_s if @uid}#{' message_id=' + @message_id.to_s if @message_id}>"
@@ -203,6 +177,15 @@ module Gmail
     end
 
     private
+
+    def clear_cached_attributes
+      @_attrs   = nil
+      @msg_id   = nil
+      @envelope = nil
+      @message  = nil
+      @flags    = nil
+      @labels   = nil
+    end
 
     def fetch(value)
       @_attrs ||= begin
