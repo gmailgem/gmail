@@ -1,0 +1,27 @@
+---
+AUTHENTICATE-48cc3379658326e2b0e5cd2a6f3da2af:
+- - :raise
+  - !ruby/exception:Net::IMAP::NoResponseError
+    message: " Invalid credentials (Failure)"
+    response: !ruby/struct:Net::IMAP::TaggedResponse
+      tag: RUBY0001
+      name: 'NO'
+      data: !ruby/struct:Net::IMAP::ResponseText
+        code: !ruby/struct:Net::IMAP::ResponseCode
+          name: ALERT
+          data: 
+        text: " Invalid credentials (Failure)"
+      raw_data: "RUBY0001 NO [ALERT] Invalid credentials (Failure)\r\n"
+  - {}
+LIST-e0583fa6130ee374cef031c01d8cc486:
+- - :raise
+  - !ruby/exception:Net::IMAP::BadResponseError
+    message: Unknown command be1mb13873281oac
+    response: !ruby/struct:Net::IMAP::TaggedResponse
+      tag: RUBY0002
+      name: BAD
+      data: !ruby/struct:Net::IMAP::ResponseText
+        code: 
+        text: Unknown command be1mb13873281oac
+      raw_data: "RUBY0002 BAD Unknown command be1mb13873281oac\r\n"
+  - {}

@@ -1,0 +1,109 @@
+---
+LOGIN-9a890af1c86854f5170d99be6e10b8f1:
+- - :return
+  - !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0001
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: 
+      text: ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com authenticated (Success)
+    raw_data: "RUBY0001 OK ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com authenticated
+      (Success)\r\n"
+  - CAPABILITY:
+    - - IMAP4REV1
+      - UNSELECT
+      - IDLE
+      - NAMESPACE
+      - QUOTA
+      - ID
+      - XLIST
+      - CHILDREN
+      - X-GM-EXT-1
+      - UIDPLUS
+      - COMPRESS=DEFLATE
+      - ENABLE
+      - MOVE
+      - CONDSTORE
+      - ESEARCH
+      - UTF8=ACCEPT
+SELECT-505f013d922af4caf157dc91d6b45a60:
+- - :return
+  - !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0002
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: READ-WRITE
+        data: 
+      text: " INBOX selected. (Success)"
+    raw_data: "RUBY0002 OK [READ-WRITE] INBOX selected. (Success)\r\n"
+  - FLAGS: &2
+    - - :Answered
+      - :Flagged
+      - :Draft
+      - :Deleted
+      - :Seen
+      - "$Phishing"
+      - "$NotPhishing"
+    OK: &3
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: PERMANENTFLAGS
+        data: &1
+        - :Answered
+        - :Flagged
+        - :Draft
+        - :Deleted
+        - :Seen
+        - "$Phishing"
+        - "$NotPhishing"
+        - :*
+      text: " Flags permitted."
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: UIDVALIDITY
+        data: 1
+      text: " UIDs valid."
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: UIDNEXT
+        data: 83
+      text: " Predicted next UID."
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: HIGHESTMODSEQ
+        data: '8244'
+      text: ''
+    PERMANENTFLAGS: &4
+    - *1
+    UIDVALIDITY: &5
+    - 1
+    EXISTS: &6
+    - 82
+    RECENT: &7
+    - 0
+    UIDNEXT: &8
+    - 83
+    HIGHESTMODSEQ: &9
+    - '8244'
+LOGOUT-e76a09b7766d60a37ff9e1af527a143e:
+- - :return
+  - !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0003
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: 
+      text: 73 good day (Success)
+    raw_data: "RUBY0003 OK 73 good day (Success)\r\n"
+  - FLAGS: *2
+    OK: *3
+    PERMANENTFLAGS: *4
+    UIDVALIDITY: *5
+    EXISTS: *6
+    RECENT: *7
+    UIDNEXT: *8
+    HIGHESTMODSEQ: *9
+    BYE:
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: 
+      text: LOGOUT Requested

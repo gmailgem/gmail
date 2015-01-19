@@ -1,0 +1,39 @@
+---
+AUTHENTICATE-48cc3379658326e2b0e5cd2a6f3da2af:
+- - :raise
+  - !ruby/exception:Net::IMAP::NoResponseError
+    message: " Invalid credentials (Failure)"
+    response: !ruby/struct:Net::IMAP::TaggedResponse
+      tag: RUBY0001
+      name: 'NO'
+      data: !ruby/struct:Net::IMAP::ResponseText
+        code: !ruby/struct:Net::IMAP::ResponseCode
+          name: ALERT
+          data: 
+        text: " Invalid credentials (Failure)"
+      raw_data: "RUBY0001 NO [ALERT] Invalid credentials (Failure)\r\n"
+  - {}
+CREATE-873546102acc7776d52edef1516784eb:
+- - :raise
+  - !ruby/exception:Net::IMAP::BadResponseError
+    message: Unknown command bp14mb13691893oec
+    response: !ruby/struct:Net::IMAP::TaggedResponse
+      tag: RUBY0002
+      name: BAD
+      data: !ruby/struct:Net::IMAP::ResponseText
+        code: 
+        text: Unknown command bp14mb13691893oec
+      raw_data: "RUBY0002 BAD Unknown command bp14mb13691893oec\r\n"
+  - {}
+DELETE-842c8f8a15eef1d47151d7a37868de75:
+- - :raise
+  - !ruby/exception:Net::IMAP::BadResponseError
+    message: Unknown command bp14mb13691893oec
+    response: !ruby/struct:Net::IMAP::TaggedResponse
+      tag: RUBY0003
+      name: BAD
+      data: !ruby/struct:Net::IMAP::ResponseText
+        code: 
+        text: Unknown command bp14mb13691893oec
+      raw_data: "RUBY0003 BAD Unknown command bp14mb13691893oec\r\n"
+  - {}

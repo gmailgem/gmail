@@ -1,0 +1,13 @@
+---
+LOGIN-f0cde728d1c78eb72490f79825821b1c:
+- - :raise
+  - !ruby/exception:Net::IMAP::NoResponseError
+    message: Invalid credentials zz5mb13772187oab
+    response: !ruby/struct:Net::IMAP::TaggedResponse
+      tag: RUBY0001
+      name: 'NO'
+      data: !ruby/struct:Net::IMAP::ResponseText
+        code: 
+        text: Invalid credentials zz5mb13772187oab
+      raw_data: "RUBY0001 NO Invalid credentials zz5mb13772187oab\r\n"
+  - {}
