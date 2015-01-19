@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Gmail::Message do
-
   describe "initialize" do
     let(:uid) { 123456 }
 
@@ -23,8 +22,7 @@ describe Gmail::Message do
   end
 
   describe "mocks" do
-
-    subject { Gmail::Message.new(double(:mailbox, name: 'INBOX'), nil) }
+    subject { Gmail::Message.new(double(:mailbox, :name => 'INBOX'), nil) }
     before  { allow_any_instance_of(Gmail::Message).to receive(:fetch).and_return('foo') }
 
     describe "#mark" do
@@ -98,7 +96,6 @@ describe Gmail::Message do
   end
 
   describe "instance methods" do
-
     it "should be able to set given label" do
       mock_mailbox('[Gmail]/All Mail') do |mailbox|
         mailbox.emails(:unread, :from => TEST_ACCOUNT[0].to_s, :subject => "Hello world!").should_not be_empty
