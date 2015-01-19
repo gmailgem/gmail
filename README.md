@@ -272,8 +272,6 @@ If you are having trouble connecting to Gmail:
 
 This project follows on Open Governance model. The Core Team is responsible for technical guidance, reviewing/merging PRs, and releases.
 
-The current Core Team is:
-
 * Jeff Carbonella - [@jcarbo](https://github.com/@jcarbo)
 * Johnny Shields - [@johnnyshields](https://github.com/@johnnyshields)
 * Alexandre Loureiro Solleiro - [@webcracy](https://github.com/@webcracy)
