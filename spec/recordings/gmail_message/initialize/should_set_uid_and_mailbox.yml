@@ -1,0 +1,28 @@
+---
+LOGIN-9a890af1c86854f5170d99be6e10b8f1:
+- - :return
+  - !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0001
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: 
+      text: ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com authenticated (Success)
+    raw_data: "RUBY0001 OK ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com authenticated
+      (Success)\r\n"
+  - CAPABILITY:
+    - - IMAP4REV1
+      - UNSELECT
+      - IDLE
+      - NAMESPACE
+      - QUOTA
+      - ID
+      - XLIST
+      - CHILDREN
+      - X-GM-EXT-1
+      - UIDPLUS
+      - COMPRESS=DEFLATE
+      - ENABLE
+      - MOVE
+      - CONDSTORE
+      - ESEARCH
+      - UTF8=ACCEPT
