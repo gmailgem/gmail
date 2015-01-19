@@ -50,6 +50,5 @@ module Spec
     end
 
     extend self
-
   end
 end
