@@ -161,25 +161,25 @@ SELECT-868fce8856c91e50bebd43b4dbd8e071:
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: UIDNEXT
-        data: 157
+        data: 190
       text: " Predicted next UID."
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: HIGHESTMODSEQ
-        data: '13196'
+        data: '14713'
       text: ''
     PERMANENTFLAGS: &9
     - *2
     UIDVALIDITY: &10
     - 11
     EXISTS: &11
-    - 150
+    - 181
     RECENT: &12
     - 0
     UIDNEXT: &13
-    - 157
+    - 190
     HIGHESTMODSEQ: &14
-    - '13196'
+    - '14713'
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0005
@@ -220,25 +220,25 @@ SELECT-868fce8856c91e50bebd43b4dbd8e071:
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: UIDNEXT
-        data: 157
+        data: 190
       text: " Predicted next UID."
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: HIGHESTMODSEQ
-        data: '13196'
+        data: '14713'
       text: ''
     PERMANENTFLAGS: &17
     - *3
     UIDVALIDITY: &18
     - 11
     EXISTS: &19
-    - 150
+    - 181
     RECENT: &20
     - 0
     UIDNEXT: &21
-    - 157
+    - 190
     HIGHESTMODSEQ: &22
-    - '13196'
+    - '14713'
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0007
@@ -279,25 +279,25 @@ SELECT-868fce8856c91e50bebd43b4dbd8e071:
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: UIDNEXT
-        data: 157
+        data: 190
       text: " Predicted next UID."
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: HIGHESTMODSEQ
-        data: '13196'
+        data: '14713'
       text: ''
     PERMANENTFLAGS: &25
     - *4
     UIDVALIDITY: &26
     - 11
     EXISTS: &27
-    - 150
+    - 181
     RECENT: &28
     - 0
     UIDNEXT: &29
-    - 157
+    - 190
     HIGHESTMODSEQ: &30
-    - '13196'
+    - '14713'
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0009
@@ -338,25 +338,25 @@ SELECT-868fce8856c91e50bebd43b4dbd8e071:
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: UIDNEXT
-        data: 157
+        data: 190
       text: " Predicted next UID."
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: HIGHESTMODSEQ
-        data: '13196'
+        data: '14713'
       text: ''
     PERMANENTFLAGS: &33
     - *5
     UIDVALIDITY: &34
     - 11
     EXISTS: &35
-    - 150
+    - 181
     RECENT: &36
     - 0
     UIDNEXT: &37
-    - 157
+    - 190
     HIGHESTMODSEQ: &38
-    - '13196'
+    - '14713'
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0011
@@ -397,25 +397,25 @@ SELECT-868fce8856c91e50bebd43b4dbd8e071:
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: UIDNEXT
-        data: 157
+        data: 190
       text: " Predicted next UID."
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: HIGHESTMODSEQ
-        data: '13203'
+        data: '14720'
       text: ''
     PERMANENTFLAGS: &41
     - *6
     UIDVALIDITY: &42
     - 11
     EXISTS: &43
-    - 150
+    - 181
     RECENT: &44
     - 0
     UIDNEXT: &45
-    - 157
+    - 190
     HIGHESTMODSEQ: &46
-    - '13203'
+    - '14720'
 UID SEARCH-0010f3078427015fc193bf14c1871582:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
@@ -571,9 +571,35 @@ UID SEARCH-0010f3078427015fc193bf14c1871582:
       - 143
       - 144
       - 145
-      - 146
-      - 156
-UID STORE-a01a114d5b75f4cd2821e42fdbe3edb0:
+      - 157
+      - 158
+      - 159
+      - 160
+      - 161
+      - 162
+      - 166
+      - 167
+      - 168
+      - 169
+      - 170
+      - 171
+      - 172
+      - 173
+      - 174
+      - 175
+      - 176
+      - 177
+      - 178
+      - 179
+      - 180
+      - 181
+      - 182
+      - 183
+      - 184
+      - 185
+      - 188
+      - 189
+UID STORE-ac884ffbfb66da354d64b0f2d42a166f:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0006
@@ -592,7 +618,7 @@ UID STORE-a01a114d5b75f4cd2821e42fdbe3edb0:
     HIGHESTMODSEQ: *22
     FETCH:
     - !ruby/struct:Net::IMAP::FetchData
-      seqno: 150
+      seqno: 181
       attr:
         X-GM-LABELS:
         - "\\Important"
@@ -600,8 +626,8 @@ UID STORE-a01a114d5b75f4cd2821e42fdbe3edb0:
         - "\\Sent"
         - Awesome
         - Great
-        UID: 156
-UID STORE-643ffd7492792039322aa146f528ae70:
+        UID: 189
+UID STORE-c2d6f8de722e6c9f06f0a6a1a4163f69:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0008
@@ -620,7 +646,7 @@ UID STORE-643ffd7492792039322aa146f528ae70:
     HIGHESTMODSEQ: *30
     FETCH:
     - !ruby/struct:Net::IMAP::FetchData
-      seqno: 150
+      seqno: 181
       attr:
         X-GM-LABELS:
         - "\\Important"
@@ -628,8 +654,8 @@ UID STORE-643ffd7492792039322aa146f528ae70:
         - "\\Sent"
         - Awesome
         - Great
-        UID: 156
-UID STORE-3183f490549e85f11879b2f1e2e7cdce:
+        UID: 189
+UID STORE-2e46c35991051e7831af457bc2435903:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0010
@@ -648,15 +674,15 @@ UID STORE-3183f490549e85f11879b2f1e2e7cdce:
     HIGHESTMODSEQ: *38
     FETCH:
     - !ruby/struct:Net::IMAP::FetchData
-      seqno: 150
+      seqno: 181
       attr:
         X-GM-LABELS:
         - "\\Important"
         - "\\Inbox"
         - "\\Sent"
         - Great
-        UID: 156
-UID FETCH-50dbeed7750666a0a9aed7097875b6b1:
+        UID: 189
+UID FETCH-c91d19726aebc8362537324efef9b96b:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0012
@@ -675,18 +701,19 @@ UID FETCH-50dbeed7750666a0a9aed7097875b6b1:
     HIGHESTMODSEQ: *46
     FETCH:
     - !ruby/struct:Net::IMAP::FetchData
-      seqno: 150
+      seqno: 181
       attr:
-        X-GM-MSGID: 1490757948419620310
+        X-GM-THRID: 1490771293684090059
+        X-GM-MSGID: 1490771293684090059
         X-GM-LABELS:
         - "\\Important"
         - "\\Inbox"
         - "\\Sent"
         - Great
-        UID: 156
+        UID: 189
         FLAGS: []
         ENVELOPE: !ruby/struct:Net::IMAP::Envelope
-          date: Mon, 19 Jan 2015 14:59:25 -0500
+          date: Mon, 19 Jan 2015 18:31:32 -0500
           subject: Hello world!
           from:
           - !ruby/struct:Net::IMAP::Address
@@ -715,15 +742,15 @@ UID FETCH-50dbeed7750666a0a9aed7097875b6b1:
           cc: 
           bcc: 
           in_reply_to: 
-          message_id: "<54bd621d70b54_37763fc6b8c65bec2d9@Jeffs-MBP.mail>"
+          message_id: "<54bd93d452c0f_74e73fc534c63bec5352@Jeffs-MBP.mail>"
         BODY[]: "Return-Path: <ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com>\r\nReceived:
           from gmail.com (99-156-120-246.lightspeed.miamfl.sbcglobal.net. [99.156.120.246])\r\n
-          \       by mx.google.com with ESMTPSA id nt5sm6321261obb.26.2015.01.19.11.59.26\r\n
+          \       by mx.google.com with ESMTPSA id a15sm890292oic.18.2015.01.19.15.31.33\r\n
           \       for <ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com>\r\n        (version=TLSv1.2
           cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);\r\n        Mon, 19 Jan
-          2015 11:59:27 -0800 (PST)\r\nDate: Mon, 19 Jan 2015 14:59:25 -0500\r\nFrom:
+          2015 15:31:34 -0800 (PST)\r\nDate: Mon, 19 Jan 2015 18:31:32 -0500\r\nFrom:
           ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com\r\nTo: ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com\r\nMessage-ID:
-          <54bd621d70b54_37763fc6b8c65bec2d9@Jeffs-MBP.mail>\r\nSubject: Hello world!\r\nMime-Version:
+          <54bd93d452c0f_74e73fc534c63bec5352@Jeffs-MBP.mail>\r\nSubject: Hello world!\r\nMime-Version:
           1.0\r\nContent-Type: text/plain;\r\n charset=UTF-8\r\nContent-Transfer-Encoding:
           7bit\r\n\r\nYeah, hello there!\r\n"
 LOGOUT-e76a09b7766d60a37ff9e1af527a143e:

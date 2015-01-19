@@ -161,25 +161,25 @@ SELECT-868fce8856c91e50bebd43b4dbd8e071:
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: UIDNEXT
-        data: 166
+        data: 190
       text: " Predicted next UID."
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: HIGHESTMODSEQ
-        data: '13738'
+        data: '14790'
       text: ''
     PERMANENTFLAGS: &8
     - *2
     UIDVALIDITY: &9
     - 11
     EXISTS: &10
-    - 158
+    - 181
     RECENT: &11
     - 0
     UIDNEXT: &12
-    - 166
+    - 190
     HIGHESTMODSEQ: &13
-    - '13738'
+    - '14790'
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0005
@@ -220,25 +220,25 @@ SELECT-868fce8856c91e50bebd43b4dbd8e071:
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: UIDNEXT
-        data: 166
+        data: 190
       text: " Predicted next UID."
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: HIGHESTMODSEQ
-        data: '13738'
+        data: '14790'
       text: ''
     PERMANENTFLAGS: &16
     - *3
     UIDVALIDITY: &17
     - 11
     EXISTS: &18
-    - 158
+    - 181
     RECENT: &19
     - 0
     UIDNEXT: &20
-    - 166
+    - 190
     HIGHESTMODSEQ: &21
-    - '13738'
+    - '14790'
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0007
@@ -279,25 +279,25 @@ SELECT-868fce8856c91e50bebd43b4dbd8e071:
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: UIDNEXT
-        data: 166
+        data: 190
       text: " Predicted next UID."
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: HIGHESTMODSEQ
-        data: '13764'
+        data: '14815'
       text: ''
     PERMANENTFLAGS: &24
     - *4
     UIDVALIDITY: &25
     - 11
     EXISTS: &26
-    - 158
+    - 181
     RECENT: &27
     - 0
     UIDNEXT: &28
-    - 166
+    - 190
     HIGHESTMODSEQ: &29
-    - '13764'
+    - '14815'
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0009
@@ -338,25 +338,25 @@ SELECT-868fce8856c91e50bebd43b4dbd8e071:
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: UIDNEXT
-        data: 166
+        data: 190
       text: " Predicted next UID."
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: HIGHESTMODSEQ
-        data: '13789'
+        data: '14840'
       text: ''
     PERMANENTFLAGS: &32
     - *5
     UIDVALIDITY: &33
     - 11
     EXISTS: &34
-    - 158
+    - 181
     RECENT: &35
     - 0
     UIDNEXT: &36
-    - 166
+    - 190
     HIGHESTMODSEQ: &37
-    - '13789'
+    - '14840'
 UID SEARCH-0010f3078427015fc193bf14c1871582:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
@@ -518,7 +518,28 @@ UID SEARCH-0010f3078427015fc193bf14c1871582:
       - 160
       - 161
       - 162
-UID STORE-ddb88f3172d5bb115809ee0b040c37f8:
+      - 166
+      - 167
+      - 168
+      - 169
+      - 170
+      - 171
+      - 172
+      - 173
+      - 174
+      - 175
+      - 176
+      - 177
+      - 178
+      - 179
+      - 180
+      - 181
+      - 182
+      - 183
+      - 184
+      - 185
+      - 188
+UID STORE-496a62292a2518ec1012e07027b7f91f:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0006
@@ -537,12 +558,12 @@ UID STORE-ddb88f3172d5bb115809ee0b040c37f8:
     HIGHESTMODSEQ: *21
     FETCH:
     - !ruby/struct:Net::IMAP::FetchData
-      seqno: 155
+      seqno: 180
       attr:
         FLAGS:
         - :Seen
-        UID: 162
-UID STORE-f0b183701830007ca6303f8d74f91858:
+        UID: 188
+UID STORE-31222f58bd384a4fada4385c5e4576c6:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0008
@@ -561,11 +582,11 @@ UID STORE-f0b183701830007ca6303f8d74f91858:
     HIGHESTMODSEQ: *29
     FETCH:
     - !ruby/struct:Net::IMAP::FetchData
-      seqno: 155
+      seqno: 180
       attr:
         FLAGS: []
-        UID: 162
-UID FETCH-9dd010b55de4a912b78fa9c902196b98:
+        UID: 188
+UID FETCH-47e3d4cc32db0f62bccc2a0220605acc:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0010
@@ -584,56 +605,64 @@ UID FETCH-9dd010b55de4a912b78fa9c902196b98:
     HIGHESTMODSEQ: *37
     FETCH:
     - !ruby/struct:Net::IMAP::FetchData
-      seqno: 155
+      seqno: 180
       attr:
-        X-GM-MSGID: 1490760663368158888
+        X-GM-THRID: 1490770850496356226
+        X-GM-MSGID: 1490771115289978288
         X-GM-LABELS:
         - "\\Important"
         - "\\Inbox"
         - "\\Sent"
-        UID: 162
+        UID: 188
         FLAGS: []
         ENVELOPE: !ruby/struct:Net::IMAP::Envelope
-          date: Mon, 19 Jan 2015 20:42:35 +0000
-          subject: Hello world!
+          date: Mon, 19 Jan 2015 18:28:44 -0500
+          subject: 'Re: Hello world!'
           from:
           - !ruby/struct:Net::IMAP::Address
-            name: 
+            name: John Doe
             route: 
             mailbox: ki0zvkyi1yzgy7xu4f4dh46nqrcecm
             host: gmail.com
           sender:
           - !ruby/struct:Net::IMAP::Address
-            name: 
+            name: John Doe
             route: 
             mailbox: ki0zvkyi1yzgy7xu4f4dh46nqrcecm
             host: gmail.com
           reply_to:
           - !ruby/struct:Net::IMAP::Address
-            name: 
+            name: John Doe
             route: 
             mailbox: ki0zvkyi1yzgy7xu4f4dh46nqrcecm
             host: gmail.com
           to:
           - !ruby/struct:Net::IMAP::Address
-            name: 
+            name: John Doe
             route: 
             mailbox: ki0zvkyi1yzgy7xu4f4dh46nqrcecm
             host: gmail.com
           cc: 
           bcc: 
-          in_reply_to: 
-          message_id: "<54bd6c3b5dddf_86c108be88184e9@testing-worker-linux-9-2-24875-linux-11-47566186.mail>"
-        BODY[]: "Return-Path: <ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com>\r\nReceived:
-          from gmail.com (testing-worker-linux-9-2-24875-linux-11-47566186.c45665.blueboxgrid.com.
-          [2607:f700:8001:134:1fa1:72fc:47a4:9ce])\r\n        by mx.google.com with
-          ESMTPSA id v16sm13260674qaw.30.2015.01.19.12.42.36\r\n        for <ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com>\r\n
-          \       (version=TLSv1.1 cipher=ECDHE-RSA-RC4-SHA bits=128/128);\r\n        Mon,
-          19 Jan 2015 12:42:36 -0800 (PST)\r\nDate: Mon, 19 Jan 2015 20:42:35 +0000\r\nFrom:
-          ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com\r\nTo: ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com\r\nMessage-ID:
-          <54bd6c3b5dddf_86c108be88184e9@testing-worker-linux-9-2-24875-linux-11-47566186.mail>\r\nSubject:
-          Hello world!\r\nMime-Version: 1.0\r\nContent-Type: text/plain;\r\n charset=UTF-8\r\nContent-Transfer-Encoding:
-          7bit\r\n\r\nYeah, hello there!\r\n"
+          in_reply_to: "<54bd922ea931d_84b7f3988504b6@testing-worker-linux-de84ae74-1-8451-linux-10-47583278.mail>"
+          message_id: "<CACNRAYLB0c8Hv2yhCLahhiVmvsGXPZVL73tbed4k_mAO-SmKYQ@mail.gmail.com>"
+        BODY[]: "MIME-Version: 1.0\r\nReceived: by 10.194.209.232 with HTTP; Mon,
+          19 Jan 2015 15:28:44 -0800 (PST)\r\nIn-Reply-To: <54bd922ea931d_84b7f3988504b6@testing-worker-linux-de84ae74-1-8451-linux-10-47583278.mail>\r\nReferences:
+          <54bd922ea931d_84b7f3988504b6@testing-worker-linux-de84ae74-1-8451-linux-10-47583278.mail>\r\nDate:
+          Mon, 19 Jan 2015 18:28:44 -0500\r\nDelivered-To: ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com\r\nMessage-ID:
+          <CACNRAYLB0c8Hv2yhCLahhiVmvsGXPZVL73tbed4k_mAO-SmKYQ@mail.gmail.com>\r\nSubject:
+          Re: Hello world!\r\nFrom: John Doe <ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com>\r\nTo:
+          John Doe <ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com>\r\nContent-Type: multipart/alternative;
+          boundary=047d7ba9798cee15fc050d09ae9e\r\n\r\n--047d7ba9798cee15fc050d09ae9e\r\nContent-Type:
+          text/plain; charset=UTF-8\r\n\r\nAnother message in the thread!\r\n\r\nOn
+          Mon, Jan 19, 2015 at 6:24 PM, <ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com>\r\nwrote:\r\n\r\n>
+          Yeah, hello there!\r\n>\r\n\r\n--047d7ba9798cee15fc050d09ae9e\r\nContent-Type:
+          text/html; charset=UTF-8\r\nContent-Transfer-Encoding: quoted-printable\r\n\r\n<div
+          dir=3D\"ltr\">Another message in the thread!</div><div class=3D\"gmail_ex=\r\ntra\"><br><div
+          class=3D\"gmail_quote\">On Mon, Jan 19, 2015 at 6:24 PM,  <span=\r\n dir=3D\"ltr\">&lt;<a
+          href=3D\"mailto:ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com=\r\n\" target=3D\"_blank\">ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com</a>&gt;</span>=\r\n
+          wrote:<br><blockquote class=3D\"gmail_quote\" style=3D\"margin:0 0 0 .8ex;bor=\r\nder-left:1px
+          #ccc solid;padding-left:1ex\">Yeah, hello there!<br>\r\n</blockquote></div><br></div>\r\n\r\n--047d7ba9798cee15fc050d09ae9e--"
 LOGOUT-e76a09b7766d60a37ff9e1af527a143e:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse

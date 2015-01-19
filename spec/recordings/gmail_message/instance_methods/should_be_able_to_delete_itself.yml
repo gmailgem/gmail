@@ -161,25 +161,25 @@ SELECT-6e4aa0e4422393e73c74d4645fd3834e:
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: UIDNEXT
-        data: 6
+        data: 7
       text: " Predicted next UID."
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: HIGHESTMODSEQ
-        data: '13273'
+        data: '14840'
       text: ''
     PERMANENTFLAGS: &6
     - *2
     UIDVALIDITY: &7
     - 2
     EXISTS: &8
-    - 3
+    - 4
     RECENT: &9
     - 0
     UIDNEXT: &10
-    - 6
+    - 7
     HIGHESTMODSEQ: &11
-    - '13273'
+    - '14840'
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0009
@@ -220,25 +220,25 @@ SELECT-6e4aa0e4422393e73c74d4645fd3834e:
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: UIDNEXT
-        data: 7
+        data: 8
       text: " Predicted next UID."
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: HIGHESTMODSEQ
-        data: '13314'
+        data: '14878'
       text: ''
     PERMANENTFLAGS: &14
     - *3
     UIDVALIDITY: &15
     - 2
     EXISTS: &16
-    - 4
+    - 5
     RECENT: &17
     - 0
     UIDNEXT: &18
-    - 7
+    - 8
     HIGHESTMODSEQ: &19
-    - '13314'
+    - '14878'
 UID SEARCH-b19658413e2b63d2bac9c290a67c2cb3:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
@@ -260,6 +260,7 @@ UID SEARCH-b19658413e2b63d2bac9c290a67c2cb3:
     - - 3
       - 4
       - 5
+      - 6
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0010
@@ -281,6 +282,7 @@ UID SEARCH-b19658413e2b63d2bac9c290a67c2cb3:
       - 4
       - 5
       - 6
+      - 7
 SELECT-868fce8856c91e50bebd43b4dbd8e071:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
@@ -322,25 +324,25 @@ SELECT-868fce8856c91e50bebd43b4dbd8e071:
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: UIDNEXT
-        data: 157
+        data: 190
       text: " Predicted next UID."
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: HIGHESTMODSEQ
-        data: '13273'
+        data: '14840'
       text: ''
     PERMANENTFLAGS: &24
     - *20
     UIDVALIDITY: &25
     - 11
     EXISTS: &26
-    - 150
+    - 181
     RECENT: &27
     - 0
     UIDNEXT: &28
-    - 157
+    - 190
     HIGHESTMODSEQ: &29
-    - '13273'
+    - '14840'
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0007
@@ -381,26 +383,26 @@ SELECT-868fce8856c91e50bebd43b4dbd8e071:
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: UIDNEXT
-        data: 157
+        data: 190
       text: " Predicted next UID."
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: HIGHESTMODSEQ
-        data: '13273'
+        data: '14840'
       text: ''
     PERMANENTFLAGS: &32
     - *21
     UIDVALIDITY: &33
     - 11
     EXISTS: &34
-    - 150
-    - 149
+    - 181
+    - 180
     RECENT: &35
     - 0
     UIDNEXT: &36
-    - 157
+    - 190
     HIGHESTMODSEQ: &37
-    - '13273'
+    - '14840'
 UID SEARCH-0010f3078427015fc193bf14c1871582:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
@@ -556,8 +558,34 @@ UID SEARCH-0010f3078427015fc193bf14c1871582:
       - 143
       - 144
       - 145
-      - 146
-UID STORE-d2492cde05f51b3f9fade29407d3c470:
+      - 157
+      - 158
+      - 159
+      - 160
+      - 161
+      - 162
+      - 166
+      - 167
+      - 168
+      - 169
+      - 170
+      - 171
+      - 172
+      - 173
+      - 174
+      - 175
+      - 176
+      - 177
+      - 178
+      - 179
+      - 180
+      - 181
+      - 182
+      - 183
+      - 184
+      - 185
+      - 188
+UID STORE-5f00644f03823fab3d1e9602aa792384:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0008
@@ -576,16 +604,16 @@ UID STORE-d2492cde05f51b3f9fade29407d3c470:
     HIGHESTMODSEQ: *37
     FETCH:
     - !ruby/struct:Net::IMAP::FetchData
-      seqno: 146
+      seqno: 180
       attr:
         X-GM-LABELS:
         - "\\Important"
         - "\\Inbox"
         - "\\Sent"
         - "\\Trash"
-        UID: 146
+        UID: 188
     EXPUNGE:
-    - 146
+    - 180
 LOGOUT-e76a09b7766d60a37ff9e1af527a143e:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
