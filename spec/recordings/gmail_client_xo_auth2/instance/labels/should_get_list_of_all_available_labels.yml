@@ -16,12 +16,12 @@ AUTHENTICATE-48cc3379658326e2b0e5cd2a6f3da2af:
 LIST-e0583fa6130ee374cef031c01d8cc486:
 - - :raise
   - !ruby/exception:Net::IMAP::BadResponseError
-    message: Unknown command o1mb13464977oem
+    message: Unknown command be1mb13873281oac
     response: !ruby/struct:Net::IMAP::TaggedResponse
       tag: RUBY0002
       name: BAD
       data: !ruby/struct:Net::IMAP::ResponseText
         code: 
-        text: Unknown command o1mb13464977oem
-      raw_data: "RUBY0002 BAD Unknown command o1mb13464977oem\r\n"
+        text: Unknown command be1mb13873281oac
+      raw_data: "RUBY0002 BAD Unknown command be1mb13873281oac\r\n"
   - {}

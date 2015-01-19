@@ -16,24 +16,24 @@ AUTHENTICATE-48cc3379658326e2b0e5cd2a6f3da2af:
 CREATE-873546102acc7776d52edef1516784eb:
 - - :raise
   - !ruby/exception:Net::IMAP::BadResponseError
-    message: Unknown command zz5mb13504299oab
+    message: Unknown command c131mb15695345oig
     response: !ruby/struct:Net::IMAP::TaggedResponse
       tag: RUBY0002
       name: BAD
       data: !ruby/struct:Net::IMAP::ResponseText
         code: 
-        text: Unknown command zz5mb13504299oab
-      raw_data: "RUBY0002 BAD Unknown command zz5mb13504299oab\r\n"
+        text: Unknown command c131mb15695345oig
+      raw_data: "RUBY0002 BAD Unknown command c131mb15695345oig\r\n"
   - {}
 LIST-e0583fa6130ee374cef031c01d8cc486:
 - - :raise
   - !ruby/exception:Net::IMAP::BadResponseError
-    message: Unknown command zz5mb13504299oab
+    message: Unknown command c131mb15695345oig
     response: !ruby/struct:Net::IMAP::TaggedResponse
       tag: RUBY0003
       name: BAD
       data: !ruby/struct:Net::IMAP::ResponseText
         code: 
-        text: Unknown command zz5mb13504299oab
-      raw_data: "RUBY0003 BAD Unknown command zz5mb13504299oab\r\n"
+        text: Unknown command c131mb15695345oig
+      raw_data: "RUBY0003 BAD Unknown command c131mb15695345oig\r\n"
   - {}

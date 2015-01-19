@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 
@@ -28,11 +30,29 @@ module Net
     alias_method :_send_command, :send_command
 
     def send_command(cmd, *args, &block)
-      digest = "#{cmd}-#{Digest::MD5.hexdigest(YAML.dump([cmd] + args))}"
+      # In Ruby 1.9.x, strings default to binary which causes the digest to be
+      # different.
+      clean_args = args.dup.each do |s|
+        s.is_a?(String) ? s.force_encoding('utf-8') : s
+      end
+
+      # From 1.9 to 2.0 to 2.1, the way YAML encodes special characters changed.
+      # Here's what each returns for: YAML.dump(["", "%"])
+      #   1.9.x: "---\n- ''\n- ! '%'\n"
+      #   2.0.x: "---\n- ''\n- '%'\n"
+      #   2.1.x: "---\n- ''\n- \"%\"\n"
+      # The `gsub` here converts the older format into the 2.1.x.
+      yaml_dump = YAML.dump([cmd] + clean_args).gsub(/(?:! )?'(.+)'/, '"\1"')
+
+      digest = "#{cmd}-#{Digest::MD5.hexdigest(yaml_dump)}"
 
       if Net::IMAP.replaying?
         recordings = Net::IMAP.recordings[digest] || []
-        raise('Could not find recording') if recordings.empty?
+        if recordings.empty?
+          # Be lenient if LOGOUT is called but wasn't explicitly recorded. This
+          # comes up often when called from `at_exit`.
+          cmd == 'LOGOUT' ? return : raise('Could not find recording')
+        end
 
         action, response, @responses = recordings.shift
       else

@@ -29,12 +29,12 @@ AUTHENTICATE-48cc3379658326e2b0e5cd2a6f3da2af:
 SELECT-23d55e3c8382681ca67adbbab76993a1:
 - - :raise
   - !ruby/exception:Net::IMAP::BadResponseError
-    message: Unknown command y125mb2523533oiy
+    message: Unknown command t5mb12207606obi
     response: !ruby/struct:Net::IMAP::TaggedResponse
       tag: RUBY0003
       name: BAD
       data: !ruby/struct:Net::IMAP::ResponseText
         code: 
-        text: Unknown command y125mb2523533oiy
-      raw_data: "RUBY0003 BAD Unknown command y125mb2523533oiy\r\n"
+        text: Unknown command t5mb12207606obi
+      raw_data: "RUBY0003 BAD Unknown command t5mb12207606obi\r\n"
   - {}

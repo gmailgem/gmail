@@ -67,25 +67,25 @@ SELECT-505f013d922af4caf157dc91d6b45a60:
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: UIDNEXT
-        data: 69
+        data: 83
       text: " Predicted next UID."
     - !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: HIGHESTMODSEQ
-        data: '7553'
+        data: '8244'
       text: ''
     PERMANENTFLAGS: &4
     - *1
     UIDVALIDITY: &5
     - 1
     EXISTS: &6
-    - 68
+    - 82
     RECENT: &7
     - 0
     UIDNEXT: &8
-    - 69
+    - 83
     HIGHESTMODSEQ: &9
-    - '7553'
+    - '8244'
 LOGOUT-e76a09b7766d60a37ff9e1af527a143e:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse

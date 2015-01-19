@@ -2,12 +2,12 @@
 LOGIN-f0cde728d1c78eb72490f79825821b1c:
 - - :raise
   - !ruby/exception:Net::IMAP::NoResponseError
-    message: Invalid credentials bf8mb13513317oac
+    message: Invalid credentials e5mb14145422oah
     response: !ruby/struct:Net::IMAP::TaggedResponse
       tag: RUBY0001
       name: 'NO'
       data: !ruby/struct:Net::IMAP::ResponseText
         code: 
-        text: Invalid credentials bf8mb13513317oac
-      raw_data: "RUBY0001 NO Invalid credentials bf8mb13513317oac\r\n"
+        text: Invalid credentials e5mb14145422oah
+      raw_data: "RUBY0001 NO Invalid credentials e5mb14145422oah\r\n"
   - {}
