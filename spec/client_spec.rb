@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Gmail client (Plain)" do
+describe Gmail::Client::Plain do
   subject { Gmail::Client::Plain }
 
   context "on initialize" do
@@ -56,17 +56,16 @@ describe "Gmail client (Plain)" do
 
     it "should properly logout from GMail" do
       client = mock_client
-      client.connect
       client.login.should be_truthy
       client.logout.should be_truthy
       client.should_not be_logged_in
     end
 
     it "#connection should automatically log in to GMail account when it's called" do
-      mock_client do |client|
-        expect(client).to receive(:login).once.and_return(false)
-        client.connection.should_not be_nil
-      end
+      client = mock_client
+      expect(client).to receive(:login).once.and_return(false)
+
+      client.connection.should_not be_nil
     end
 
     it "should properly compose message" do

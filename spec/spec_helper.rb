@@ -20,17 +20,20 @@ end
 
 def mock_client(&block)
   client = Gmail::Client::Plain.new(*TEST_ACCOUNT)
+  client.connect
+
   if block_given?
-    client.connect
+    client.login
     yield client
     client.logout
   end
+
   client
 end
 
 def mock_mailbox(box = "INBOX", &block)
   within_gmail do |gmail|
-    mailbox = subject.new(gmail, box)
+    mailbox = gmail.mailbox(box)
     yield(mailbox) if block_given?
     mailbox
   end
