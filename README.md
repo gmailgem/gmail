@@ -48,47 +48,59 @@ gmail gem has the following dependencies (with Bundler all will be installed aut
 
 First of all require the `gmail` library.
 
-    require 'gmail'
-    
+```ruby
+require 'gmail'
+```
+
 ### Authenticating gmail sessions
 
 This will let you automatically log in to your account. 
 
-    gmail = Gmail.connect(username, password)
-    # play with your gmail...
-    gmail.logout
+```ruby
+gmail = Gmail.connect(username, password)
+# play with your gmail...
+gmail.logout
+```
 
 If you pass a block, the session will be passed into the block, and the session 
 will be logged out after the block is executed.
 
-    Gmail.connect(username, password) do |gmail|
-      # play with your gmail...
-    end
-    
+```ruby
+Gmail.connect(username, password) do |gmail|
+  # play with your gmail...
+end
+```
+
 Examples above are "quiet", it means that it will not raise any errors when 
 session couldn't be started (eg. because of connection error or invalid 
 authorization data). You can use connection which handles errors raising:
 
-    Gmail.connect!(username, password)
-    Gmail.connect!(username, password) {|gmail| ... play with gmail ... }
-    
+```ruby
+Gmail.connect!(username, password)
+Gmail.connect!(username, password) {|gmail| ... play with gmail ... }
+```
+
 You can also check if you are logged in at any time:
 
-    Gmail.connect(username, password) do |gmail|
-      gmail.logged_in?
-    end
+```ruby
+Gmail.connect(username, password) do |gmail|
+  gmail.logged_in?
+end
+```
 
 ### XOAuth authentication
 
 From v0.4.0 it's possible to authenticate with your Gmail account using XOAuth
 method. It's very simple:
 
-    gmail = Gmail.connect(:xoauth, "email@domain.com", 
-      :token           => 'TOKEN',
-      :secret          => 'TOKEN_SECRET',
-      :consumer_key    => 'CONSUMER_KEY',
-      :consumer_secret => 'CONSUMER_SECRET'
-    )
+```ruby
+gmail = Gmail.connect(:xoauth, "email@domain.com", 
+  :token           => 'TOKEN',
+  :secret          => 'TOKEN_SECRET',
+  :consumer_key    => 'CONSUMER_KEY',
+  :consumer_secret => 'CONSUMER_SECRET'
+)
+```
     
 For more information check out the [gmail_xoauth](https://github.com/nfo/gmail_xoauth)
 gem from Nicolas Fouché.
@@ -97,127 +109,171 @@ gem from Nicolas Fouché.
     
 Get counts for messages in the inbox:
 
-    gmail.inbox.count
-    gmail.inbox.count(:unread)
-    gmail.inbox.count(:read)
+```ruby
+gmail.inbox.count
+gmail.inbox.count(:unread)
+gmail.inbox.count(:read)
+```
 
 Count with some criteria:
 
-    gmail.inbox.count(:after => Date.parse("2010-02-20"), :before => Date.parse("2010-03-20"))
-    gmail.inbox.count(:on => Date.parse("2010-04-15"))
-    gmail.inbox.count(:from => "myfriend@gmail.com")
-    gmail.inbox.count(:to => "directlytome@gmail.com")
+```ruby
+gmail.inbox.count(:after => Date.parse("2010-02-20"), :before => Date.parse("2010-03-20"))
+gmail.inbox.count(:on => Date.parse("2010-04-15"))
+gmail.inbox.count(:from => "myfriend@gmail.com")
+gmail.inbox.count(:to => "directlytome@gmail.com")
+```
 
 Combine flags and options:
 
-    gmail.inbox.count(:unread, :from => "myboss@gmail.com")
-    
+```ruby
+gmail.inbox.count(:unread, :from => "myboss@gmail.com")
+```
+
 Browsing labeled emails is similar to work with inbox.
 
-    gmail.mailbox('Urgent').count
-    
+```ruby
+gmail.mailbox('Urgent').count
+```
+
 Getting messages works the same way as counting: Remember that every message in a 
 conversation/thread will come as a separate message.
 
-    gmail.inbox.emails(:unread, :before => Date.parse("2010-04-20"), :from => "myboss@gmail.com")
+```ruby
+gmail.inbox.emails(:unread, :before => Date.parse("2010-04-20"), :from => "myboss@gmail.com")
+```
 
 The [gm option](https://developers.google.com/gmail/imap_extensions?csw=1#extension_of_the_search_command_x-gm-raw) enables use of the Gmail search syntax.
 
-    gmail.inbox.emails(gm: '"testing"')
+```ruby
+gmail.inbox.emails(gm: '"testing"')
+```
 
 You can use also one of aliases:
 
-    gmail.inbox.find(...)
-    gmail.inbox.search(...)
-    gmail.inbox.mails(...)    
-    
+```ruby
+gmail.inbox.find(...)
+gmail.inbox.search(...)
+gmail.inbox.mails(...)
+```
+
 Also you can manipulate each message using block style:
 
-    gmail.inbox.find(:unread).each do |email|
-      email.read!
-    end
-    
+```ruby
+gmail.inbox.find(:unread).each do |email|
+  email.read!
+end
+```
+
 ### Working with emails!
 
 Any news older than 4-20, mark as read and archive it:
 
-    gmail.inbox.find(:before => Date.parse("2010-04-20"), :from => "news@nbcnews.com").each do |email|
-      email.read! # can also unread!, spam! or star!
-      email.archive!
-    end
+```ruby
+gmail.inbox.find(:before => Date.parse("2010-04-20"), :from => "news@nbcnews.com").each do |email|
+  email.read! # can also unread!, spam! or star!
+  email.archive!
+end
+```
 
 Delete emails from X:
 
-    gmail.inbox.find(:from => "x-fiance@gmail.com").each do |email|
-      email.delete!
-    end
+```ruby
+gmail.inbox.find(:from => "x-fiance@gmail.com").each do |email|
+  email.delete!
+end
+```
 
 Save all attachments in the "Faxes" label to a local folder (uses functionality from `Mail` gem):
 
-    folder = Dir.pwd # for example
-    gmail.mailbox("Faxes").emails.each do |email|
-      email.message.attachments.each do |f|
-        File.write(File.join(folder, f.filename), f.body.decoded)
-      end
-    end
+```ruby
+folder = Dir.pwd # for example
+gmail.mailbox("Faxes").emails.each do |email|
+  email.message.attachments.each do |f|
+    File.write(File.join(folder, f.filename), f.body.decoded)
+  end
+end
+```
      
 You can use also `#label` method instead of `#mailbox`: 
 
-    gmail.label("Faxes").emails {|email| ... }
+```ruby
+gmail.label("Faxes").emails {|email| ... }
+```
 
 Save just the first attachment from the newest unread email (assuming pdf):
 
-    email = gmail.inbox.find(:unread).first
-    email.attachments[0].save_to_file("/path/to/location")
+```ruby
+email = gmail.inbox.find(:unread).first
+email.attachments[0].save_to_file("/path/to/location")
+```
 
 Add a label to a message:
 
-    email.label("Faxes")
-    
+```ruby
+email.label("Faxes")
+```
+
 Example above will raise error when you don't have the `Faxes` label. You can 
 avoid this using:
 
-    email.label!("Faxes") # The `Faxes` label will be automatically created now
+```ruby
+email.label!("Faxes") # The `Faxes` label will be automatically created now
+```
 
 You can also move message to a label/mailbox:
- 
-    email.move_to("Faxes")
-    email.move_to!("NewLabel")
-    
+
+```ruby 
+email.move_to("Faxes")
+email.move_to!("NewLabel")
+```
+
 There is also few shortcuts to mark messages quickly:
 
-    email.read!
-    email.unread!
-    email.spam!
-    email.star!
-    email.unstar!
+```ruby
+email.read!
+email.unread!
+email.spam!
+email.star!
+email.unstar!
+```
 
 ### Managing labels
 
 With Gmail gem you can also manage your labels. You can get list of defined 
 labels:
 
-    gmail.labels.all
+```ruby
+gmail.labels.all
+```
 
 Create new label:
-  
-    gmail.labels.new("Urgent")
-    gmail.labels.add("AnotherOne")
-    
+
+```ruby  
+gmail.labels.new("Urgent")
+gmail.labels.add("AnotherOne")
+```
+
 Remove labels:
 
-    gmail.labels.delete("Urgent")
-    
+```ruby
+gmail.labels.delete("Urgent")
+```
+
 Or check if given label exists:
 
-    gmail.labels.exists?("Urgent") # => false
-    gmail.labels.exists?("AnotherOne") # => true
+```ruby
+gmail.labels.exists?("Urgent")     # => false
+gmail.labels.exists?("AnotherOne") # => true
+```
 
 Localize label names using the LIST special-use extension flags,
 :Inbox, :All, :Drafts, :Sent, :Trash, :Important, :Junk, and :Flagged
 
-    gmail.labels.localize(:all) # => "[Gmail]\All Mail"
-                                # => "[Google Mail]\All Mail"
+```ruby
+gmail.labels.localize(:all) # => "[Gmail]\All Mail"
+                            # => "[Google Mail]\All Mail"
+```
 
 ### Composing and sending emails
 
@@ -227,27 +283,31 @@ automatically configure your Mail emails to be sent via your Gmail account's SMT
 so they will be in your Gmail's "Sent" folder. Also, no need to specify the "From" 
 email either, because ruby-gmail will set it for you.
 
-    gmail.deliver do
-      to "email@example.com"
-      subject "Having fun in Puerto Rico!"
-      text_part do
-        body "Text of plaintext message."
-      end
-      html_part do
-        content_type 'text/html; charset=UTF-8'
-        body "<p>Text of <em>html</em> message.</p>"
-      end
-      add_file "/path/to/some_image.jpg"
-    end
+```ruby
+gmail.deliver do
+  to "email@example.com"
+  subject "Having fun in Puerto Rico!"
+  text_part do
+    body "Text of plaintext message."
+  end
+  html_part do
+    content_type 'text/html; charset=UTF-8'
+    body "<p>Text of <em>html</em> message.</p>"
+  end
+  add_file "/path/to/some_image.jpg"
+end
+```
 
 Or, compose the message first and send it later
 
-    email = gmail.compose do
-      to "email@example.com"
-      subject "Having fun in Puerto Rico!"
-      body "Spent the day on the road..."
-    end
-    email.deliver! # or: gmail.deliver(email)
+```ruby
+email = gmail.compose do
+  to "email@example.com"
+  subject "Having fun in Puerto Rico!"
+  body "Spent the day on the road..."
+end
+email.deliver! # or: gmail.deliver(email)
+```
 
 ## Troubleshooting
 
