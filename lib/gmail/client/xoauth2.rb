@@ -15,7 +15,7 @@ module Gmail
         @imap and @logged_in = (login = @imap.authenticate('XOAUTH2', username, token)) && login.name == 'OK'
       rescue Net::IMAP::NoResponseError => e
         if raise_errors
-          message = "Couldn't login to given GMail account: #{username}"
+          message = "Couldn't login to given Gmail account: #{username}"
           message += " (#{e.response.data.text.strip})"
           raise(AuthorizationError.new(e.response), message, e.backtrace)
         end

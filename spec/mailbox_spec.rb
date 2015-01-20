@@ -4,37 +4,37 @@ describe Gmail::Mailbox do
   subject { Gmail::Mailbox }
 
   context "on initialize" do
-    it "should set client and name" do
+    it "sets client and name" do
       within_gmail do |gmail|
         mailbox = subject.new(gmail, "TEST")
-        mailbox.instance_variable_get("@gmail").should == gmail
-        mailbox.name.should == "TEST"
+        expect(mailbox.instance_variable_get("@gmail")).to eq(gmail)
+        expect(mailbox.name).to eq("TEST")
       end
     end
 
-    it "should work in INBOX by default" do
+    it "works in INBOX by default" do
       within_gmail do |gmail|
         mailbox = subject.new(@gmail)
-        mailbox.name.should == "INBOX"
+        expect(mailbox.name).to eq("INBOX")
       end
     end
   end
 
   context "instance" do
-    it "should be able to count all emails" do
+    it "counts all emails" do
       mock_mailbox do |mailbox|
-        mailbox.count.should > 0
+        expect(mailbox.count).to be > 0
       end
     end
 
-    it "should be able to find messages" do
+    it "finds messages" do
       mock_mailbox do |mailbox|
         message = mailbox.emails.first
         mailbox.emails(:all, :from => message.from.first.name) == message.from.first.name
       end
     end
 
-    it "should be able to do a full text search of message bodies" do
+    it "performs full text search of message bodies" do
       skip "This can wait..."
       # mock_mailbox do |mailbox|
       #  message = mailbox.emails.first
