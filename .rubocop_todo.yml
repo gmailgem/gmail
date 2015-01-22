@@ -109,11 +109,6 @@ Style/Blocks:
 Style/BracesAroundHashParameters:
   Enabled: false
 
-# Offense count: 16
-# Configuration parameters: IndentWhenRelativeTo, SupportedStyles, IndentOneStep.
-Style/CaseIndentation:
-  Enabled: false
-
 # Offense count: 2
 # Cop supports --auto-correct.
 Style/ColonMethodCall:

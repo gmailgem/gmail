@@ -1,6 +1,6 @@
 module Gmail
   module Client
-    # Raised when connection with GMail IMAP service couldn't be established.
+    # Raised when connection with Gmail IMAP service couldn't be established.
     class ConnectionError < SocketError; end
     # Raised when given username or password are invalid.
     class AuthorizationError < Net::IMAP::NoResponseError; end
@@ -25,7 +25,7 @@ module Gmail
       end
     end
 
-    require 'gmail/client/imap_extensions'
+    require 'gmail/imap_extensions'
     require 'gmail/client/base'
     require 'gmail/client/plain'
     require 'gmail/client/xoauth'
