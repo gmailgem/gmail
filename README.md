@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/gmailgem/gmail.png)](https://travis-ci.org/gmailgem/gmail)
 [![Code Climate](https://codeclimate.com/github/gmailgem/gmail.png)](https://codeclimate.com/github/gmailgem/gmail)
+[![Gem Version](https://badge.fury.io/rb/gmail.svg)](http://badge.fury.io/rb/gmail)
 
 A Rubyesque interface to Google's Gmail, with all the tools you'll need. Search, 
 read and send multipart emails, archive, mark as read/unread, delete emails, 
