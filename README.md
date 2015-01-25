@@ -338,6 +338,7 @@ This project follows on Open Governance model. The Core Team is responsible for 
 * Alexandre Loureiro Solleiro - [@webcracy](https://github.com/webcracy)
 * Justin Grevitch - [@jgrevich](https://github.com/jgrevich)
 * [@bootstraponline](https://github.com/bootstraponline)
+* Nathan Herald - [@myobie](https://github.com/myobie)
 
 #### Legacy Contributors
 
