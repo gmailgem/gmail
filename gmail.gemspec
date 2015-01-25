@@ -15,6 +15,7 @@ Gem::Specification.new do |s|
   s.authors = ["Chris Kowalik"]
   s.email = ["chris@nu7hat.ch"]
   s.homepage = "http://github.com/gmailgem/gmail"
+  s.licenses = ["MIT"]
 
   # runtime dependencies
   s.add_dependency "mail", ">= 2.2.1"
