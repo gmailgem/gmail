@@ -336,7 +336,7 @@ This project follows on Open Governance model. The Core Team is responsible for 
 * Jeff Carbonella - [@jcarbo](https://github.com/jcarbo)
 * Johnny Shields - [@johnnyshields](https://github.com/johnnyshields)
 * Alexandre Loureiro Solleiro - [@webcracy](https://github.com/webcracy)
-* Justin Grevitch - [@jgrevich](https://github.com/jgrevich)
+* Justin Grevich - [@jgrevich](https://github.com/jgrevich)
 * [@bootstraponline](https://github.com/bootstraponline)
 * Nathan Herald - [@myobie](https://github.com/myobie)
 
