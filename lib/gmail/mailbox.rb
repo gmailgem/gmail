@@ -118,6 +118,46 @@ module Gmail
       @gmail.mailbox(name) { @gmail.conn.expunge }
     end
 
+    def wait(options = {}, &block)
+      loop do
+        wait_once(options, &block)
+      end
+    end
+
+    def wait_once(options = {})
+      options[:idle_timeout] ||= 29 * 60
+
+      response = nil
+      loop do
+        complete_cond = @gmail.conn.new_cond
+        complete_now = false
+
+        @gmail.conn.idle do |resp|
+          if resp.kind_of?(Net::IMAP::ContinuationRequest) && resp.data.text == 'idling'
+            Thread.new do
+              @gmail.conn.synchronize do
+                complete_cond.wait(options[:idle_timeout]) unless complete_now
+                @gmail.conn.idle_done
+              end
+            end
+          elsif resp.kind_of?(Net::IMAP::UntaggedResponse) && resp.name == 'EXISTS'
+            response = resp
+
+            @gmail.conn.synchronize do
+              complete_now = true
+              complete_cond.signal
+            end
+          end
+        end
+
+        break if response
+      end
+
+      yield response if block_given?
+
+      nil
+    end
+
     def inspect
       "#<Gmail::Mailbox#{'0x%04x' % (object_id << 1)} name=#{name}>"
     end
