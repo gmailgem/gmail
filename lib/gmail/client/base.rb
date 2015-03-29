@@ -131,7 +131,7 @@ module Gmail
       #   mail = gmail.compose { ... }
       #   gmail.deliver(mail)
       def deliver(mail = nil, raise_errors = false, &block)
-        mail = compose(mail, &block) if block_given?
+        mail = compose(mail, &block)
         mail.deliver!
       rescue Object => ex
         raise_errors and raise DeliveryError, "Couldn't deliver email: #{ex.to_s}"
