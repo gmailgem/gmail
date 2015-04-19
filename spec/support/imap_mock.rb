@@ -15,6 +15,44 @@ module Net
       end
     end
 
+    alias_method :_idle, :idle
+    alias_method :_idle_done, :idle_done
+
+    def idle(&response_handler)
+      if Net::IMAP.replaying?
+        @idle_done_cond = new_cond
+        @idle_done = false
+      end
+
+      response = mock_command(:_idle, 'IDLE', &response_handler)
+
+      if Net::IMAP.replaying?
+        synchronize do
+          unless @idle_done
+            @idle_done_cond.wait(0.1)
+            raise('The IDLE has not done') unless @idle_done
+          end
+          @idle_done_cond = nil
+        end
+      end
+
+      response
+    end
+
+    def idle_done
+      if Net::IMAP.replaying?
+        synchronize do
+          if @idle_done_cond.nil?
+            raise Net::IMAP::Error, 'not during IDLE'
+          end
+          @idle_done = true
+          idle_done_cond.signal
+        end
+      else
+        _idle_done
+      end
+    end
+
     private
 
     alias_method :_send_command, :send_command
@@ -31,6 +69,10 @@ module Net
     end
 
     def send_command(cmd, *args, &block)
+      mock_command(:_send_command, cmd, *args, &block)
+    end
+
+    def mock_command(method, cmd, *args, &block)
       # In Ruby 1.9.x, strings default to binary which causes the digest to be
       # different.
       clean_args = args.dup.each do |s|
@@ -67,11 +109,21 @@ module Net
           cmd == 'LOGOUT' ? return : raise('Could not find recording')
         end
 
-        action, response, @responses = recordings.shift
+        action, response, @responses, all_responses = recordings.shift
+
+        if block && all_responses
+          all_responses.each do |resp|
+            block.call(resp)
+          end
+        end
       else
         action = :return
+        all_responses = []
         begin
-          response = _send_command(cmd, *args, &block)
+          response = send(method, cmd, *args) do |resp|
+            all_responses << resp
+            block.call(resp)
+          end
         rescue => e
           action = :raise
           response = e
@@ -80,7 +132,7 @@ module Net
         # @responses (the third argument here) contains untagged responses captured
         # via the Net::IMAP#record_response method.
         Net::IMAP.recordings[digest] ||= []
-        Net::IMAP.recordings[digest]  << [action, response.dup, @responses ? @responses.dup : nil]
+        Net::IMAP.recordings[digest]  << [action, response.dup, @responses ? @responses.dup : nil, all_responses]
       end
 
       raise(response) if action == :raise

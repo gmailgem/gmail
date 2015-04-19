@@ -34,6 +34,43 @@ describe Gmail::Mailbox do
       end
     end
 
+    it "waits once" do
+      mock_mailbox do |mailbox|
+        response = nil
+        mailbox.wait_once { |r| response = r }
+        expect(response).to be_kind_of(Net::IMAP::UntaggedResponse)
+        expect(response.name).to eq("EXISTS")
+      end
+    end
+
+    it "waits with an unblocked connection" do
+      mock_mailbox do |mailbox|
+        mailbox.wait_once do |r|
+          expect(mailbox.count).to be > 0
+        end
+      end
+    end
+
+    it "waits repeatedly" do
+      responses = []
+      mock_mailbox do |mailbox|
+        mailbox.wait do |r|
+          responses << r
+          break if responses.size == 2
+        end
+      end
+
+      expect(responses.size).to eq(2)
+    end
+
+    it "waits with 29-minute re-issue" do
+      client = mock_client
+      expect(client.conn).to receive(:idle).and_call_original.at_least(:twice)
+
+      mailbox = client.inbox
+      mailbox.wait_once(idle_timeout: 0.001)
+    end
+
     it "performs full text search of message bodies" do
       skip "This can wait..."
       # mock_mailbox do |mailbox|

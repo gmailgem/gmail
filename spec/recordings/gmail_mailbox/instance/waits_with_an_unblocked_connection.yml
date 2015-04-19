@@ -1,0 +1,207 @@
+---
+LOGIN-9a890af1c86854f5170d99be6e10b8f1:
+- - :return
+  - !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0001
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: 
+      text: ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com authenticated (Success)
+    raw_data: "RUBY0001 OK ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com authenticated
+      (Success)\r\n"
+  - CAPABILITY:
+    - - IMAP4REV1
+      - UNSELECT
+      - IDLE
+      - NAMESPACE
+      - QUOTA
+      - ID
+      - XLIST
+      - CHILDREN
+      - X-GM-EXT-1
+      - UIDPLUS
+      - COMPRESS=DEFLATE
+      - ENABLE
+      - MOVE
+      - CONDSTORE
+      - ESEARCH
+      - UTF8=ACCEPT
+SELECT-505f013d922af4caf157dc91d6b45a60:
+- - :return
+  - !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0002
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: READ-WRITE
+        data: 
+      text: " INBOX selected. (Success)"
+    raw_data: "RUBY0002 OK [READ-WRITE] INBOX selected. (Success)\r\n"
+  - FLAGS: &2
+    - - :Answered
+      - :Flagged
+      - :Draft
+      - :Deleted
+      - :Seen
+      - "$Phishing"
+      - "$NotPhishing"
+    OK: &3
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: PERMANENTFLAGS
+        data: &1
+        - :Answered
+        - :Flagged
+        - :Draft
+        - :Deleted
+        - :Seen
+        - "$Phishing"
+        - "$NotPhishing"
+        - :*
+      text: " Flags permitted."
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: UIDVALIDITY
+        data: 1
+      text: " UIDs valid."
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: UIDNEXT
+        data: 77
+      text: " Predicted next UID."
+    - !ruby/struct:Net::IMAP::ResponseText
+      code: !ruby/struct:Net::IMAP::ResponseCode
+        name: HIGHESTMODSEQ
+        data: '4954'
+      text: ''
+    PERMANENTFLAGS: &4
+    - *1
+    UIDVALIDITY: &5
+    - 1
+    EXISTS: &6
+    - 73
+    - 74
+    RECENT: &7
+    - 0
+    UIDNEXT: &8
+    - 77
+    HIGHESTMODSEQ: &9
+    - '4954'
+IDLE-19f5c646015cf36d0561f86266edaa83:
+- - :return
+  - !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0003
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: 
+      text: IDLE terminated (Success)
+    raw_data: "RUBY0003 OK IDLE terminated (Success)\r\n"
+  - FLAGS: *2
+    OK: *3
+    PERMANENTFLAGS: *4
+    UIDVALIDITY: *5
+    EXISTS: *6
+    RECENT: *7
+    UIDNEXT: *8
+    HIGHESTMODSEQ: *9
+  - - !ruby/struct:Net::IMAP::ContinuationRequest
+      data: !ruby/struct:Net::IMAP::ResponseText
+        code: 
+        text: idling
+      raw_data: "+ idling\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: EXISTS
+      data: 74
+      raw_data: "* 74 EXISTS\r\n"
+UID SEARCH-b19658413e2b63d2bac9c290a67c2cb3:
+- - :return
+  - !ruby/struct:Net::IMAP::TaggedResponse
+    tag: RUBY0004
+    name: OK
+    data: !ruby/struct:Net::IMAP::ResponseText
+      code: 
+      text: SEARCH completed (Success)
+    raw_data: "RUBY0004 OK SEARCH completed (Success)\r\n"
+  - FLAGS: *2
+    OK: *3
+    PERMANENTFLAGS: *4
+    UIDVALIDITY: *5
+    EXISTS: *6
+    RECENT: *7
+    UIDNEXT: *8
+    HIGHESTMODSEQ: *9
+    SEARCH:
+    - - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+      - 15
+      - 16
+      - 17
+      - 18
+      - 19
+      - 20
+      - 21
+      - 22
+      - 23
+      - 24
+      - 25
+      - 26
+      - 27
+      - 28
+      - 29
+      - 30
+      - 31
+      - 32
+      - 33
+      - 34
+      - 35
+      - 36
+      - 37
+      - 38
+      - 39
+      - 40
+      - 41
+      - 42
+      - 43
+      - 44
+      - 45
+      - 46
+      - 47
+      - 48
+      - 49
+      - 50
+      - 51
+      - 52
+      - 53
+      - 54
+      - 55
+      - 56
+      - 57
+      - 58
+      - 59
+      - 60
+      - 61
+      - 62
+      - 63
+      - 64
+      - 65
+      - 66
+      - 67
+      - 68
+      - 69
+      - 70
+      - 71
+      - 72
+      - 73
+      - 74
+      - 75
+      - 76
+      - 77
