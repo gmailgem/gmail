@@ -13,6 +13,15 @@ describe Gmail::Labels do
           end
         end
       end
+
+      context 'and the mailbox does not exist' do
+        it 'returns the mailbox name as a string' do
+          localized = ""
+          mock_client { |client| localized = client.labels.localize(:All) }
+          expect(localized).to be_a_kind_of(String)
+          expect(localized).to eq 'All'
+        end
+      end
     end
   end
 end
