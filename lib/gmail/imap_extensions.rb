@@ -67,7 +67,7 @@ module Gmail
             resp = extract_labels_response
 
             # We need to manually update the position of the regexp to prevent trip-ups
-            @pos += resp.length - 1
+            @pos += resp.length
 
             # `resp` will look something like this:
             # ("\\Inbox" "\\Sent" "one's and two's" "some new label" Awesome Ni&APE-os)
