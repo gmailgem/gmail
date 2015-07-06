@@ -1,5 +1,6 @@
 module Gmail
   module ImapExtensions
+    LABELS_FLAG_REGEXP = /\\([^\x80-\xff(){ \x00-\x1f\x7f%"\\]+)/n
     # Taken from https://github.com/oxos/gmail-oauth-thread-stats/blob/master/gmail_imap_extensions_compatibility.rb
     def self.patch_net_imap_response_parser(klass = Net::IMAP::ResponseParser)
       # https://github.com/ruby/ruby/blob/4d426fc2e03078d583d5d573d4863415c3e3eb8d/lib/net/imap.rb#L2258
@@ -67,11 +68,19 @@ module Gmail
             resp = extract_labels_response
 
             # We need to manually update the position of the regexp to prevent trip-ups
-            @pos += resp.length
+            @pos += resp.length - 1
 
             # `resp` will look something like this:
             # ("\\Inbox" "\\Sent" "one's and two's" "some new label" Awesome Ni&APE-os)
-            return resp.gsub(/^\s*\(|\)\s*$/, '').scan(/"([^"]*)"|([^\s"]+)/ni).flatten.compact.collect(&:unescape)
+            result = resp.gsub(/^\s*\(|\)+\s*$/, '').scan(/"([^"]*)"|([^\s"]+)/ni).flatten.compact.collect(&:unescape)
+            result.map do |x|
+              flag = x.scan(LABELS_FLAG_REGEXP)
+              if flag.empty?
+                x
+              else
+                flag.first.first.capitalize.untaint.intern
+              end
+            end
           else
             parse_error("invalid label list")
           end
