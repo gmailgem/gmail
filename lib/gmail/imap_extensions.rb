@@ -67,11 +67,11 @@ module Gmail
             resp = extract_labels_response
 
             # We need to manually update the position of the regexp to prevent trip-ups
-            @pos += resp.length
+            @pos += resp.length - 1
 
             # `resp` will look something like this:
             # ("\\Inbox" "\\Sent" "one's and two's" "some new label" Awesome Ni&APE-os)
-            return resp.gsub(/^\s*\(|\)\s*$/, '').scan(/"([^"]*)"|([^\s"]+)/ni).flatten.compact.collect(&:unescape)
+            return resp.gsub(/^\s*\(|\)+\s*$/, '').scan(/"([^"]*)"|([^\s"]+)/ni).flatten.compact.collect(&:unescape)
           else
             parse_error("invalid label list")
           end
