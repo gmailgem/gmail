@@ -42,6 +42,6 @@ describe Gmail::ImapExtensions do
     Gmail::ImapExtensions::patch_net_imap_response_parser
     server_response = %[* 1 FETCH (X-GM-LABELS ("Foo Bar" "\\Important" Hello World))\r\n]
     parsed_labels = Net::IMAP::ResponseParser.new.parse(server_response).data.attr["X-GM-LABELS"]
-    expect(parsed_labels).to contain_exactly("\\Important", "Hello", "World", "Foo Bar")
+    expect(parsed_labels).to contain_exactly(:Important, "Hello", "World", "Foo Bar")
   end
 end
