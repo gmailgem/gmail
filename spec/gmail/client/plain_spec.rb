@@ -88,6 +88,7 @@ describe Gmail::Client::Plain do
     end
 
     it "delivers inline composed email" do
+      allow_any_instance_of(Mail::Message).to receive(:deliver!).and_return true
       mock_client do |client|
         response = client.deliver do
           to TEST_ACCOUNT[0]
