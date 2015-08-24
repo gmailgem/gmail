@@ -4,6 +4,9 @@ require 'rubygems'
 require 'rspec'
 require 'yaml'
 require 'gmail'
+require 'coveralls'
+
+Coveralls.wear!
 
 # require_support_files
 Dir[File.join(File.dirname(__FILE__), 'support', '*.rb')].each { |f| require f }
