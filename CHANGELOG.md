@@ -4,12 +4,12 @@
 
 * Your change here
 
-## 0.6.0 - 2015-8-24
+## 0.6.0 - 2015-08-24
 
-* [Fix: Labels#localize to not return nil (@afn)](https://github.com/gmailgem/gmail/pull/176)
-* [Fix: label parsing (@yn)](https://github.com/gmailgem/gmail/pull/179)
-* [Feature: Add IDLE support (@alexeymorozov)](https://github.com/gmailgem/gmail/pull/167)
-* [Fix: #deliver to always invoke compose (@kuboon)](https://github.com/gmailgem/gmail/pull/163)
+* Fix: Labels#localize to not return nil ([@afn](https://github.com/@afn), [#176](https://github.com/gmailgem/gmail/pull/176))
+* Fix: label parsing ([@yn](https://github.com/@yn), [#179](https://github.com/gmailgem/gmail/pull/179))
+* Feature: Add IDLE support([@alexeymorozov](https://github.com/@alexeymorozov), [#167](https://github.com/gmailgem/gmail/pull/167))
+* Fix: #deliver to always invoke compose ([@kuboon](https://github.com/@kuboon), [#163](https://github.com/gmailgem/gmail/pull/163))
 
 ## 0.5.0 - 2015-01-26
 
