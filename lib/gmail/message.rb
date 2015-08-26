@@ -113,9 +113,16 @@ module Gmail
       add_label("\\Trash")
     end
 
-    # Archiving is done by adding the `\Trash` label. To undo this,
-    # you just re-apply the `\Inbox` label (see `#unarchive!`)
+    #It seems like this should work with:
+    #@gmail.mailbox('[Gmail]/All Mail').emails(:message_id =>  id)
+    #But that code returns all e-mails, not just the one with matching id.
+    #This code is slow, but functional even when the user is in Inbox.
+    def locate_in_all_mail
+      @gmail.('[Gmail]/All Mail').emails.select { |x| x.message_id == message_id }[0]
+    end
+
     def archive!
+      locate_in_all_mail.remove_label("\\Inbox") if @mailbox == "INBOX"
       remove_label("\\Inbox")
     end
 
