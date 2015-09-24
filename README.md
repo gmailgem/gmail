@@ -9,8 +9,8 @@ A Rubyesque interface to Google's Gmail, with all the tools you'll need. Search,
 read and send multipart emails, archive, mark as read/unread, delete emails, 
 and manage labels.
 
-It's based on Daniel Parker's ruby-gmail gem. This version has more friendly
-API, is well tested, better documented and have many other improvements.
+It's based on Daniel Parker's ruby-gmail gem. This version has a more friendly
+API, is well tested, better documented and has many other improvements.
 
 ## Installation
 
