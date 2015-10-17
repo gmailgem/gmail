@@ -113,7 +113,7 @@ describe Gmail::Message do
 
       expect(message.labels).to include("Awesome")
       expect(message.labels).to include("Great")
-      expect(message.labels).to include("\\Inbox")
+      expect(message.labels).to include(:Inbox)
     end
 
     it "removes a given label" do
@@ -123,7 +123,7 @@ describe Gmail::Message do
       message.remove_label 'Awesome'
       expect(message.labels).not_to include("Awesome")
       expect(message.labels).to include("Great")
-      expect(message.labels).to include("\\Inbox")
+      expect(message.labels).to include(:Inbox)
       expect(message.flags).not_to include(:Seen)
     end
 
@@ -132,7 +132,7 @@ describe Gmail::Message do
       message.label! 'Great'
       expect(message.labels).to include("Great")
       expect(message.labels).to include("Awesome")
-      expect(message.labels).to include("\\Inbox")
+      expect(message.labels).to include(:Inbox)
     end
 
     it "removes a given label with old method" do
@@ -142,7 +142,7 @@ describe Gmail::Message do
       message.remove_label! 'Awesome'
       expect(message.labels).not_to include("Awesome")
       expect(message.labels).to include("Great")
-      expect(message.labels).to include("\\Inbox")
+      expect(message.labels).to include(:Inbox)
       expect(message.flags).not_to include(:Seen)
     end
 
@@ -153,7 +153,7 @@ describe Gmail::Message do
       message.move_to('Great', 'Awesome')
       expect(message.labels).to include("Great")
       expect(message.labels).not_to include("Awesome")
-      expect(message.labels).to include("\\Inbox")
+      expect(message.labels).to include(:Inbox)
     end
 
     it "marks itself read" do

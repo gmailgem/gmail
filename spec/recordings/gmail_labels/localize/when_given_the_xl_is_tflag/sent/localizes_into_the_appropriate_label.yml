@@ -4,13 +4,14 @@ LOGIN-9a890af1c86854f5170d99be6e10b8f1:
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0001
     name: OK
-    data: !ruby/struct:Net::IMAP::ResponseText
+    data: &2 !ruby/struct:Net::IMAP::ResponseText
       code: 
       text: ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com authenticated (Success)
     raw_data: "RUBY0001 OK ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com authenticated
       (Success)\r\n"
-  - CAPABILITY: &1
-    - - IMAP4REV1
+  - CAPABILITY: &3
+    - &1
+      - IMAP4REV1
       - UNSELECT
       - IDLE
       - NAMESPACE
@@ -26,80 +27,188 @@ LOGIN-9a890af1c86854f5170d99be6e10b8f1:
       - CONDSTORE
       - ESEARCH
       - UTF8=ACCEPT
+      - LIST-EXTENDED
+      - LIST-STATUS
+  - - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: CAPABILITY
+      data: *1
+      raw_data: "* CAPABILITY IMAP4rev1 UNSELECT IDLE NAMESPACE QUOTA ID XLIST CHILDREN
+        X-GM-EXT-1 UIDPLUS COMPRESS=DEFLATE ENABLE MOVE CONDSTORE ESEARCH UTF8=ACCEPT
+        LIST-EXTENDED LIST-STATUS\r\n"
+    - !ruby/struct:Net::IMAP::TaggedResponse
+      tag: RUBY0001
+      name: OK
+      data: *2
+      raw_data: "RUBY0001 OK ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com authenticated
+        (Success)\r\n"
 LIST-b30698c3407aff5520448484b159fc07:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0002
     name: OK
-    data: !ruby/struct:Net::IMAP::ResponseText
+    data: &20 !ruby/struct:Net::IMAP::ResponseText
       code: 
       text: Success
     raw_data: "RUBY0002 OK Success\r\n"
-  - CAPABILITY: *1
+  - CAPABILITY: *3
     LIST:
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &4 !ruby/struct:Net::IMAP::MailboxList
       attr:
       - :Hasnochildren
       delim: "/"
       name: Awesome
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &5 !ruby/struct:Net::IMAP::MailboxList
       attr:
       - :Hasnochildren
       delim: "/"
       name: Great
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &6 !ruby/struct:Net::IMAP::MailboxList
       attr:
       - :Hasnochildren
       delim: "/"
       name: INBOX
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &7 !ruby/struct:Net::IMAP::MailboxList
       attr:
-      - :Noselect
+      - :Hasnochildren
+      delim: "/"
+      name: Ni&APE-os
+    - &8 !ruby/struct:Net::IMAP::MailboxList
+      attr:
       - :Haschildren
+      - :Noselect
       delim: "/"
       name: "[Gmail]"
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &9 !ruby/struct:Net::IMAP::MailboxList
       attr:
-      - :Hasnochildren
       - :All
+      - :Hasnochildren
       delim: "/"
       name: "[Gmail]/All Mail"
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &10 !ruby/struct:Net::IMAP::MailboxList
       attr:
-      - :Hasnochildren
       - :Drafts
+      - :Hasnochildren
       delim: "/"
       name: "[Gmail]/Drafts"
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &11 !ruby/struct:Net::IMAP::MailboxList
       attr:
       - :Hasnochildren
       - :Important
       delim: "/"
       name: "[Gmail]/Important"
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &12 !ruby/struct:Net::IMAP::MailboxList
       attr:
-      - :Sent
       - :Hasnochildren
+      - :Sent
       delim: "/"
       name: "[Gmail]/Sent Mail"
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &13 !ruby/struct:Net::IMAP::MailboxList
       attr:
       - :Hasnochildren
       - :Junk
       delim: "/"
       name: "[Gmail]/Spam"
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &14 !ruby/struct:Net::IMAP::MailboxList
       attr:
-      - :Hasnochildren
       - :Flagged
+      - :Hasnochildren
       delim: "/"
       name: "[Gmail]/Starred"
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &15 !ruby/struct:Net::IMAP::MailboxList
       attr:
-      - :Trash
       - :Hasnochildren
+      - :Trash
       delim: "/"
       name: "[Gmail]/Trash"
+    - &16 !ruby/struct:Net::IMAP::MailboxList
+      attr:
+      - :Hasnochildren
+      delim: "/"
+      name: "\\Junk"
+    - &17 !ruby/struct:Net::IMAP::MailboxList
+      attr:
+      - :Hasnochildren
+      delim: "/"
+      name: one's and two's
+    - &18 !ruby/struct:Net::IMAP::MailboxList
+      attr:
+      - :Hasnochildren
+      delim: "/"
+      name: some new label
+    - &19 !ruby/struct:Net::IMAP::MailboxList
+      attr:
+      - :Hasnochildren
+      delim: "/"
+      name: some other label
+  - - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *4
+      raw_data: "* LIST (\\HasNoChildren) \"/\" \"Awesome\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *5
+      raw_data: "* LIST (\\HasNoChildren) \"/\" \"Great\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *6
+      raw_data: "* LIST (\\HasNoChildren) \"/\" \"INBOX\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *7
+      raw_data: "* LIST (\\HasNoChildren) \"/\" \"Ni&APE-os\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *8
+      raw_data: "* LIST (\\HasChildren \\Noselect) \"/\" \"[Gmail]\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *9
+      raw_data: "* LIST (\\All \\HasNoChildren) \"/\" \"[Gmail]/All Mail\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *10
+      raw_data: "* LIST (\\Drafts \\HasNoChildren) \"/\" \"[Gmail]/Drafts\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *11
+      raw_data: "* LIST (\\HasNoChildren \\Important) \"/\" \"[Gmail]/Important\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *12
+      raw_data: "* LIST (\\HasNoChildren \\Sent) \"/\" \"[Gmail]/Sent Mail\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *13
+      raw_data: "* LIST (\\HasNoChildren \\Junk) \"/\" \"[Gmail]/Spam\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *14
+      raw_data: "* LIST (\\Flagged \\HasNoChildren) \"/\" \"[Gmail]/Starred\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *15
+      raw_data: "* LIST (\\HasNoChildren \\Trash) \"/\" \"[Gmail]/Trash\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *16
+      raw_data: "* LIST (\\HasNoChildren) \"/\" \"\\\\Junk\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *17
+      raw_data: "* LIST (\\HasNoChildren) \"/\" \"one's and two's\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *18
+      raw_data: "* LIST (\\HasNoChildren) \"/\" \"some new label\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *19
+      raw_data: "* LIST (\\HasNoChildren) \"/\" \"some other label\"\r\n"
+    - !ruby/struct:Net::IMAP::TaggedResponse
+      tag: RUBY0002
+      name: OK
+      data: *20
+      raw_data: "RUBY0002 OK Success\r\n"
 LOGOUT-e76a09b7766d60a37ff9e1af527a143e:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
@@ -109,8 +218,12 @@ LOGOUT-e76a09b7766d60a37ff9e1af527a143e:
       code: 
       text: 73 good day (Success)
     raw_data: "RUBY0003 OK 73 good day (Success)\r\n"
-  - CAPABILITY: *1
+  - CAPABILITY: *3
     BYE:
-    - !ruby/struct:Net::IMAP::ResponseText
+    - &21 !ruby/struct:Net::IMAP::ResponseText
       code: 
       text: LOGOUT Requested
+  - - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: BYE
+      data: *21
+      raw_data: "* BYE LOGOUT Requested\r\n"

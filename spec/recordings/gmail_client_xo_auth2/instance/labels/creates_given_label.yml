@@ -3,37 +3,50 @@ AUTHENTICATE-48cc3379658326e2b0e5cd2a6f3da2af:
 - - :raise
   - !ruby/exception:Net::IMAP::NoResponseError
     message: " Invalid credentials (Failure)"
-    response: !ruby/struct:Net::IMAP::TaggedResponse
+    response: &1 !ruby/struct:Net::IMAP::TaggedResponse
       tag: RUBY0001
       name: 'NO'
       data: !ruby/struct:Net::IMAP::ResponseText
         code: !ruby/struct:Net::IMAP::ResponseCode
-          name: ALERT
+          name: AUTHENTICATIONFAILED
           data: 
         text: " Invalid credentials (Failure)"
-      raw_data: "RUBY0001 NO [ALERT] Invalid credentials (Failure)\r\n"
+      raw_data: "RUBY0001 NO [AUTHENTICATIONFAILED] Invalid credentials (Failure)\r\n"
   - {}
+  - - !ruby/struct:Net::IMAP::ContinuationRequest
+      data: !ruby/struct:Net::IMAP::ResponseText
+        code: 
+        text: ''
+      raw_data: "+ \r\n"
+    - !ruby/struct:Net::IMAP::ContinuationRequest
+      data: !ruby/struct:Net::IMAP::ResponseText
+        code: 
+        text: eyJzdGF0dXMiOiI0MDAiLCJzY2hlbWVzIjoiQmVhcmVyIiwic2NvcGUiOiJodHRwczovL21haWwuZ29vZ2xlLmNvbS8ifQ==
+      raw_data: "+ eyJzdGF0dXMiOiI0MDAiLCJzY2hlbWVzIjoiQmVhcmVyIiwic2NvcGUiOiJodHRwczovL21haWwuZ29vZ2xlLmNvbS8ifQ==\r\n"
+    - *1
 CREATE-873546102acc7776d52edef1516784eb:
 - - :raise
   - !ruby/exception:Net::IMAP::BadResponseError
-    message: Unknown command c131mb15695345oig
-    response: !ruby/struct:Net::IMAP::TaggedResponse
+    message: Unknown command n70mb364137392ita
+    response: &2 !ruby/struct:Net::IMAP::TaggedResponse
       tag: RUBY0002
       name: BAD
       data: !ruby/struct:Net::IMAP::ResponseText
         code: 
-        text: Unknown command c131mb15695345oig
-      raw_data: "RUBY0002 BAD Unknown command c131mb15695345oig\r\n"
+        text: Unknown command n70mb364137392ita
+      raw_data: "RUBY0002 BAD Unknown command n70mb364137392ita\r\n"
   - {}
+  - - *2
 LIST-e0583fa6130ee374cef031c01d8cc486:
 - - :raise
   - !ruby/exception:Net::IMAP::BadResponseError
-    message: Unknown command c131mb15695345oig
-    response: !ruby/struct:Net::IMAP::TaggedResponse
+    message: Unknown command n70mb364137392ita
+    response: &3 !ruby/struct:Net::IMAP::TaggedResponse
       tag: RUBY0003
       name: BAD
       data: !ruby/struct:Net::IMAP::ResponseText
         code: 
-        text: Unknown command c131mb15695345oig
-      raw_data: "RUBY0003 BAD Unknown command c131mb15695345oig\r\n"
+        text: Unknown command n70mb364137392ita
+      raw_data: "RUBY0003 BAD Unknown command n70mb364137392ita\r\n"
   - {}
+  - - *3

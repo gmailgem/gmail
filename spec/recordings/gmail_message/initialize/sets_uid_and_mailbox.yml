@@ -4,13 +4,14 @@ LOGIN-9a890af1c86854f5170d99be6e10b8f1:
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0001
     name: OK
-    data: !ruby/struct:Net::IMAP::ResponseText
+    data: &2 !ruby/struct:Net::IMAP::ResponseText
       code: 
       text: ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com authenticated (Success)
     raw_data: "RUBY0001 OK ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com authenticated
       (Success)\r\n"
-  - CAPABILITY: &1
-    - - IMAP4REV1
+  - CAPABILITY: &3
+    - &1
+      - IMAP4REV1
       - UNSELECT
       - IDLE
       - NAMESPACE
@@ -26,238 +27,399 @@ LOGIN-9a890af1c86854f5170d99be6e10b8f1:
       - CONDSTORE
       - ESEARCH
       - UTF8=ACCEPT
+      - LIST-EXTENDED
+      - LIST-STATUS
+  - - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: CAPABILITY
+      data: *1
+      raw_data: "* CAPABILITY IMAP4rev1 UNSELECT IDLE NAMESPACE QUOTA ID XLIST CHILDREN
+        X-GM-EXT-1 UIDPLUS COMPRESS=DEFLATE ENABLE MOVE CONDSTORE ESEARCH UTF8=ACCEPT
+        LIST-EXTENDED LIST-STATUS\r\n"
+    - !ruby/struct:Net::IMAP::TaggedResponse
+      tag: RUBY0001
+      name: OK
+      data: *2
+      raw_data: "RUBY0001 OK ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com authenticated
+        (Success)\r\n"
 LIST-b30698c3407aff5520448484b159fc07:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0002
     name: OK
-    data: !ruby/struct:Net::IMAP::ResponseText
+    data: &20 !ruby/struct:Net::IMAP::ResponseText
       code: 
       text: Success
     raw_data: "RUBY0002 OK Success\r\n"
-  - CAPABILITY: *1
+  - CAPABILITY: *3
     LIST:
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &4 !ruby/struct:Net::IMAP::MailboxList
       attr:
       - :Hasnochildren
       delim: "/"
       name: Awesome
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &5 !ruby/struct:Net::IMAP::MailboxList
       attr:
       - :Hasnochildren
       delim: "/"
       name: Great
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &6 !ruby/struct:Net::IMAP::MailboxList
       attr:
       - :Hasnochildren
       delim: "/"
       name: INBOX
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &7 !ruby/struct:Net::IMAP::MailboxList
       attr:
       - :Hasnochildren
       delim: "/"
       name: Ni&APE-os
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &8 !ruby/struct:Net::IMAP::MailboxList
       attr:
-      - :Noselect
       - :Haschildren
+      - :Noselect
       delim: "/"
       name: "[Gmail]"
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &9 !ruby/struct:Net::IMAP::MailboxList
       attr:
-      - :Hasnochildren
       - :All
+      - :Hasnochildren
       delim: "/"
       name: "[Gmail]/All Mail"
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &10 !ruby/struct:Net::IMAP::MailboxList
       attr:
-      - :Hasnochildren
       - :Drafts
+      - :Hasnochildren
       delim: "/"
       name: "[Gmail]/Drafts"
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &11 !ruby/struct:Net::IMAP::MailboxList
       attr:
       - :Hasnochildren
       - :Important
       delim: "/"
       name: "[Gmail]/Important"
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &12 !ruby/struct:Net::IMAP::MailboxList
       attr:
-      - :Sent
       - :Hasnochildren
+      - :Sent
       delim: "/"
       name: "[Gmail]/Sent Mail"
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &13 !ruby/struct:Net::IMAP::MailboxList
       attr:
       - :Hasnochildren
       - :Junk
       delim: "/"
       name: "[Gmail]/Spam"
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &14 !ruby/struct:Net::IMAP::MailboxList
       attr:
-      - :Hasnochildren
       - :Flagged
+      - :Hasnochildren
       delim: "/"
       name: "[Gmail]/Starred"
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &15 !ruby/struct:Net::IMAP::MailboxList
       attr:
-      - :Trash
       - :Hasnochildren
+      - :Trash
       delim: "/"
       name: "[Gmail]/Trash"
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &16 !ruby/struct:Net::IMAP::MailboxList
+      attr:
+      - :Hasnochildren
+      delim: "/"
+      name: "\\Junk"
+    - &17 !ruby/struct:Net::IMAP::MailboxList
       attr:
       - :Hasnochildren
       delim: "/"
       name: one's and two's
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &18 !ruby/struct:Net::IMAP::MailboxList
       attr:
       - :Hasnochildren
       delim: "/"
       name: some new label
-    - !ruby/struct:Net::IMAP::MailboxList
+    - &19 !ruby/struct:Net::IMAP::MailboxList
       attr:
       - :Hasnochildren
       delim: "/"
       name: some other label
+  - - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *4
+      raw_data: "* LIST (\\HasNoChildren) \"/\" \"Awesome\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *5
+      raw_data: "* LIST (\\HasNoChildren) \"/\" \"Great\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *6
+      raw_data: "* LIST (\\HasNoChildren) \"/\" \"INBOX\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *7
+      raw_data: "* LIST (\\HasNoChildren) \"/\" \"Ni&APE-os\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *8
+      raw_data: "* LIST (\\HasChildren \\Noselect) \"/\" \"[Gmail]\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *9
+      raw_data: "* LIST (\\All \\HasNoChildren) \"/\" \"[Gmail]/All Mail\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *10
+      raw_data: "* LIST (\\Drafts \\HasNoChildren) \"/\" \"[Gmail]/Drafts\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *11
+      raw_data: "* LIST (\\HasNoChildren \\Important) \"/\" \"[Gmail]/Important\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *12
+      raw_data: "* LIST (\\HasNoChildren \\Sent) \"/\" \"[Gmail]/Sent Mail\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *13
+      raw_data: "* LIST (\\HasNoChildren \\Junk) \"/\" \"[Gmail]/Spam\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *14
+      raw_data: "* LIST (\\Flagged \\HasNoChildren) \"/\" \"[Gmail]/Starred\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *15
+      raw_data: "* LIST (\\HasNoChildren \\Trash) \"/\" \"[Gmail]/Trash\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *16
+      raw_data: "* LIST (\\HasNoChildren) \"/\" \"\\\\Junk\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *17
+      raw_data: "* LIST (\\HasNoChildren) \"/\" \"one's and two's\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *18
+      raw_data: "* LIST (\\HasNoChildren) \"/\" \"some new label\"\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: LIST
+      data: *19
+      raw_data: "* LIST (\\HasNoChildren) \"/\" \"some other label\"\r\n"
+    - !ruby/struct:Net::IMAP::TaggedResponse
+      tag: RUBY0002
+      name: OK
+      data: *20
+      raw_data: "RUBY0002 OK Success\r\n"
 SELECT-868fce8856c91e50bebd43b4dbd8e071:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0003
     name: OK
-    data: !ruby/struct:Net::IMAP::ResponseText
+    data: &27 !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: READ-WRITE
         data: 
       text: " [Gmail]/All Mail selected. (Success)"
     raw_data: "RUBY0003 OK [READ-WRITE] [Gmail]/All Mail selected. (Success)\r\n"
-  - FLAGS: &4
-    - - :Answered
+  - FLAGS: &35
+    - &22
+      - :Answered
       - :Flagged
       - :Draft
       - :Deleted
       - :Seen
-      - "$Phishing"
       - "$NotPhishing"
-    OK: &5
-    - !ruby/struct:Net::IMAP::ResponseText
+      - "$Phishing"
+    OK: &36
+    - &23 !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: PERMANENTFLAGS
-        data: &2
+        data: &21
         - :Answered
         - :Flagged
         - :Draft
         - :Deleted
         - :Seen
-        - "$Phishing"
         - "$NotPhishing"
+        - "$Phishing"
         - :*
       text: " Flags permitted."
-    - !ruby/struct:Net::IMAP::ResponseText
+    - &24 !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: UIDVALIDITY
         data: 11
       text: " UIDs valid."
-    - !ruby/struct:Net::IMAP::ResponseText
+    - &25 !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: UIDNEXT
-        data: 190
+        data: 398
       text: " Predicted next UID."
-    - !ruby/struct:Net::IMAP::ResponseText
+    - &26 !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: HIGHESTMODSEQ
-        data: '14699'
+        data: '24049'
       text: ''
-    PERMANENTFLAGS: &6
-    - *2
-    UIDVALIDITY: &7
+    PERMANENTFLAGS: &37
+    - *21
+    UIDVALIDITY: &38
     - 11
-    EXISTS: &8
-    - 181
-    RECENT: &9
+    EXISTS: &39
+    - 385
+    RECENT: &40
     - 0
-    UIDNEXT: &10
-    - 190
-    HIGHESTMODSEQ: &11
-    - '14699'
+    UIDNEXT: &41
+    - 398
+    HIGHESTMODSEQ: &42
+    - '24049'
+  - - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: FLAGS
+      data: *22
+      raw_data: "* FLAGS (\\Answered \\Flagged \\Draft \\Deleted \\Seen $NotPhishing
+        $Phishing)\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: OK
+      data: *23
+      raw_data: "* OK [PERMANENTFLAGS (\\Answered \\Flagged \\Draft \\Deleted \\Seen
+        $NotPhishing $Phishing \\*)] Flags permitted.\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: OK
+      data: *24
+      raw_data: "* OK [UIDVALIDITY 11] UIDs valid.\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: EXISTS
+      data: 385
+      raw_data: "* 385 EXISTS\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: RECENT
+      data: 0
+      raw_data: "* 0 RECENT\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: OK
+      data: *25
+      raw_data: "* OK [UIDNEXT 398] Predicted next UID.\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: OK
+      data: *26
+      raw_data: "* OK [HIGHESTMODSEQ 24049]\r\n"
+    - !ruby/struct:Net::IMAP::TaggedResponse
+      tag: RUBY0003
+      name: OK
+      data: *27
+      raw_data: "RUBY0003 OK [READ-WRITE] [Gmail]/All Mail selected. (Success)\r\n"
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0005
     name: OK
-    data: !ruby/struct:Net::IMAP::ResponseText
+    data: &34 !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: READ-WRITE
         data: 
       text: " [Gmail]/All Mail selected. (Success)"
     raw_data: "RUBY0005 OK [READ-WRITE] [Gmail]/All Mail selected. (Success)\r\n"
-  - FLAGS: &12
-    - - :Answered
+  - FLAGS: &45
+    - &29
+      - :Answered
       - :Flagged
       - :Draft
       - :Deleted
       - :Seen
-      - "$Phishing"
       - "$NotPhishing"
-    OK: &13
-    - !ruby/struct:Net::IMAP::ResponseText
+      - "$Phishing"
+    OK: &46
+    - &30 !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: PERMANENTFLAGS
-        data: &3
+        data: &28
         - :Answered
         - :Flagged
         - :Draft
         - :Deleted
         - :Seen
-        - "$Phishing"
         - "$NotPhishing"
+        - "$Phishing"
         - :*
       text: " Flags permitted."
-    - !ruby/struct:Net::IMAP::ResponseText
+    - &31 !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: UIDVALIDITY
         data: 11
       text: " UIDs valid."
-    - !ruby/struct:Net::IMAP::ResponseText
+    - &32 !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: UIDNEXT
-        data: 190
+        data: 398
       text: " Predicted next UID."
-    - !ruby/struct:Net::IMAP::ResponseText
+    - &33 !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: HIGHESTMODSEQ
-        data: '14699'
+        data: '24049'
       text: ''
-    PERMANENTFLAGS: &14
-    - *3
-    UIDVALIDITY: &15
+    PERMANENTFLAGS: &47
+    - *28
+    UIDVALIDITY: &48
     - 11
-    EXISTS: &16
-    - 181
-    RECENT: &17
+    EXISTS: &49
+    - 385
+    RECENT: &50
     - 0
-    UIDNEXT: &18
-    - 190
-    HIGHESTMODSEQ: &19
-    - '14699'
+    UIDNEXT: &51
+    - 398
+    HIGHESTMODSEQ: &52
+    - '24049'
+  - - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: FLAGS
+      data: *29
+      raw_data: "* FLAGS (\\Answered \\Flagged \\Draft \\Deleted \\Seen $NotPhishing
+        $Phishing)\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: OK
+      data: *30
+      raw_data: "* OK [PERMANENTFLAGS (\\Answered \\Flagged \\Draft \\Deleted \\Seen
+        $NotPhishing $Phishing \\*)] Flags permitted.\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: OK
+      data: *31
+      raw_data: "* OK [UIDVALIDITY 11] UIDs valid.\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: EXISTS
+      data: 385
+      raw_data: "* 385 EXISTS\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: RECENT
+      data: 0
+      raw_data: "* 0 RECENT\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: OK
+      data: *32
+      raw_data: "* OK [UIDNEXT 398] Predicted next UID.\r\n"
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: OK
+      data: *33
+      raw_data: "* OK [HIGHESTMODSEQ 24049]\r\n"
+    - !ruby/struct:Net::IMAP::TaggedResponse
+      tag: RUBY0005
+      name: OK
+      data: *34
+      raw_data: "RUBY0005 OK [READ-WRITE] [Gmail]/All Mail selected. (Success)\r\n"
 UID SEARCH-b19658413e2b63d2bac9c290a67c2cb3:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0004
     name: OK
-    data: !ruby/struct:Net::IMAP::ResponseText
+    data: &44 !ruby/struct:Net::IMAP::ResponseText
       code: 
       text: SEARCH completed (Success)
     raw_data: "RUBY0004 OK SEARCH completed (Success)\r\n"
-  - FLAGS: *4
-    OK: *5
-    PERMANENTFLAGS: *6
-    UIDVALIDITY: *7
-    EXISTS: *8
-    RECENT: *9
-    UIDNEXT: *10
-    HIGHESTMODSEQ: *11
+  - FLAGS: *35
+    OK: *36
+    PERMANENTFLAGS: *37
+    UIDVALIDITY: *38
+    EXISTS: *39
+    RECENT: *40
+    UIDNEXT: *41
+    HIGHESTMODSEQ: *42
     SEARCH:
-    - - 1
+    - &43
+      - 1
       - 2
       - 3
       - 4
@@ -436,33 +598,265 @@ UID SEARCH-b19658413e2b63d2bac9c290a67c2cb3:
       - 184
       - 185
       - 186
-      - 188
       - 189
+      - 190
+      - 191
+      - 192
+      - 193
+      - 194
+      - 195
+      - 196
+      - 197
+      - 198
+      - 199
+      - 200
+      - 201
+      - 202
+      - 203
+      - 204
+      - 205
+      - 206
+      - 207
+      - 208
+      - 209
+      - 210
+      - 211
+      - 212
+      - 213
+      - 214
+      - 215
+      - 216
+      - 217
+      - 218
+      - 219
+      - 220
+      - 221
+      - 222
+      - 223
+      - 224
+      - 225
+      - 226
+      - 227
+      - 228
+      - 229
+      - 230
+      - 231
+      - 232
+      - 233
+      - 234
+      - 235
+      - 236
+      - 237
+      - 238
+      - 239
+      - 240
+      - 241
+      - 242
+      - 243
+      - 244
+      - 245
+      - 247
+      - 248
+      - 249
+      - 251
+      - 252
+      - 253
+      - 254
+      - 255
+      - 256
+      - 257
+      - 258
+      - 259
+      - 260
+      - 261
+      - 262
+      - 263
+      - 264
+      - 265
+      - 266
+      - 267
+      - 268
+      - 269
+      - 270
+      - 271
+      - 272
+      - 273
+      - 274
+      - 275
+      - 276
+      - 277
+      - 278
+      - 279
+      - 280
+      - 281
+      - 282
+      - 283
+      - 284
+      - 285
+      - 286
+      - 287
+      - 288
+      - 289
+      - 290
+      - 291
+      - 292
+      - 293
+      - 294
+      - 295
+      - 296
+      - 297
+      - 298
+      - 299
+      - 300
+      - 301
+      - 302
+      - 303
+      - 304
+      - 305
+      - 306
+      - 307
+      - 308
+      - 309
+      - 310
+      - 311
+      - 312
+      - 313
+      - 314
+      - 315
+      - 316
+      - 317
+      - 318
+      - 319
+      - 320
+      - 321
+      - 322
+      - 323
+      - 324
+      - 325
+      - 326
+      - 327
+      - 328
+      - 329
+      - 330
+      - 331
+      - 332
+      - 333
+      - 334
+      - 335
+      - 336
+      - 337
+      - 338
+      - 339
+      - 340
+      - 341
+      - 342
+      - 343
+      - 344
+      - 345
+      - 346
+      - 347
+      - 348
+      - 349
+      - 350
+      - 351
+      - 352
+      - 353
+      - 354
+      - 355
+      - 356
+      - 357
+      - 358
+      - 359
+      - 360
+      - 361
+      - 362
+      - 363
+      - 364
+      - 365
+      - 366
+      - 367
+      - 368
+      - 369
+      - 370
+      - 371
+      - 372
+      - 373
+      - 374
+      - 375
+      - 376
+      - 377
+      - 378
+      - 379
+      - 380
+      - 381
+      - 382
+      - 383
+      - 384
+      - 385
+      - 386
+      - 387
+      - 388
+      - 389
+      - 391
+      - 392
+      - 393
+      - 394
+      - 395
+      - 396
+      - 397
+  - - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: SEARCH
+      data: *43
+      raw_data: "* SEARCH 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22
+        23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47
+        48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72
+        73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97
+        98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116
+        117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135
+        136 137 138 139 140 141 142 143 144 145 150 151 155 156 157 158 159 160 161
+        162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180
+        181 182 183 184 185 186 189 190 191 192 193 194 195 196 197 198 199 200 201
+        202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220
+        221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239
+        240 241 242 243 244 245 247 248 249 251 252 253 254 255 256 257 258 259 260
+        261 262 263 264 265 266 267 268 269 270 271 272 273 274 275 276 277 278 279
+        280 281 282 283 284 285 286 287 288 289 290 291 292 293 294 295 296 297 298
+        299 300 301 302 303 304 305 306 307 308 309 310 311 312 313 314 315 316 317
+        318 319 320 321 322 323 324 325 326 327 328 329 330 331 332 333 334 335 336
+        337 338 339 340 341 342 343 344 345 346 347 348 349 350 351 352 353 354 355
+        356 357 358 359 360 361 362 363 364 365 366 367 368 369 370 371 372 373 374
+        375 376 377 378 379 380 381 382 383 384 385 386 387 388 389 391 392 393 394
+        395 396 397\r\n"
+    - !ruby/struct:Net::IMAP::TaggedResponse
+      tag: RUBY0004
+      name: OK
+      data: *44
+      raw_data: "RUBY0004 OK SEARCH completed (Success)\r\n"
 UID FETCH-70e92ae4507a5481cf98aac122edceb8:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0006
     name: OK
-    data: !ruby/struct:Net::IMAP::ResponseText
+    data: &54 !ruby/struct:Net::IMAP::ResponseText
       code: 
       text: Success
     raw_data: "RUBY0006 OK Success\r\n"
-  - FLAGS: *12
-    OK: *13
-    PERMANENTFLAGS: *14
-    UIDVALIDITY: *15
-    EXISTS: *16
-    RECENT: *17
-    UIDNEXT: *18
-    HIGHESTMODSEQ: *19
+  - FLAGS: *45
+    OK: *46
+    PERMANENTFLAGS: *47
+    UIDVALIDITY: *48
+    EXISTS: *49
+    RECENT: *50
+    UIDNEXT: *51
+    HIGHESTMODSEQ: *52
     FETCH:
-    - !ruby/struct:Net::IMAP::FetchData
+    - &53 !ruby/struct:Net::IMAP::FetchData
       seqno: 1
       attr:
         X-GM-THRID: 1490339162618061913
         X-GM-MSGID: 1490339162618061913
         X-GM-LABELS:
-        - "\\Inbox"
+        - :Inbox
         UID: 1
         FLAGS:
         - :Seen
@@ -578,3 +972,97 @@ UID FETCH-70e92ae4507a5481cf98aac122edceb8:
           padding:1em; margin:0 auto 4% auto; font-family:'Arial','Helvetica',sans-s=\r\nerif;
           text-align:center;\">=C2=A9 2015 Google Inc. 1600 Amphitheatre Parkway=\r\n,
           Mountain View, CA 94043<br/></div></div></body></html>\r\n\r\n--bcaec51dcff73ca5e9050ca9c59a--"
+  - - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: FETCH
+      data: *53
+      raw_data: "* 1 FETCH (X-GM-THRID 1490339162618061913 X-GM-MSGID 1490339162618061913
+        X-GM-LABELS (\"\\\\Inbox\") UID 1 FLAGS (\\Seen) ENVELOPE (\"Wed, 14 Jan 2015
+        21:03:01 -0800\" \"Three tips to get the most out of Gmail\" ((\"Gmail Team\"
+        NIL \"mail-noreply\" \"google.com\")) ((\"Gmail Team\" NIL \"mail-noreply\"
+        \"google.com\")) ((\"Gmail Team\" NIL \"mail-noreply\" \"google.com\")) ((\"John
+        Doe\" NIL \"ki0zvkyi1yzgy7xu4f4dh46nqrcecm\" \"gmail.com\")) NIL NIL NIL \"<CACNRAYKakHOCaxin=3D-9QAC=GRQgDae66vLpwqPQC6rDAJK2w@mail.gmail.com>\")
+        BODY[] {6915}\r\nMIME-Version: 1.0\r\nx-no-auto-attachment: 1\r\nReceived:
+        by 10.70.87.10; Wed, 14 Jan 2015 21:03:01 -0800 (PST)\r\nDate: Wed, 14 Jan
+        2015 21:03:01 -0800\r\nMessage-ID: <CACNRAYKakHOCaxin=3D-9QAC=GRQgDae66vLpwqPQC6rDAJK2w@mail.gmail.com>\r\nSubject:
+        Three tips to get the most out of Gmail\r\nFrom: Gmail Team <mail-noreply@google.com>\r\nTo:
+        John Doe <ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com>\r\nContent-Type: multipart/alternative;
+        boundary=bcaec51dcff73ca5e9050ca9c59a\r\n\r\n--bcaec51dcff73ca5e9050ca9c59a\r\nContent-Type:
+        text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: quoted-printable\r\n\r\n
+        Three tips to get the most out of Gmail\r\n[image: Google]\r\n\r\nHi John\r\n\r\nTips
+        to get the most out of Gmail\r\n\r\n[image: Contacts]\r\nBring your contacts
+        and mail into Gmail\r\n\r\nOn your computer, you can copy your contacts and
+        emails from your old email\r\naccount to make the transition to Gmail even
+        better. Learn how\r\n<https://support.google.com/mail/answer/164640?hl=3Den&ref_topic=3D1669014>=\r\n.\r\n[image:
+        Search]\r\nFind what you need fast\r\n\r\nWith the power of Google Search
+        right in your inbox, it's easy to sort your\r\nemail. Find what you're looking
+        for with predictions based on email\r\ncontent, past searches and contacts.\r\n[image:
+        Search]\r\nMuch more than email\r\n\r\nYou can send text messages and make
+        video calls with Hangouts\r\n<https://www.google.com/intl/en/hangouts/> right
+        from Gmail. To use this\r\nfeature on mobile, download the Hangouts app for
+        Android\r\n<https://play.google.com/store/apps/details?id=3Dcom.google.android.talk&hl=\r\n=3Den>\r\nand
+        Apple <https://itunes.apple.com/en/app/hangouts/id643496868?mt=3D8>\r\ndevices.\r\n\r\n\r\n[image:
+        Gmail icon]Happy emailing,\r\nThe Gmail Team\r\n =C2=A9 2015 Google Inc. 1600
+        Amphitheatre Parkway, Mountain View, CA 94043\r\n\r\n--bcaec51dcff73ca5e9050ca9c59a\r\nContent-Type:
+        text/html; charset=UTF-8\r\nContent-Transfer-Encoding: quoted-printable\r\n\r\n<!DOCTYPE
+        html>\r\n<html><head><meta http-equiv=3D\"content-type\" content=3D\"text/html;charset=\r\n=3DUTF-8\"
+        /><title>Three tips to get the most out of Gmail</title></head><b=\r\nody
+        style=3D\"background-color:#e5e5e5; margin:20px 0;\"><br /><div style=3D\"=\r\nmargin:2%;\"><div
+        style=3D\"direction:ltr; text-align:left; font-family:'Open=\r\n sans','Arial',sans-serif;
+        color:#444; background-color:white; padding:1.5e=\r\nm; border-radius:1em;
+        box-shadow:1px -5px 8px 2px #bbb; max-width:580px; ma=\r\nrgin:2% auto 0 auto;\"><table
+        style=3D\"background:white;width:100%\"><tr><td>=\r\n<div style=3D\"width:90px;
+        height:54px; margin:10px auto;\"><img src=3D\"https=\r\n://services.google.com/fh/files/emails/google_logo_flat_90_color.png\"
+        alt=\r\n=3D\"Google\" width=3D\"90\" height=3D\"34\"/></div><div style=3D\"width:90%;
+        padd=\r\ning-bottom:10px; padding-left:15px\"><p><img alt=3D\"\" src=3D\"https://ssl.gst=\r\natic.com/accounts/services/mail/msa/gmail_icon_small.png\"
+        style=3D\"display:=\r\nblock; float:left; margin-top:4px; margin-right:5px;\"/><span
+        style=3D\"font-=\r\nfamily:'Open sans','Arial',sans-serif; font-weight:bold;
+        font-size:small; l=\r\nine-height:1.4em\">Hi John</span></p><p><span style=3D\"font-family:'Open
+        san=\r\ns','Arial',sans-serif; font-size:2.08em;\">Tips to get the most out
+        of Gmail=\r\n</span><br/></p></div><p></p><div style=3D\"float:left; clear:both;
+        padding:=\r\n0px 5px 10px 10px;\"><img src=3D\"https://services.google.com/fh/files/emails=\r\n/importcontacts.png\"
+        alt=3D\"Contacts\" style=3D\"display:block;\"width=3D\"129\"=\r\nheight=3D\"129\"/></div><div
+        style=3D\"float:left; vertical-align:middle; padd=\r\ning:10px; max-width:398px;
+        float:left;\"><table style=3D\"vertical-align:midd=\r\nle;\"><tr><td style=3D\"font-family:'Open
+        sans','Arial',sans-serif;\"><span st=\r\nyle=3D\"font-size:20px;\">Bring your
+        contacts and mail into Gmail</span><br/>=\r\n<br/><span style=3D\"font-size:small;
+        line-height:1.4em\">On your computer, y=\r\nou can copy your contacts and
+        emails from your old email account to make th=\r\ne transition to Gmail even
+        better. <a href=3D\"https://support.google.com/ma=\r\nil/answer/164640?hl=3Den&amp;ref_topic=3D1669014\"
+        style=3D\"text-decoration:=\r\nnone; color:#15C\">Learn how</a>.</span></td></tr></table></div><div
+        style=\r\n=3D\"float:left; clear:both; padding:0px 5px 10px 10px;\"><img src=3D\"https:/=\r\n/ssl.gstatic.com/mail/welcome/localized/en/welcome_search.png\"
+        alt=3D\"Searc=\r\nh\" style=3D\"display:block;\"width=3D\"129\"height=3D\"129\"/></div><div
+        style=3D=\r\n\"float:left; vertical-align:middle; padding:10px; max-width:398px;
+        float:le=\r\nft;\"><table style=3D\"vertical-align:middle;\"><tr><td style=3D\"font-family:'=\r\nOpen
+        sans','Arial',sans-serif;\"><span style=3D\"font-size:20px;\">Find what y=\r\nou
+        need fast</span><br/><br/><span style=3D\"font-size:small; line-height:1.=\r\n4em\">With
+        the power of Google Search right in your inbox, it's easy to sort=\r\n your
+        email. Find what you're looking for with predictions based on email c=\r\nontent,
+        past searches and contacts.</span></td></tr></table></div><div styl=\r\ne=3D\"float:left;
+        clear:both; padding:0px 5px 10px 10px;\"><img src=3D\"https:=\r\n//ssl.gstatic.com/accounts/services/mail/msa/welcome_hangouts.png\"
+        alt=3D\"S=\r\nearch\" style=3D\"display:block;\"width=3D\"129\"height=3D\"129\"/></div><div
+        styl=\r\ne=3D\"float:left; vertical-align:middle; padding:10px; max-width:398px;
+        floa=\r\nt:left;\"><table style=3D\"vertical-align:middle;\"><tr><td style=3D\"font-fami=\r\nly:'Open
+        sans','Arial',sans-serif;\"><span style=3D\"font-size:20px;\">Much mo=\r\nre
+        than email</span><br/><br/><span style=3D\"font-size:small; line-height:1=\r\n.4em\">You
+        can send text messages and make video calls with <a href=3D\"https=\r\n://www.google.com/intl/en/hangouts/\"
+        style=3D\"text-decoration:none; color:#=\r\n15C\">Hangouts</a> right from
+        Gmail. To use this feature on mobile, download=\r\n the Hangouts app for <a
+        href=3D\"https://play.google.com/store/apps/details=\r\n?id=3Dcom.google.android.talk&amp;hl=3Den\"
+        style=3D\"text-decoration:none; c=\r\nolor:#15C\">Android</a> and <a href=3D\"https://itunes.apple.com/en/app/hango=\r\nuts/id643496868?mt=3D8\"
+        style=3D\"text-decoration:none; color:#15C\">Apple</a=\r\n> devices.</span></td></tr></table></div><br/><br/>\r\n<div
+        style=3D\"clear:both; padding-left:13px; height:6.8em;\"><table style=3D=\r\n\"width:100%;
+        border-collapse:collapse; border:0\"><tr><td style=3D\"width:68p=\r\nx\"><img
+        alt=3D'Gmail icon' width=3D\"49\" height=3D\"37\" src=3D\"https://ssl.gs=\r\ntatic.com/accounts/services/mail/msa/gmail_icon_large.png\"
+        style=3D\"display=\r\n:block;\"/></td><td style=3D\"align:left; font-family:'Open
+        sans','Arial',san=\r\ns-serif; vertical-align:bottom\"><span style=3D\"font-size:small\">Happy
+        email=\r\ning,<br/></span><span style=3D\"font-size:x-large; line-height:1\">The
+        Gmail =\r\nTeam</span></td></tr></table></div>\r\n</td></tr></table></div>\r\n<div
+        style=3D\"direction:ltr;color:#777; font-size:0.8em; border-radius:1em;=\r\n
+        padding:1em; margin:0 auto 4% auto; font-family:'Arial','Helvetica',sans-s=\r\nerif;
+        text-align:center;\">=C2=A9 2015 Google Inc. 1600 Amphitheatre Parkway=\r\n,
+        Mountain View, CA 94043<br/></div></div></body></html>\r\n\r\n--bcaec51dcff73ca5e9050ca9c59a--)\r\n"
+    - !ruby/struct:Net::IMAP::TaggedResponse
+      tag: RUBY0006
+      name: OK
+      data: *54
+      raw_data: "RUBY0006 OK Success\r\n"
