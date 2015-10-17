@@ -83,25 +83,27 @@ SELECT-505f013d922af4caf157dc91d6b45a60:
     - &7 !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: UIDNEXT
-        data: 397
+        data: 406
       text: " Predicted next UID."
     - &8 !ruby/struct:Net::IMAP::ResponseText
       code: !ruby/struct:Net::IMAP::ResponseCode
         name: HIGHESTMODSEQ
-        data: '24238'
+        data: '24877'
       text: ''
     PERMANENTFLAGS: &12
     - *3
     UIDVALIDITY: &13
     - 1
     EXISTS: &14
-    - 384
+    - 392
+    - 393
+    - 394
     RECENT: &15
     - 0
     UIDNEXT: &16
-    - 397
+    - 406
     HIGHESTMODSEQ: &17
-    - '24238'
+    - '24877'
   - - !ruby/struct:Net::IMAP::UntaggedResponse
       name: FLAGS
       data: *4
@@ -118,8 +120,8 @@ SELECT-505f013d922af4caf157dc91d6b45a60:
       raw_data: "* OK [UIDVALIDITY 1] UIDs valid.\r\n"
     - !ruby/struct:Net::IMAP::UntaggedResponse
       name: EXISTS
-      data: 384
-      raw_data: "* 384 EXISTS\r\n"
+      data: 392
+      raw_data: "* 392 EXISTS\r\n"
     - !ruby/struct:Net::IMAP::UntaggedResponse
       name: RECENT
       data: 0
@@ -127,11 +129,11 @@ SELECT-505f013d922af4caf157dc91d6b45a60:
     - !ruby/struct:Net::IMAP::UntaggedResponse
       name: OK
       data: *7
-      raw_data: "* OK [UIDNEXT 397] Predicted next UID.\r\n"
+      raw_data: "* OK [UIDNEXT 406] Predicted next UID.\r\n"
     - !ruby/struct:Net::IMAP::UntaggedResponse
       name: OK
       data: *8
-      raw_data: "* OK [HIGHESTMODSEQ 24238]\r\n"
+      raw_data: "* OK [HIGHESTMODSEQ 24877]\r\n"
     - !ruby/struct:Net::IMAP::TaggedResponse
       tag: RUBY0002
       name: OK
@@ -146,14 +148,14 @@ IDLE-19f5c646015cf36d0561f86266edaa83:
       code: 
       text: IDLE terminated (Success)
     raw_data: "RUBY0003 OK IDLE terminated (Success)\r\n"
-  - FLAGS: *2
-    OK: *3
-    PERMANENTFLAGS: *4
-    UIDVALIDITY: *5
-    EXISTS: *6
-    RECENT: *7
-    UIDNEXT: *8
-    HIGHESTMODSEQ: *9
+  - FLAGS: *10
+    OK: *11
+    PERMANENTFLAGS: *12
+    UIDVALIDITY: *13
+    EXISTS: *14
+    RECENT: *15
+    UIDNEXT: *16
+    HIGHESTMODSEQ: *17
   - - !ruby/struct:Net::IMAP::ContinuationRequest
       data: !ruby/struct:Net::IMAP::ResponseText
         code: 
@@ -161,20 +163,20 @@ IDLE-19f5c646015cf36d0561f86266edaa83:
       raw_data: "+ idling\r\n"
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
-    tag: RUBY0004
+    tag: RUBY0065
     name: OK
     data: !ruby/struct:Net::IMAP::ResponseText
       code: 
       text: IDLE terminated (Success)
-    raw_data: "RUBY0004 OK IDLE terminated (Success)\r\n"
-  - FLAGS: *2
-    OK: *3
-    PERMANENTFLAGS: *4
-    UIDVALIDITY: *5
-    EXISTS: *6
-    RECENT: *7
-    UIDNEXT: *8
-    HIGHESTMODSEQ: *9
+    raw_data: "RUBY0065 OK IDLE terminated (Success)\r\n"
+  - FLAGS: *10
+    OK: *11
+    PERMANENTFLAGS: *12
+    UIDVALIDITY: *13
+    EXISTS: *14
+    RECENT: *15
+    UIDNEXT: *16
+    HIGHESTMODSEQ: *17
   - - !ruby/struct:Net::IMAP::ContinuationRequest
       data: !ruby/struct:Net::IMAP::ResponseText
         code: 
@@ -182,5 +184,5 @@ IDLE-19f5c646015cf36d0561f86266edaa83:
       raw_data: "+ idling\r\n"
     - !ruby/struct:Net::IMAP::UntaggedResponse
       name: EXISTS
-      data: 13
-      raw_data: "* 13 EXISTS\r\n"
+      data: 394
+      raw_data: "* 394 EXISTS\r\n"
