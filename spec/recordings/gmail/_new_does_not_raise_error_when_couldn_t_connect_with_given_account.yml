@@ -2,12 +2,20 @@
 LOGIN-f0cde728d1c78eb72490f79825821b1c:
 - - :raise
   - !ruby/exception:Net::IMAP::NoResponseError
-    message: Invalid credentials e5mb14145422oah
-    response: !ruby/struct:Net::IMAP::TaggedResponse
+    message: Lookup failed v68mb389587757ivb
+    response: &1 !ruby/struct:Net::IMAP::TaggedResponse
       tag: RUBY0001
       name: 'NO'
       data: !ruby/struct:Net::IMAP::ResponseText
         code: 
-        text: Invalid credentials e5mb14145422oah
-      raw_data: "RUBY0001 NO Invalid credentials e5mb14145422oah\r\n"
-  - {}
+        text: Lookup failed v68mb389587757ivb
+      raw_data: "RUBY0001 NO Lookup failed v68mb389587757ivb\r\n"
+  - BYE:
+    - &2 !ruby/struct:Net::IMAP::ResponseText
+      code: 
+      text: System Error v68mb389587757ivb
+  - - *1
+    - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: BYE
+      data: *2
+      raw_data: "* BYE System Error v68mb389587757ivb\r\n"

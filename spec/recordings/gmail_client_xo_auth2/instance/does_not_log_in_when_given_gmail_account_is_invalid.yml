@@ -2,12 +2,23 @@
 AUTHENTICATE-48cc3379658326e2b0e5cd2a6f3da2af:
 - - :raise
   - !ruby/exception:Net::IMAP::NoResponseError
-    message: Invalid credentials or17mb13406678oeb
-    response: !ruby/struct:Net::IMAP::TaggedResponse
+    message: Lookup failed g129mb264542154iog
+    response: &1 !ruby/struct:Net::IMAP::TaggedResponse
       tag: RUBY0001
       name: 'NO'
       data: !ruby/struct:Net::IMAP::ResponseText
         code: 
-        text: Invalid credentials or17mb13406678oeb
-      raw_data: "RUBY0001 NO Invalid credentials or17mb13406678oeb\r\n"
+        text: Lookup failed g129mb264542154iog
+      raw_data: "RUBY0001 NO Lookup failed g129mb264542154iog\r\n"
   - {}
+  - - !ruby/struct:Net::IMAP::ContinuationRequest
+      data: !ruby/struct:Net::IMAP::ResponseText
+        code: 
+        text: ''
+      raw_data: "+ \r\n"
+    - !ruby/struct:Net::IMAP::ContinuationRequest
+      data: !ruby/struct:Net::IMAP::ResponseText
+        code: 
+        text: eyJzdGF0dXMiOiI0MDAiLCJzY2hlbWVzIjoiQmVhcmVyIiwic2NvcGUiOiJodHRwczovL21haWwuZ29vZ2xlLmNvbS8ifQ==
+      raw_data: "+ eyJzdGF0dXMiOiI0MDAiLCJzY2hlbWVzIjoiQmVhcmVyIiwic2NvcGUiOiJodHRwczovL21haWwuZ29vZ2xlLmNvbS8ifQ==\r\n"
+    - *1

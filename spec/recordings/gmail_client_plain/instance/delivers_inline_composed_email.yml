@@ -4,13 +4,14 @@ LOGIN-9a890af1c86854f5170d99be6e10b8f1:
   - !ruby/struct:Net::IMAP::TaggedResponse
     tag: RUBY0001
     name: OK
-    data: !ruby/struct:Net::IMAP::ResponseText
+    data: &2 !ruby/struct:Net::IMAP::ResponseText
       code: 
       text: ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com authenticated (Success)
     raw_data: "RUBY0001 OK ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com authenticated
       (Success)\r\n"
-  - CAPABILITY: &1
-    - - IMAP4REV1
+  - CAPABILITY: &3
+    - &1
+      - IMAP4REV1
       - UNSELECT
       - IDLE
       - NAMESPACE
@@ -26,6 +27,20 @@ LOGIN-9a890af1c86854f5170d99be6e10b8f1:
       - CONDSTORE
       - ESEARCH
       - UTF8=ACCEPT
+      - LIST-EXTENDED
+      - LIST-STATUS
+  - - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: CAPABILITY
+      data: *1
+      raw_data: "* CAPABILITY IMAP4rev1 UNSELECT IDLE NAMESPACE QUOTA ID XLIST CHILDREN
+        X-GM-EXT-1 UIDPLUS COMPRESS=DEFLATE ENABLE MOVE CONDSTORE ESEARCH UTF8=ACCEPT
+        LIST-EXTENDED LIST-STATUS\r\n"
+    - !ruby/struct:Net::IMAP::TaggedResponse
+      tag: RUBY0001
+      name: OK
+      data: *2
+      raw_data: "RUBY0001 OK ki0zvkyi1yzgy7xu4f4dh46nqrcecm@gmail.com authenticated
+        (Success)\r\n"
 LOGOUT-e76a09b7766d60a37ff9e1af527a143e:
 - - :return
   - !ruby/struct:Net::IMAP::TaggedResponse
@@ -35,8 +50,12 @@ LOGOUT-e76a09b7766d60a37ff9e1af527a143e:
       code: 
       text: 73 good day (Success)
     raw_data: "RUBY0002 OK 73 good day (Success)\r\n"
-  - CAPABILITY: *1
+  - CAPABILITY: *3
     BYE:
-    - !ruby/struct:Net::IMAP::ResponseText
+    - &4 !ruby/struct:Net::IMAP::ResponseText
       code: 
       text: LOGOUT Requested
+  - - !ruby/struct:Net::IMAP::UntaggedResponse
+      name: BYE
+      data: *4
+      raw_data: "* BYE LOGOUT Requested\r\n"
