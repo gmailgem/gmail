@@ -32,19 +32,19 @@ describe Gmail::Client::Plain do
     end
 
     it "raises error when given Gmail account is invalid and errors enabled" do
-      expect {
+      expect do
         client = Gmail::Client::Plain.new("foo", "bar")
         expect(client.connect).to be_truthy
         expect(client.login!).not_to be_nil
-      }.to raise_error
+      end.to raise_error
     end
 
     it "does not raise error even though Gmail account is invalid" do
-      expect {
+      expect do
         client = Gmail::Client::Plain.new("foo", "bar")
         expect(client.connect).to be_truthy
         expect(client.login).to_not be_truthy
-      }.not_to raise_error
+      end.not_to raise_error
     end
 
     it "does not log in when given Gmail account is invalid" do
@@ -101,17 +101,17 @@ describe Gmail::Client::Plain do
     end
 
     it "does not raise error when mail can't be delivered and errors are disabled" do
-      expect {
+      expect do
         client = mock_client
         expect(client.deliver(Mail.new {})).to be false
-      }.not_to raise_error
+      end.not_to raise_error
     end
 
     it "raises error when mail can't be delivered and errors are disabled" do
-      expect {
+      expect do
         client = mock_client
         client.deliver!(Mail.new {})
-      }.to raise_error(Gmail::Client::DeliveryError)
+      end.to raise_error(Gmail::Client::DeliveryError)
     end
 
     it "properly switches to given mailbox" do
@@ -132,11 +132,11 @@ describe Gmail::Client::Plain do
     end
 
     context "labels" do
-      subject {
+      subject do
         client = Gmail::Client::Plain.new(*TEST_ACCOUNT)
         client.connect
         client.labels
-      }
+      end
 
       it "returns list of all available labels" do
         labels = subject

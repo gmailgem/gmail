@@ -68,7 +68,7 @@ describe Gmail::Mailbox do
       expect(client.conn).to receive(:idle).and_call_original.at_least(:twice)
 
       mailbox = client.inbox
-      mailbox.wait_once(idle_timeout: 0.001)
+      mailbox.wait_once(:idle_timeout => 0.001)
     end
 
     it "performs full text search of message bodies" do

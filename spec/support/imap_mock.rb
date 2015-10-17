@@ -133,7 +133,7 @@ module Net
         # @responses (the third argument here) contains untagged responses captured
         # via the Net::IMAP#record_response method.
         Net::IMAP.recordings[digest] ||= []
-        Net::IMAP.recordings[digest]  << [action, response.dup, @responses ? @responses.dup : nil, all_responses]
+        Net::IMAP.recordings[digest] << [action, response.dup, @responses ? @responses.dup : nil, all_responses]
       end
 
       raise(response) if action == :raise
