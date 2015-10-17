@@ -120,7 +120,8 @@ module Net
         action = :return
         all_responses = []
         begin
-          response = send(method, cmd, *args) do |resp|
+          args.unshift(cmd) if method==:_send_command
+          response = send(method, *args) do |resp|
             all_responses << resp
             block.call(resp)
           end

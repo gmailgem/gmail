@@ -19,7 +19,7 @@ describe Gmail::Labels do
           localized = ""
           mock_client { |client| localized = client.labels.localize(:All) }
           expect(localized).to be_a_kind_of(String)
-          expect(localized).to eq 'All'
+          expect(localized).to eq '[Gmail]/All Mail'
         end
       end
     end

@@ -3,13 +3,24 @@ AUTHENTICATE-48cc3379658326e2b0e5cd2a6f3da2af:
 - - :raise
   - !ruby/exception:Net::IMAP::NoResponseError
     message: " Invalid credentials (Failure)"
-    response: !ruby/struct:Net::IMAP::TaggedResponse
+    response: &1 !ruby/struct:Net::IMAP::TaggedResponse
       tag: RUBY0001
       name: 'NO'
       data: !ruby/struct:Net::IMAP::ResponseText
         code: !ruby/struct:Net::IMAP::ResponseCode
-          name: ALERT
+          name: AUTHENTICATIONFAILED
           data: 
         text: " Invalid credentials (Failure)"
-      raw_data: "RUBY0001 NO [ALERT] Invalid credentials (Failure)\r\n"
+      raw_data: "RUBY0001 NO [AUTHENTICATIONFAILED] Invalid credentials (Failure)\r\n"
   - {}
+  - - !ruby/struct:Net::IMAP::ContinuationRequest
+      data: !ruby/struct:Net::IMAP::ResponseText
+        code: 
+        text: ''
+      raw_data: "+ \r\n"
+    - !ruby/struct:Net::IMAP::ContinuationRequest
+      data: !ruby/struct:Net::IMAP::ResponseText
+        code: 
+        text: eyJzdGF0dXMiOiI0MDAiLCJzY2hlbWVzIjoiQmVhcmVyIiwic2NvcGUiOiJodHRwczovL21haWwuZ29vZ2xlLmNvbS8ifQ==
+      raw_data: "+ eyJzdGF0dXMiOiI0MDAiLCJzY2hlbWVzIjoiQmVhcmVyIiwic2NvcGUiOiJodHRwczovL21haWwuZ29vZ2xlLmNvbS8ifQ==\r\n"
+    - *1
