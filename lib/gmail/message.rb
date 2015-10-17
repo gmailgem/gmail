@@ -125,14 +125,9 @@ module Gmail
     alias_method :unspam!, :unarchive!
     alias_method :undelete!, :unarchive!
 
-    # Move to given box and delete from others.
-    # Apply a given label and optionally remove one.
-    # TODO: We should probably deprecate this method. It doesn't really add a lot
-    #       of value, especially since the concept of "moving" a message from one
-    #       label to another doesn't totally make sense in the Gmail world.
     def move_to(name, from = nil)
       add_label(name)
-      remove_label(from) if from
+      @gmail.find(message_id).remove_label(from) if from
     end
     alias_method :move, :move_to
     alias_method :move!, :move_to
