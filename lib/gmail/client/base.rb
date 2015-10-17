@@ -178,7 +178,7 @@ module Gmail
       alias :in_label :mailbox
       alias :label :mailbox
 
-      # Alias for <tt>mailbox("INBOX")</tt>. See <tt>Gmail::Client#mailbox</tt>
+      # Alias for <tt>mailbox("INBOX")</tt>. See <tt>Gmail::Mailbox</tt>
       # for details.
       def inbox
         mailbox("INBOX")
