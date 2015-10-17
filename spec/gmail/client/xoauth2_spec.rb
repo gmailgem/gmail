@@ -31,10 +31,10 @@ describe Gmail::Client::XOAuth2 do
     end
 
     it "connects to Gmail IMAP service" do
-      expect(-> {
+      expect(-> do
         client = mock_client
         expect(client.connect!).to be_truthy
-      }).to_not raise_error
+      end).to_not raise_error
     end
 
     it "properly logs in to valid Gmail account" do
@@ -47,19 +47,19 @@ describe Gmail::Client::XOAuth2 do
     end
 
     it "raises error when given Gmail account is invalid and errors enabled" do
-      expect(-> {
+      expect(-> do
         client = Gmail::Client::XOAuth2.new("foo", { :token => "bar" })
         expect(client.connect).to be_truthy
         expect(client.login!).not_to be_truthy
-      }).to raise_error(Gmail::Client::AuthorizationError)
+      end).to raise_error(Gmail::Client::AuthorizationError)
     end
 
     it "does not log in when given Gmail account is invalid" do
-      expect(-> {
+      expect(-> do
         client = Gmail::Client::XOAuth2.new("foo", { :token => "bar" })
         expect(client.connect).to be_truthy
         expect(client.login).not_to be_truthy
-      }).to_not raise_error
+      end).to_not raise_error
     end
 
     it "properly logs out from Gmail" do
@@ -112,17 +112,17 @@ describe Gmail::Client::XOAuth2 do
     end
 
     it "does not raise error when mail can't be delivered and errors are disabled" do
-      expect(-> {
+      expect(-> do
         client = mock_client
         expect(client.deliver(Mail.new {})).to be_falsey
-      }).to_not raise_error
+      end).to_not raise_error
     end
 
     it "raises error when mail can't be delivered and errors are disabled" do
-      expect(-> {
+      expect(-> do
         client = mock_client
         client.deliver!(Mail.new {})
-      }).to raise_error(Gmail::Client::DeliveryError)
+      end).to raise_error(Gmail::Client::DeliveryError)
     end
 
     it "properly switches to given mailbox" do
@@ -145,11 +145,11 @@ describe Gmail::Client::XOAuth2 do
     end
 
     context "labels" do
-      subject {
+      subject do
         client = Gmail::Client::XOAuth2.new(*TEST_ACCOUNT)
         client.connect
         client.labels
-      }
+      end
 
       it "returns list of all available labels" do
         pending

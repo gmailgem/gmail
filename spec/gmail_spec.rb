@@ -23,17 +23,17 @@ describe Gmail do
   end
 
   it "#new does not raise error when couldn't connect with given account" do
-    expect {
+    expect do
       gmail = Gmail.new("foo", "bar")
       expect(gmail).not_to be_logged_in
-    }.not_to raise_error
+    end.not_to raise_error
   end
 
   it "#new! raises error when couldn't connect with given account" do
-    expect {
+    expect do
       gmail = Gmail.new!("foo", "bar")
       expect(gmail).not_to be_logged_in
-    }.to raise_error
+    end.to raise_error
       ### FIX: can someone dig to the bottom of this?  We are getting NoMethodError instead of Gmail::Client::AuthorizationError in 1.9
   end
 end

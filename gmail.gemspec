@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   # development dependencies
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec", ">= 3.1"
-  s.add_development_dependency "rubocop"
+  s.add_development_dependency "rubocop", ">= 0.34.2"
   s.add_development_dependency "gem-release"
 
   s.files         = `git ls-files`.split("\n")

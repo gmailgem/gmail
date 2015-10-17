@@ -8,7 +8,7 @@ module Gmail
     def initialize(mailbox, uid, _attrs = nil)
       @uid     = uid
       @mailbox = mailbox
-      @gmail   = mailbox.instance_variable_get("@gmail") if mailbox  # UGLY
+      @gmail   = mailbox.instance_variable_get("@gmail") if mailbox # UGLY
       @_attrs  = _attrs
     end
 

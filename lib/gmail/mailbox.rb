@@ -46,9 +46,9 @@ module Gmail
         opts[:gm]         and search.concat ['X-GM-RAW', opts[:gm]]
         opts[:query]      and search.concat opts[:query]
 
-        @gmail.mailbox(name) {
+        @gmail.mailbox(name) do
           @gmail.conn.uid_search(search)
-        }
+        end
       elsif args.first.is_a?(Hash)
         fetch_uids(:all, args.first)
       else
@@ -133,14 +133,14 @@ module Gmail
         complete_now = false
 
         @gmail.conn.idle do |resp|
-          if resp.kind_of?(Net::IMAP::ContinuationRequest) && resp.data.text == 'idling'
+          if resp.is_a?(Net::IMAP::ContinuationRequest) && resp.data.text == 'idling'
             Thread.new do
               @gmail.conn.synchronize do
                 complete_cond.wait(options[:idle_timeout]) unless complete_now
                 @gmail.conn.idle_done
               end
             end
-          elsif resp.kind_of?(Net::IMAP::UntaggedResponse) && resp.name == 'EXISTS'
+          elsif resp.is_a?(Net::IMAP::UntaggedResponse) && resp.name == 'EXISTS'
             response = resp
 
             @gmail.conn.synchronize do
@@ -166,10 +166,10 @@ module Gmail
       name
     end
 
-    MAILBOX_ALIASES.each_key { |mailbox|
+    MAILBOX_ALIASES.each_key do |mailbox|
       define_method(mailbox) do |*args, &block|
         emails(mailbox, *args, &block)
       end
-    }
+    end
   end # Message
 end # Gmail

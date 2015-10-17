@@ -11,3 +11,24 @@ Style/StringLiterals:
   SupportedStyles:
     - single_quotes
     - double_quotes
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Lint/NestedMethodDefinition:
+  Enabled: false
+
+Style/SpaceAroundOperators:
+  Enabled: false
+
+Style/ClosingParenthesisIndentation:
+  Enabled: false
+
+Style/ParallelAssignment:
+  Enabled: false
+
+Style/RescueModifier:
+  Enabled: false
