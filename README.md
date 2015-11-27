@@ -12,6 +12,12 @@ and manage labels.
 It's based on Daniel Parker's ruby-gmail gem. This version has a more friendly
 API, is well tested, better documented and has many other improvements.
 
+## Reporting Issues
+
+This gem uses the [Mail gem](https://github.com/mikel/mail) for messages, attachments, etc. Please refer to [Mail](https://github.com/mikel/mail) unless your issue is related to Gmail integration specifically.
+
+We welcome Pull Requests which include tests.
+
 ## Installation
 
 You can install it easy using rubygems:
@@ -317,16 +323,6 @@ If you are having trouble connecting to Gmail:
 * Please ensure your account is verified
 * In [Gmail Security Settings](https://www.google.com/settings/security), enable access for less secure applications.
 * Read [this support answer re: suspicious activity](https://support.google.com/mail/answer/78754) and try things like entering a captcha.
-
-## Note on Patches/Pull Requests
- 
-* Fork the project.
-* Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
-  future version unintentionally.
-* Commit, do not mess with rakefile, version, or history.
-  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
-* Send me a pull request. Bonus points for topic branches.
 
 ## Authors
 
