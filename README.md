@@ -157,7 +157,7 @@ The [gm option](https://developers.google.com/gmail/imap_extensions?csw=1#extens
 gmail.inbox.emails(gm: '"testing"')
 ```
 
-You can use also one of aliases:
+You can also use one of aliases:
 
 ```ruby
 gmail.inbox.find(...)
@@ -192,7 +192,7 @@ gmail.inbox.find(:from => "x-fiance@gmail.com").each do |email|
 end
 ```
 
-Save all attachments in the "Faxes" label to a local folder (uses functionality from `Mail` gem):
+Save all attachments from the "Faxes" label to a local folder (uses functionality from `Mail` gem):
 
 ```ruby
 folder = Dir.pwd # for example
@@ -202,8 +202,8 @@ gmail.mailbox("Faxes").emails.each do |email|
   end
 end
 ```
-     
-You can use also `#label` method instead of `#mailbox`: 
+
+You can also use `#label` method instead of `#mailbox`:
 
 ```ruby
 gmail.label("Faxes").emails {|email| ... }
@@ -222,7 +222,7 @@ Add a label to a message:
 email.label("Faxes")
 ```
 
-Example above will raise error when you don't have the `Faxes` label. You can 
+Example above will raise error when you don't have the `Faxes` label. You can
 avoid this using:
 
 ```ruby
@@ -231,12 +231,12 @@ email.label!("Faxes") # The `Faxes` label will be automatically created now
 
 You can also move message to a label/mailbox:
 
-```ruby 
+```ruby
 email.move_to("Faxes")
 email.move_to!("NewLabel")
 ```
 
-There is also few shortcuts to mark messages quickly:
+There are also few shortcuts to mark messages quickly:
 
 ```ruby
 email.read!
@@ -257,7 +257,7 @@ gmail.labels.all
 
 Create new label:
 
-```ruby  
+```ruby
 gmail.labels.new("Urgent")
 gmail.labels.add("AnotherOne")
 ```
