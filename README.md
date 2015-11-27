@@ -14,7 +14,7 @@ API, is well tested, better documented and has many other improvements.
 
 ## Reporting Issues
 
-This gem uses the [Mail gem](https://github.com/mikel/mail) for messages, attachments, etc. Please refer to [Mail](https://github.com/mikel/mail) unless your issue is related to Gmail integration specifically.
+This gem uses the [Mail gem](https://github.com/mikel/mail) for messages, attachments, etc. Unless your issue is related to Gmail integration specifically, please refer to [https://tools.ietf.org/html/rfc5322](RFC-5322 which describes the email format) and the [Mail gem](https://github.com/mikel/mail).
 
 We welcome Pull Requests which include tests.
 
