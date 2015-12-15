@@ -9,7 +9,7 @@ A Rubyesque interface to Google's Gmail, with all the tools you'll need. Search,
 read and send multipart emails, archive, mark as read/unread, delete emails, 
 and manage labels.
 
-It's based on Daniel Parker's ruby-gmail gem. This version has a more friendly
+It's based on [Daniel Parker's ruby-gmail gem](https://github.com/dcparker/ruby-gmail). This version has a more friendly
 API, is well tested, better documented and has many other improvements.
 
 ## Reporting Issues
@@ -213,7 +213,8 @@ Save just the first attachment from the newest unread email (assuming pdf):
 
 ```ruby
 email = gmail.inbox.find(:unread).first
-email.attachments[0].save_to_file("/path/to/location")
+attachment = email.attachments[0]
+File.write(File.join(folder_path, attachment.filename), attachment.body.decoded)
 ```
 
 Add a label to a message:
