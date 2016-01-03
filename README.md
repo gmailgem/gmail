@@ -346,7 +346,7 @@ This project follows on Open Governance model. The Core Team is responsible for 
 
 ## Copyright
 
-* Copyright (c) 2015 GmailGem team
+* Copyright (c) 2015-2016 GmailGem team
 * Copyright (c) 2010-2014 Kriss 'nu7hatch' Kowalik
 * Copyright (c) 2009-2010 BehindLogic
 
