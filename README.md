@@ -109,6 +109,10 @@ gmail = Gmail.connect(:xoauth, "email@domain.com",
   :consumer_secret => 'CONSUMER_SECRET'
 )
 ```
+
+```ruby
+gmail = Gmail.connect(:xoauth2, 'email@domain.com', 'ACCESS_TOKEN')
+```
     
 For more information check out the [gmail_xoauth](https://github.com/nfo/gmail_xoauth)
 gem from Nicolas Fouché.
