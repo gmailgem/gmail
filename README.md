@@ -177,6 +177,16 @@ gmail.inbox.find(:unread).each do |email|
 end
 ```
 
+Note: The `:before` and `:after` filters only go as far as to search for messages on the date:
+
+```ruby
+# E.g. the following will return messages between 2016-01-01 00:00:00 and 2016-04-05 00:00:00
+gmail.inbox.find(
+    :after => Time.parse('2016-01-01 07:50:21'),
+    :before => Time.parse('2016-04-05 21:55:05')
+    )
+```
+
 ### Working with emails!
 
 Any news older than 4-20, mark as read and archive it:
