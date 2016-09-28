@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Gmail do
   it "should be able to convert itself to IMAP date format" do
-    expect("20-12-1988".to_imap_date).to eq("20-December-1988")
+    expect("20-12-1988".to_imap_date).to eq("20-Dec-1988")
   end
 
   %w[new new!].each do |method|
