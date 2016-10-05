@@ -115,12 +115,19 @@ module Gmail
 
     # Archiving is done by adding the `\Trash` label. To undo this,
     # you just re-apply the `\Inbox` label (see `#unarchive!`)
+    #
+    # IMAP's fetch('1:100', (X-GM-LABELS)) function does not fetch inbox, just emails labeled important?
+    # http://stackoverflow.com/a/28973760
+    # In my testing the currently selected mailbox is always excluded from the X-GM-LABELS results.
+    # When you called conn.select() it implicitly selected 'INBOX', therefore excluding 'Inbox'
+    # from the list of labels.
+    # If you selected a different mailbox then you would see '\\\\Inbox' in your results:
     def archive!
-      remove_label("\\Inbox")
+      @gmail.find(message_id).remove_label("\\Inbox")
     end
 
     def unarchive!
-      add_label("\\Inbox")
+      @gmail.find(message_id).add_label("\\Inbox")
     end
     alias_method :unspam!, :unarchive!
     alias_method :undelete!, :unarchive!
