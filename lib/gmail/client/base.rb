@@ -185,10 +185,20 @@ module Gmail
       end
 
       # Functionality like rails #find method
-      def find(message_id)
-        mailbox('[Gmail]/All Mail').emails(message_id: message_id).first.tap do |message|
-          raise EmailNotFound, "Can't find message with ID #{message_id}" unless message
+      # https://support.google.com/mail/answer/7190?hl=en
+      # Messages with a certain message-id header
+      # Rfc822msgid:
+      # Example: rfc822msgid:200503292@example.com
+      def find(rfc822msgid)
+        message = :message_before_built
+
+        mailbox(:all) do |mailbox|
+          uid = conn.uid_search(['X-GM-RAW', "rfc822msgid:#{rfc822msgid.to_s.strip}"]).first
+          raise EmailNotFound, "Can't find message with ID #{rfc822msgid}" unless uid
+          message = Message.new(mailbox, uid)
         end
+
+        message
       end
 
       def mailboxes

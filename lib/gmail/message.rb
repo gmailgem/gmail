@@ -123,18 +123,18 @@ module Gmail
     # from the list of labels.
     # If you selected a different mailbox then you would see '\\\\Inbox' in your results:
     def archive!
-      @gmail.find(message_id).remove_label("\\Inbox")
+      @gmail.find(message.message_id).remove_label('\Inbox')
     end
 
     def unarchive!
-      @gmail.find(message_id).add_label("\\Inbox")
+      @gmail.find(message.message_id).add_label('\Inbox')
     end
     alias_method :unspam!, :unarchive!
     alias_method :undelete!, :unarchive!
 
     def move_to(name, from = nil)
       add_label(name)
-      @gmail.find(message_id).remove_label(from) if from
+      @gmail.find(message.message_id).remove_label(from) if from
     end
     alias_method :move, :move_to
     alias_method :move!, :move_to
