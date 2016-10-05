@@ -204,7 +204,7 @@ module Gmail
     def inbox_labeled_email
       temp_uuid_folder do |uuid|
         email = @gmail.mailbox(uuid).emails(message_id: message_id).first
-        raise EmailNotFound, "Can't find message with ID #{message_id}" unless email
+        raise Gmail::Client::EmailNotFound, "Can't find message with ID #{message_id}" unless email
         yield email
       end
     end
