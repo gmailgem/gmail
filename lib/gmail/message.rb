@@ -123,11 +123,15 @@ module Gmail
     # from the list of labels.
     # If you selected a different mailbox then you would see '\\\\Inbox' in your results:
     def archive!
-      @gmail.find(message_id).remove_label("\\Inbox")
+      inbox_labeled_email do |email|
+        email.remove_label("\\Inbox")
+      end
     end
 
     def unarchive!
-      @gmail.find(message_id).add_label("\\Inbox")
+      inbox_labeled_email do |email|
+        email.add_label("\\Inbox")
+      end
     end
     alias_method :unspam!, :unarchive!
     alias_method :undelete!, :unarchive!
@@ -186,6 +190,24 @@ module Gmail
     end
 
     private
+
+    def temp_uuid_folder
+      uuid = SecureRandom.uuid
+      @gmail.labels.create uuid
+      add_label uuid
+
+      yield uuid
+    ensure
+      @gmail.labels.delete uuid
+    end
+
+    def inbox_labeled_email
+      temp_uuid_folder do |uuid|
+        email = @gmail.mailbox(uuid).emails(message_id: message_id).first
+        raise EmailNotFound, "Can't find message with ID #{message_id}" unless email
+        yield email
+      end
+    end
 
     def clear_cached_attributes
       @_attrs   = nil
