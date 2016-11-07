@@ -184,6 +184,12 @@ module Gmail
         mailbox("INBOX")
       end
 
+      # Functionality like rails #find method
+      def find(message_id)
+        message = mailbox('[Gmail]/All Mail').find(message_id: message_id).first
+        raise EmailNotFound, "Can't find message with ID #{message_id}" unless message
+      end
+
       def mailboxes
         @mailboxes ||= {}
       end

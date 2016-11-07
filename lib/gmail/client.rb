@@ -8,6 +8,8 @@ module Gmail
     class DeliveryError < ArgumentError; end
     # Raised when given client is not registered
     class UnknownClient < ArgumentError; end
+    # Raised when email not found
+    class EmailNotFound < ArgumentError; end
 
     def self.clients
       @clients ||= {}
