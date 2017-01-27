@@ -95,30 +95,36 @@ module Gmail
     def star!
       flag(:Flagged)
     end
+    alias_method :star, :star!
 
     # Remove message from list of starred.
     def unstar!
       unflag(:Flagged)
     end
+    alias_method :unstar, :unstar!
 
     # Marking as spam is done by adding the `\Spam` label. To undo this,
     # you just re-apply the `\Inbox` label (see `#unspam!`)
     def spam!
       add_label("\\Spam")
     end
+    alias_method :spam, :spam!
 
     # Deleting is done by adding the `\Trash` label. To undo this,
     # you just re-apply the `\Inbox` label (see `#undelete!`)
     def delete!
       add_label("\\Trash")
     end
+    alias_method :delete, :delete!
 
     # Archiving is done by adding the `\All Mail` label. To undo this,
     # you just re-apply the `\Inbox` label (see `#unarchive!`)
     def archive!
       remove_label("\\Inbox")
     end
+    alias_method :archive, :archive!
 
+    # Unarchiveing is done by adding '\Inbox' label.
     def unarchive!
       add_label("\\Inbox")
     end
