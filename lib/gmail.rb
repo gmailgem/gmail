@@ -34,7 +34,7 @@ module Gmail
     #     :token => "",
     #     :secret => "")
     #
-    # To use plain authentication mehod you can also call:
+    # To use plain authentication method you can also call:
     #
     #   Gmail.new("foo@gmail.com", "password")
     #
@@ -51,12 +51,7 @@ module Gmail
       client.connect
       client.login
 
-      if block_given?
-        yield client
-        client.logout
-      end
-
-      client
+      check_with_block(client, &block)
     end
     alias_method :connect, :new
 
@@ -66,6 +61,13 @@ module Gmail
       client.connect!
       client.login!
 
+      check_with_block(client, &block)
+    end
+    alias_method :connect!, :new!
+
+    private
+
+    def check_with_block(client, &block)
       if block_given?
         yield client
         client.logout
@@ -73,6 +75,5 @@ module Gmail
 
       client
     end
-    alias_method :connect!, :new!
   end # << self
 end # Gmail

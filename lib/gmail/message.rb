@@ -113,7 +113,7 @@ module Gmail
       add_label("\\Trash")
     end
 
-    # Archiving is done by adding the `\Trash` label. To undo this,
+    # Archiving is done by adding the `\All Mail` label. To undo this,
     # you just re-apply the `\Inbox` label (see `#unarchive!`)
     def archive!
       remove_label("\\Inbox")
