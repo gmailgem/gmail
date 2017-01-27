@@ -117,6 +117,15 @@ gmail = Gmail.connect(:xoauth2, 'email@domain.com', 'ACCESS_TOKEN')
 For more information check out the [gmail_xoauth](https://github.com/nfo/gmail_xoauth)
 gem from Nicolas Fouché.
 
+### XOAuth2 authentication
+
+You can use the oauth2 token to connect to Gmail. The connect method takes 3 paramaters.
+
+```ruby
+gmail = Gmail.connect(:xoauth2, "email@domain.com", "TOKEN")
+```
+You can use [omniauth-google-oauth2](https://github.com/zquestz/omniauth-google-oauth2) to fetch the token. Once the omniauth authorization has been completed, you'll be left with a `auth.credentials.token` you can pass in as the third paramater to `Gmail.connect`.
+
 ### Counting and gathering emails
     
 Get counts for messages in the inbox:
