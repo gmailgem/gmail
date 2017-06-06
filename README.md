@@ -229,7 +229,7 @@ end
 You can also use `#label` method instead of `#mailbox`:
 
 ```ruby
-gmail.label("Faxes").emails {|email| ... }
+gmail.label("Faxes").emails.each {|email| ... }
 ```
 
 Save just the first attachment from the newest unread email (assuming pdf):
