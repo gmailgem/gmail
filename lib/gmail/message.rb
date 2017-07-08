@@ -164,6 +164,10 @@ module Gmail
       "#<Gmail::Message#{'0x%04x' % (object_id << 1)} mailbox=#{@mailbox.name}#{' uid=' + @uid.to_s if @uid}#{' message_id=' + @msg_id.to_s if @msg_id}>"
     end
 
+    def as_json
+      super(except: ["gmail"])
+    end
+
     def method_missing(meth, *args, &block)
       # Delegate rest directly to the message.
       if envelope.respond_to?(meth)
