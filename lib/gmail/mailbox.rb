@@ -83,21 +83,13 @@ module Gmail
     alias :find :emails
 
     def emails_in_batches(*args, &block)
-      messages = Array.new
+      return [] unless uids.is_a?(Array) && uids.any?
 
-      uids = fetch_uids(*args)
-      if uids && uids.any?
-        uids.each_slice(100) do |slice|
-          @gmail.conn.uid_fetch(slice, Message::PREFETCH_ATTRS).each do |data|
-            message = Message.new(self, nil, data)
-            yield(message) if block_given?
-            messages << message
-          end
-        end
+      uids.each_slice(100).flat_map do |slice|
+        find_for_slice(slice, &block)
       end
-
-      messages
     end
+
     alias :search_in_batches :emails_in_batches
     alias :find_in_batches :emails_in_batches
 
@@ -170,6 +162,16 @@ module Gmail
     MAILBOX_ALIASES.each_key do |mailbox|
       define_method(mailbox) do |*args, &block|
         emails(mailbox, *args, &block)
+      end
+    end
+
+  private
+
+    def fetch_slice(slice, &block)
+      @gmail.conn.uid_fetch(slice, Message::PREFETCH_ATTRS).map do |data|
+        message = Message.new(self, nil, data)
+        yield(message) if block_given?
+        message
       end
     end
   end # Message
