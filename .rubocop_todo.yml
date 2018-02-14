@@ -89,7 +89,7 @@ Style/Alias:
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/AlignParameters:
+Layout/AlignParameters:
   Enabled: false
 
 # Offense count: 21
@@ -111,7 +111,7 @@ Style/ColonMethodCall:
 
 # Offense count: 2
 # Cop supports --auto-correct.
-Style/CommentIndentation:
+Layout/CommentIndentation:
   Enabled: false
 
 # Offense count: 18
@@ -128,7 +128,7 @@ Style/EachWithObject:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-Style/ElseAlignment:
+Layout/ElseAlignment:
   Enabled: false
 
 # Offense count: 1
@@ -149,13 +149,13 @@ Style/IfUnlessModifier:
 # Offense count: 6
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/IndentHash:
+Layout/IndentHash:
   Enabled: false
 
 # Offense count: 2
 # Cop supports --auto-correct.
 # Configuration parameters: Width.
-Style/IndentationWidth:
+Layout/IndentationWidth:
   Enabled: false
 
 # Offense count: 1
@@ -174,7 +174,7 @@ Style/ModuleFunction:
 # Offense count: 4
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/MultilineOperationIndentation:
+Layout/MultilineOperationIndentation:
   Enabled: false
 
 # Offense count: 2

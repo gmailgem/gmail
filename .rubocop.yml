@@ -26,10 +26,10 @@ Metrics/BlockLength:
 Lint/NestedMethodDefinition:
   Enabled: false
 
-Style/SpaceAroundOperators:
+Layout/SpaceAroundOperators:
   Enabled: false
 
-Style/ClosingParenthesisIndentation:
+Layout/ClosingParenthesisIndentation:
   Enabled: false
 
 Style/ParallelAssignment:
