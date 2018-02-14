@@ -48,9 +48,6 @@ Lint/LiteralAsCondition:
 Style/SymbolArray:
   Enabled: false
 
-Style/RescueStandardError:
-  Enabled: false
-
 Security/YAMLLoad:
   Exclude:
     - spec/support/obfuscation.rb

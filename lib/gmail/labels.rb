@@ -41,14 +41,18 @@ module Gmail
 
     # Creates given label in your account.
     def create(label)
-      !!conn.create(Net::IMAP.encode_utf7(label)) rescue false
+      !!conn.create(Net::IMAP.encode_utf7(label))
+    rescue StandardError
+      false
     end
     alias :new :create
     alias :add :create
 
     # Deletes given label from your account.
     def delete(label)
-      !!conn.delete(Net::IMAP.encode_utf7(label)) rescue false
+      !!conn.delete(Net::IMAP.encode_utf7(label))
+    rescue StandardError
+      false
     end
     alias :remove :delete
 
