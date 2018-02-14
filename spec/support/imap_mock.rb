@@ -125,7 +125,7 @@ module Net
             all_responses << resp
             yield(resp)
           end
-        rescue => e
+        rescue StandardError => e
           action = :raise
           response = e
         end

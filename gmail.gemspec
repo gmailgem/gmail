@@ -1,5 +1,3 @@
-# -*- encoding: utf-8 -*-
-
 $:.push File.expand_path('../lib', __FILE__)
 require 'gmail/version'
 
@@ -18,14 +16,14 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
 
   # runtime dependencies
-  s.add_dependency "mail", ">= 2.2.1"
   s.add_dependency "gmail_xoauth", ">= 0.3.0"
+  s.add_dependency "mail", ">= 2.2.1"
 
   # development dependencies
+  s.add_development_dependency "gem-release"
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec", ">= 3.1"
   s.add_development_dependency "rubocop", ">= 0.34.2"
-  s.add_development_dependency "gem-release"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

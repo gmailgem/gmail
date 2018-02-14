@@ -1,5 +1,3 @@
-require 'thread'
-
 module Gmail
   module Client
     class Base

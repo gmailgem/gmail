@@ -37,3 +37,10 @@ Style/ParallelAssignment:
 
 Style/RescueModifier:
   Enabled: false
+
+Style/CommentedKeyword:
+  Exclude:
+    - lib/**/*
+
+Lint/LiteralAsCondition:
+  Enabled: false
