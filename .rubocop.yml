@@ -50,3 +50,6 @@ Lint/RescueWithoutErrorClass:
 
 Style/SymbolArray:
   Enabled: false
+
+Style/RescueStandardError:
+  Enabled: false
