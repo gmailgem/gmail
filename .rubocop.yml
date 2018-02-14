@@ -50,3 +50,7 @@ Style/SymbolArray:
 
 Style/RescueStandardError:
   Enabled: false
+
+Security/YAMLLoad:
+  Exclude:
+    - spec/support/obfuscation.rb

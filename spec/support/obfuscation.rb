@@ -33,7 +33,7 @@ module Spec
     def decrypt_file(file)
       data = read_if_exist!(file)
       begin
-        return ::YAML::safe_load(decrypt(data), [], [], true)
+        return ::YAML::load(decrypt(data))
       rescue Exception => e
         raise "Unable to decrypt #{file}"
       end
