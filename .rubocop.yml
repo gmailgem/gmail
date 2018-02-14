@@ -45,9 +45,6 @@ Style/CommentedKeyword:
 Lint/LiteralAsCondition:
   Enabled: false
 
-Lint/RescueWithoutErrorClass:
-  Enabled: false
-
 Style/SymbolArray:
   Enabled: false
 
