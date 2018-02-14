@@ -19,10 +19,9 @@ module Gmail
 
     def self.new(name, *args)
       if client = clients[name]
-        client.new(*args)
-      else
-        raise UnknownClient, "No such client: #{name}"
+        return client.new(*args)
       end
+      raise UnknownClient, "No such client: #{name}"
     end
 
     require 'gmail/imap_extensions'

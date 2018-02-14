@@ -169,18 +169,17 @@ module Gmail
       elsif message.respond_to?(meth)
         message.send(meth, *args, &block)
       else
-        super(meth, *args, &block)
+        super
       end
     end
 
     def respond_to?(meth, *args, &block)
-      if envelope.respond_to?(meth)
-        return true
-      elsif message.respond_to?(meth)
-        return true
-      else
-        super(meth, *args, &block)
-      end
+      return true if envelope.respond_to?(meth) || message.respond_to?(meth)
+      super(meth, *args, &block)
+    end
+
+    def respond_to_missing?(meth, include_private = false)
+      envelope.respond_to?(meth) || message.respond_to?(meth) || super
     end
 
     private

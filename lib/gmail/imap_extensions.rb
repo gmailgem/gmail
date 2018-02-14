@@ -103,7 +103,7 @@ module Gmail
               paren_count += 1 unless quoted
             when ')'
               paren_count -= 1 unless quoted
-              break if paren_count == 0
+              break if paren_count.zero?
             when '"'
               quoted = !quoted unless special
             end
@@ -141,13 +141,11 @@ module Gmail
               # Otherwise, add in the backslash and the current character
               unesc << (escapes.keys.include?(char) ? escapes[char] : "\\#{char}")
               special = false
-            else
+            elsif char == '\\'
               # Toggle special mode if backslash is detected; otherwise just add character
-              if char == '\\'
-                special = true
-              else
-                unesc << char
-              end
+              special = true
+            else
+              unesc << char
             end
           end
           unesc

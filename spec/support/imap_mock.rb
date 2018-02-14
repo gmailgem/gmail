@@ -13,6 +13,17 @@ module Net
       def replaying?
         @replaying
       end
+
+      def force_utf8(data)
+        case data.class.to_s
+        when /String/
+          data.force_encoding('utf-8')
+        when /Hash/
+          data.each { |k, v| data[k] = force_utf8(v) }
+        when /Array/
+          data.map { |s| force_utf8(s) }
+        end
+      end
     end
 
     alias_method :_idle, :idle
@@ -56,17 +67,6 @@ module Net
     private
 
     alias_method :_send_command, :send_command
-
-    def self.force_utf8(data)
-      case data.class.to_s
-      when /String/
-        data.force_encoding('utf-8')
-      when /Hash/
-        data.each { |k, v| data[k] = force_utf8(v) }
-      when /Array/
-        data.map { |s| force_utf8(s) }
-      end
-    end
 
     def send_command(cmd, *args, &block)
       mock_command(:_send_command, cmd, *args, &block)
@@ -173,10 +173,9 @@ module Spec
 
       # If we haven't yet recorded the spec and there were some recordings,
       # write them to a file.
-      unless File.exist?(filename) or Net::IMAP.recordings.empty?
-        FileUtils.mkdir_p(File.dirname(filename))
-        File.open(filename, 'w') { |f| YAML.dump(Net::IMAP.recordings, f) }
-      end
+      return if File.exist?(filename) or Net::IMAP.recordings.empty?
+      FileUtils.mkdir_p(File.dirname(filename))
+      File.open(filename, 'w') { |f| YAML.dump(Net::IMAP.recordings, f) }
     end
   end
 end

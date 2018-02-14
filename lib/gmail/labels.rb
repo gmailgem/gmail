@@ -24,12 +24,9 @@ module Gmail
     alias :to_a :all
 
     def sublabels_or_label(label)
-      if label.attr.include? :Hasnochildren
-        @list << label
-      else
-        @list << label
-        conn.list("#{label.name}/", "%").each { |l| sublabels_or_label(l) }
-      end
+      @list << label
+      return if label.attr.include? :Hasnochildren
+      conn.list("#{label.name}/", "%").each { |l| sublabels_or_label(l) }
     end
 
     def each(*args, &block)
