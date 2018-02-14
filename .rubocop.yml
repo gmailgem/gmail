@@ -47,3 +47,6 @@ Lint/LiteralAsCondition:
 
 Lint/RescueWithoutErrorClass:
   Enabled: false
+
+Style/SymbolArray:
+  Enabled: false

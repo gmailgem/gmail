@@ -63,7 +63,7 @@ module Gmail
     # and their string equivalents. Capitalization agnostic.
     def localize(label)
       type = label.to_sym.capitalize
-      if %i[All Drafts Sent Trash Important Junk Flagged].include? type
+      if [:All, :Drafts, :Sent, :Trash, :Important, :Junk, :Flagged].include? type
         @mailboxes ||= connection.list("", "*")
         @mailboxes.select { |box| box.attr.include? type }.collect(&:name).compact.uniq.first || label.to_s
       elsif type == :Inbox
