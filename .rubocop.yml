@@ -18,6 +18,11 @@ Style/RegexpLiteral:
 Metrics/ModuleLength:
   Enabled: false
 
+Metrics/BlockLength:
+  Max: 100
+  Exclude:
+    - spec/**/*
+
 Lint/NestedMethodDefinition:
   Enabled: false
 
