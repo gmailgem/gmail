@@ -133,8 +133,7 @@ module Gmail
                       'f' => "\f",
                       'v' => "\v",
                       '0' => "\0",
-                      'a' => "\a"
-                    }
+                      'a' => "\a" }
 
           self.each_char do |char|
             if special
