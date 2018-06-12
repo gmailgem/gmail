@@ -199,6 +199,10 @@ module Gmail
       def mail_domain
         username.split('@').last
       end
+      
+      def self.public_smtp_settings
+        smtp_settings
+      end
 
       private
 
@@ -223,9 +227,6 @@ module Gmail
           :authentication => 'plain',
           :enable_starttls_auto => true
         }]
-      end
-      def self.public_smtp_settings
-        smtp_settings
       end
     end # Base
   end # Client
