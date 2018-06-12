@@ -200,7 +200,7 @@ module Gmail
         username.split('@').last
       end
       
-      def self.public_smtp_settings
+      def public_smtp_settings
         smtp_settings
       end
 
