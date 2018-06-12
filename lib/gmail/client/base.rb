@@ -199,6 +199,10 @@ module Gmail
       def mail_domain
         username.split('@').last
       end
+      
+      def public_smtp_settings
+        smtp_settings
+      end
 
       private
 
