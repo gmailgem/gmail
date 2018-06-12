@@ -224,6 +224,9 @@ module Gmail
           :enable_starttls_auto => true
         }]
       end
+      def self.public_smtp_settings
+        smtp_settings
+      end
     end # Base
   end # Client
 end # Gmail
