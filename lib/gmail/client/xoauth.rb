@@ -22,8 +22,7 @@ module Gmail
           :consumer_key    => consumer_key,
           :consumer_secret => consumer_secret,
           :token           => token,
-          :token_secret    => secret
-        )) && login.name == 'OK'
+          :token_secret    => secret)) && login.name == 'OK'
       rescue Net::IMAP::NoResponseError => e
         if raise_errors
           message = "Couldn't login to given Gmail account: #{username}"

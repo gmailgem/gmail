@@ -40,11 +40,8 @@ module Spec
     end
 
     def read_if_exist!(file)
-      if File.exist?(file)
-        IO.read(file)
-      else
-        raise "File not found #{file}"
-      end
+      return IO.read(file) if File.exist?(file)
+      raise "File not found #{file}"
     end
 
     extend self

@@ -1,14 +1,12 @@
-require 'thread'
-
 module Gmail
   module Client
     class Base
       # Gmail IMAP defaults
-      GMAIL_IMAP_HOST = 'imap.gmail.com'
+      GMAIL_IMAP_HOST = 'imap.gmail.com'.freeze
       GMAIL_IMAP_PORT = 993
 
       # Gmail SMTP defaults
-      GMAIL_SMTP_HOST = "smtp.gmail.com"
+      GMAIL_SMTP_HOST = "smtp.gmail.com".freeze
       GMAIL_SMTP_PORT = 587
 
       attr_reader :username
@@ -165,7 +163,7 @@ module Gmail
 
           if block_given?
             mailbox_stack << @current_mailbox
-            result = block.arity == 1 ? block.call(mailbox) : block.call
+            result = block.arity == 1 ? yield(mailbox) : yield
             mailbox_stack.pop
             switch_to_mailbox(mailbox_stack.last)
             return result

@@ -14,7 +14,7 @@ module Gmail
       :undeleted => ['UNDELETED'],
       :draft     => ['DRAFT'],
       :undrafted => ['UNDRAFT']
-    }
+    }.freeze
 
     attr_reader :name
     attr_reader :encoded_name
@@ -26,7 +26,7 @@ module Gmail
     end
 
     def fetch_uids(*args)
-      args << :all if args.size == 0
+      args << :all if args.empty?
 
       if args.first.is_a?(Symbol)
         search = MAILBOX_ALIASES[args.shift].dup

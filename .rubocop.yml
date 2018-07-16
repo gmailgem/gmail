@@ -18,13 +18,18 @@ Style/RegexpLiteral:
 Metrics/ModuleLength:
   Enabled: false
 
+Metrics/BlockLength:
+  Max: 100
+  Exclude:
+    - spec/**/*
+
 Lint/NestedMethodDefinition:
   Enabled: false
 
-Style/SpaceAroundOperators:
+Layout/SpaceAroundOperators:
   Enabled: false
 
-Style/ClosingParenthesisIndentation:
+Layout/ClosingParenthesisIndentation:
   Enabled: false
 
 Style/ParallelAssignment:
@@ -32,3 +37,17 @@ Style/ParallelAssignment:
 
 Style/RescueModifier:
   Enabled: false
+
+Style/CommentedKeyword:
+  Exclude:
+    - lib/**/*
+
+Lint/LiteralAsCondition:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Security/YAMLLoad:
+  Exclude:
+    - spec/support/obfuscation.rb

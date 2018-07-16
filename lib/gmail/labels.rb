@@ -24,12 +24,9 @@ module Gmail
     alias :to_a :all
 
     def sublabels_or_label(label)
-      if label.attr.include? :Hasnochildren
-        @list << label
-      else
-        @list << label
-        conn.list("#{label.name}/", "%").each { |l| sublabels_or_label(l) }
-      end
+      @list << label
+      return if label.attr.include? :Hasnochildren
+      conn.list("#{label.name}/", "%").each { |l| sublabels_or_label(l) }
     end
 
     def each(*args, &block)
@@ -44,14 +41,18 @@ module Gmail
 
     # Creates given label in your account.
     def create(label)
-      !!conn.create(Net::IMAP.encode_utf7(label)) rescue false
+      !!conn.create(Net::IMAP.encode_utf7(label))
+    rescue StandardError
+      false
     end
     alias :new :create
     alias :add :create
 
     # Deletes given label from your account.
     def delete(label)
-      !!conn.delete(Net::IMAP.encode_utf7(label)) rescue false
+      !!conn.delete(Net::IMAP.encode_utf7(label))
+    rescue StandardError
+      false
     end
     alias :remove :delete
 

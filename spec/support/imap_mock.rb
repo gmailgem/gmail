@@ -13,6 +13,17 @@ module Net
       def replaying?
         @replaying
       end
+
+      def force_utf8(data)
+        case data.class.to_s
+        when /String/
+          data.force_encoding('utf-8')
+        when /Hash/
+          data.each { |k, v| data[k] = force_utf8(v) }
+        when /Array/
+          data.map { |s| force_utf8(s) }
+        end
+      end
     end
 
     alias_method :_idle, :idle
@@ -56,17 +67,6 @@ module Net
     private
 
     alias_method :_send_command, :send_command
-
-    def self.force_utf8(data)
-      case data.class.to_s
-      when /String/
-        data.force_encoding('utf-8')
-      when /Hash/
-        data.each { |k, v| data[k] = force_utf8(v) }
-      when /Array/
-        data.map { |s| force_utf8(s) }
-      end
-    end
 
     def send_command(cmd, *args, &block)
       mock_command(:_send_command, cmd, *args, &block)
@@ -113,7 +113,7 @@ module Net
 
         if block && all_responses
           all_responses.each do |resp|
-            block.call(resp)
+            yield(resp)
           end
         end
       else
@@ -123,9 +123,9 @@ module Net
           args.unshift(cmd) if method==:_send_command
           response = send(method, *args) do |resp|
             all_responses << resp
-            block.call(resp)
+            yield(resp)
           end
-        rescue => e
+        rescue StandardError => e
           action = :raise
           response = e
         end
@@ -156,10 +156,10 @@ module Spec
     def self.run_rspec_example(example)
       # The path is determined by the rspec `describe`s and `context`s
       mock_path = example.example_group.to_s
-        .gsub(/RSpec::ExampleGroups::/, '')
-        .gsub(/(\w)([A-Z])/, '\1_\2')
-        .gsub(/::/, '/')
-        .downcase
+                         .gsub(/RSpec::ExampleGroups::/, '')
+                         .gsub(/(\w)([A-Z])/, '\1_\2')
+                         .gsub(/::/, '/')
+                         .downcase
 
       # The name is determined by the description of the example.
       mock_name = example.description.gsub(/[^\w\-\/]+/, '_').downcase
@@ -173,10 +173,9 @@ module Spec
 
       # If we haven't yet recorded the spec and there were some recordings,
       # write them to a file.
-      unless File.exist?(filename) or Net::IMAP.recordings.empty?
-        FileUtils.mkdir_p(File.dirname(filename))
-        File.open(filename, 'w') { |f| YAML.dump(Net::IMAP.recordings, f) }
-      end
+      return if File.exist?(filename) or Net::IMAP.recordings.empty?
+      FileUtils.mkdir_p(File.dirname(filename))
+      File.open(filename, 'w') { |f| YAML.dump(Net::IMAP.recordings, f) }
     end
   end
 end
