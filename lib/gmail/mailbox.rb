@@ -32,8 +32,8 @@ module Gmail
         search = MAILBOX_ALIASES[args.shift].dup
         opts = args.first.is_a?(Hash) ? args.first : {}
 
-        opts[:after]      and search.concat ['SINCE', opts[:after].to_imap_date]
-        opts[:before]     and search.concat ['BEFORE', opts[:before].to_imap_date]
+        opts[:after]      and search.concat ['SINCE', Net::IMAP.format_date(opts[:after])]
+        opts[:before]     and search.concat ['BEFORE', Net::IMAP.format_date(opts[:before])]
         opts[:on]         and search.concat ['ON', opts[:on].to_imap_date]
         opts[:from]       and search.concat ['FROM', opts[:from]]
         opts[:to]         and search.concat ['TO', opts[:to]]
