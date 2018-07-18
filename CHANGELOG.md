@@ -1,8 +1,15 @@
 # Gmail Gem Changelog
 
-## Unreleased
+## 0.7.0 - 2018-07-19
 
-* Your change here
+* Add coveralls.io code coverage (@bootstraponline)
+* Fixes and clarifications to Readme (@kitlangton, @asiniy, @amoludage, @joshsoftware, @JoeNyland)
+* Add message_id to search params (#242) (@unkrich)
+* Add xoauth2 example to readme (#211) (@markgandolfo)
+* Fix Rubocop (@bootstraponline, @RustyNail)
+* Improve speed of archiving methods (#234) (@github0013)
+* Exclude 'gmail' when attempting to display a message as_json (#259) (@lcpriest)
+* Remove Object monkey patch and use Net::IMAP.format_date (#260) (@tcaddy)
 
 ## 0.6.0 - 2015-08-24
 

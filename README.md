@@ -5,18 +5,22 @@
 [![Gem Version](https://badge.fury.io/rb/gmail.svg)](https://rubygems.org/gems/gmail)
 [![Coverage Status](https://coveralls.io/repos/gmailgem/gmail/badge.svg?branch=master&service=github&nocache=true)](https://coveralls.io/github/gmailgem/gmail?branch=master)
 
-A Rubyesque interface to Google's Gmail, with all the tools you'll need. Search, 
-read and send multipart emails, archive, mark as read/unread, delete emails, 
-and manage labels.
+## Deprecation Notice
 
-It's based on [Daniel Parker's ruby-gmail gem](https://github.com/dcparker/ruby-gmail). This version has a more friendly
-API, is well tested, better documented and has many other improvements.
+As of version 0.7.0 (Aug 19, 2018) this gem is officially deprecated and will no longer be maintained.
+Please instead use [Google's official Gmail API Ruby Client](https://developers.google.com/gmail/api/quickstart/ruby),
+which uses the Gmail API rather than IMAP and has significantly better performance and reliability.
+
+## Overview
+
+This gem is a Rubyesque interface to Google's Gmail via IMAP. Search, read and send multipart emails,
+archive, mark as read/unread, delete emails, and manage labels. It's based on [Daniel Parker's ruby-gmail gem](https://github.com/dcparker/ruby-gmail).
 
 ## Reporting Issues
 
-This gem uses the [Mail gem](https://github.com/mikel/mail) for messages, attachments, etc. Unless your issue is related to Gmail integration specifically, please refer to [RFC-5322 (email specification)](https://tools.ietf.org/html/rfc5322) and the [Mail gem](https://github.com/mikel/mail).
+As of version 0.7.x, we are accepting pull requests for critical security patches only.
 
-We welcome Pull Requests which include tests.
+This gem uses the [Mail gem](https://github.com/mikel/mail) for messages, attachments, etc. Unless your issue is related to Gmail integration specifically, please refer to [RFC-5322 (email specification)](https://tools.ietf.org/html/rfc5322) and the [Mail gem](https://github.com/mikel/mail).
 
 ## Installation
 
@@ -37,8 +41,8 @@ gmail gem has the following dependencies (with Bundler all will be installed aut
 
 ## Version Support
 
-* Ruby 2.0.0+ is supported
-* Ruby 1.9.3 is supported but deprecated and is planned to be dropped from gmail v0.6.0
+* Ruby 2.0.0+ is supported.
+* Ruby 1.9.3 is supported but deprecated.
 * Ruby 1.8.7 users should use gmail v0.4.1
 
 ## Features
@@ -369,7 +373,7 @@ This project follows on Open Governance model. The Core Team is responsible for 
 
 ## Copyright
 
-* Copyright (c) 2015-2016 GmailGem team
+* Copyright (c) 2015-2018 GmailGem team
 * Copyright (c) 2010-2014 Kriss 'nu7hatch' Kowalik
 * Copyright (c) 2009-2010 BehindLogic
 
