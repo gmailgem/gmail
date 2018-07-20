@@ -34,7 +34,7 @@ module Gmail
 
         opts[:after]      and search.concat ['SINCE', Net::IMAP.format_date(opts[:after])]
         opts[:before]     and search.concat ['BEFORE', Net::IMAP.format_date(opts[:before])]
-        opts[:on]         and search.concat ['ON', opts[:on].to_imap_date]
+        opts[:on]         and search.concat ['ON', Net::IMAP.format_date(opts[:on])]
         opts[:from]       and search.concat ['FROM', opts[:from]]
         opts[:to]         and search.concat ['TO', opts[:to]]
         opts[:subject]    and search.concat ['SUBJECT', opts[:subject]]

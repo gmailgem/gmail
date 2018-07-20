@@ -1,5 +1,9 @@
 # Gmail Gem Changelog
 
+## 0.7.1 - 2018-07-19
+
+* Fix issue related to Net::IMAP.format_date change (@mnohai-mdsol)
+
 ## 0.7.0 - 2018-07-19
 
 * Add coveralls.io code coverage (@bootstraponline)
