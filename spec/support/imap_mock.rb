@@ -10,6 +10,14 @@ module Net
         @recordings ||= {}
       end
 
+      def recording_file=(value)
+        @recording_file = value
+      end
+
+      def recording_file
+        @recording_file
+      end
+
       def replaying?
         @replaying
       end
@@ -106,7 +114,7 @@ module Net
         if recordings.empty?
           # Be lenient if LOGOUT is called but wasn't explicitly recorded. This
           # comes up often when called from `at_exit`.
-          cmd == 'LOGOUT' ? return : raise('Could not find recording')
+          cmd == 'LOGOUT' ? return : raise("Could not find recording '#{digest}' in #{Net::IMAP.recording_file}")
         end
 
         action, response, @responses, all_responses = recordings.shift
@@ -168,6 +176,7 @@ module Spec
 
       # If we've already recorded this spec load the recordings
       Net::IMAP.recordings = File.exist?(filename) ? YAML.load_file(filename) : nil
+      Net::IMAP.recording_file = File.exist?(filename) ? filename : nil
 
       example.run
 
