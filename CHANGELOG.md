@@ -1,5 +1,9 @@
 # Gmail Gem Changelog
 
+## unreleased
+
+* Fix compatibility with `ruby-3.1` by adding bundled gems
+
 ## 0.7.1 - 2018-07-19
 
 * Fix issue related to Net::IMAP.format_date change (@mnohai-mdsol)
