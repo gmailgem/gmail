@@ -1,5 +1,9 @@
 # Gmail Gem Changelog
 
+## 0.7.2 - 2023-01-25
+
+* Fix issue related to Ruby 3.2 - String#untaint was deprecated
+
 ## 0.7.1 - 2018-07-19
 
 * Fix issue related to Net::IMAP.format_date change (@mnohai-mdsol)
