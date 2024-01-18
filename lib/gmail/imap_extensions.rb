@@ -78,7 +78,7 @@ module Gmail
               if flag.empty?
                 x
               else
-                flag.first.first.capitalize.untaint.intern
+                flag.first.first.capitalize.intern
               end
             end
           else
